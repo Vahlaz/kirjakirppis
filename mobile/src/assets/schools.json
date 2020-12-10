@@ -1,0 +1,1486 @@
+[
+  {
+    "name": "Ålands lyceum",
+    "county": " Maarianhamina"
+  },
+  {
+    "name": "Ålands yrkesgymnasium (osaksi ammattioppilaitos)",
+    "county": " Maarianhamina"
+  },
+  {
+    "name": "Imatran yhteislukio",
+    "county": " Imatra"
+  },
+  {
+    "name": "Itä-Suomen suomalais-venäläisen koulun lukio",
+    "county": " Imatra"
+  },
+  {
+    "name": "Kimpisen lukio",
+    "county": " Lappeenranta"
+  },
+  {
+    "name": "Lappeenrannan Lyseon lukio",
+    "county": " Lappeenranta"
+  },
+  {
+    "name": "Parikkalan lukio",
+    "county": " Parikkala"
+  },
+  {
+    "name": "Rautjärven lukio",
+    "county": " Rautjärvi"
+  },
+  {
+    "name": "Savitaipaleen lukio",
+    "county": " Savitaipale"
+  },
+  {
+    "name": "Taavetin lukio",
+    "county": " Luumäki"
+  },
+  {
+    "name": "Alajärven lukio",
+    "county": " Alajärvi"
+  },
+  {
+    "name": "Alavuden lukio",
+    "county": " Alavus"
+  },
+  {
+    "name": "Etelä-Seinäjoen lukio",
+    "county": " Seinäjoki"
+  },
+  {
+    "name": "Evijärven lukio",
+    "county": " Evijärvi"
+  },
+  {
+    "name": "Härmän lukio",
+    "county": " Kauhava"
+  },
+  {
+    "name": "Ilmajoen lukio",
+    "county": " Ilmajoki"
+  },
+  {
+    "name": "Jalasjärven lukio",
+    "county": " Kurikka"
+  },
+  {
+    "name": "Jurvan lukio",
+    "county": " Kurikka"
+  },
+  {
+    "name": "Kauhajoen lukio",
+    "county": " Kauhajoki"
+  },
+  {
+    "name": "Kauhavan lukio",
+    "county": " Kauhava"
+  },
+  {
+    "name": "Kuortaneen lukio",
+    "county": " Kuortane"
+  },
+  {
+    "name": "Kurikan lukio",
+    "county": " Kurikka"
+  },
+  {
+    "name": "Lappajärven lukio",
+    "county": " Lappajärvi"
+  },
+  {
+    "name": "Lapuan lukio",
+    "county": " Lapua"
+  },
+  {
+    "name": "Nurmon lukio",
+    "county": " Seinäjoki"
+  },
+  {
+    "name": "Seinäjoen lukio",
+    "county": " Seinäjoki"
+  },
+  {
+    "name": "Teuvan lukio",
+    "county": " Teuva"
+  },
+  {
+    "name": "Vimpelin lukio",
+    "county": " Vimpeli"
+  },
+  {
+    "name": "Ylistaron lukio",
+    "county": " Seinäjoki"
+  },
+  {
+    "name": "Ähtärin lukio",
+    "county": " Ähtäri"
+  },
+  {
+    "name": "Heinäveden lukio",
+    "county": " Heinävesi"
+  },
+  {
+    "name": "Joroisten lukio",
+    "county": " Joroinen"
+  },
+  {
+    "name": "Juvan lukio",
+    "county": " Juva"
+  },
+  {
+    "name": "Kangasniemen lukio",
+    "county": " Kangasniemi"
+  },
+  {
+    "name": "Mikkelin lukio",
+    "county": " Mikkeli"
+  },
+  {
+    "name": "Mäntyharjun lukio",
+    "county": " Mäntyharju"
+  },
+  {
+    "name": "Pieksämäen lukio",
+    "county": " Pieksämäki"
+  },
+  {
+    "name": "Rantasalmen lukio",
+    "county": " Rantasalmi"
+  },
+  {
+    "name": "Savonlinnan lyseon lukio",
+    "county": " Savonlinna"
+  },
+  {
+    "name": "Savonlinnan Taidelukio",
+    "county": " Savonlinna"
+  },
+  {
+    "name": "Sulkavan lukio",
+    "county": " Sulkava"
+  },
+  {
+    "name": "Kajaanin lukio",
+    "county": " Kajaani"
+  },
+  {
+    "name": "Kuhmon yhteislukio",
+    "county": " Kuhmo"
+  },
+  {
+    "name": "Paltamon lukio",
+    "county": " Paltamo"
+  },
+  {
+    "name": "Puolangan lukio",
+    "county": " Puolanka"
+  },
+  {
+    "name": "Sotkamon lukio",
+    "county": " Sotkamo"
+  },
+  {
+    "name": "Suomussalmen lukio",
+    "county": " Suomussalmi"
+  },
+  {
+    "name": "Forssan yhteislyseo",
+    "county": " Forssa"
+  },
+  {
+    "name": "Hausjärven lukio",
+    "county": " Hausjärvi"
+  },
+  {
+    "name": "Hämeenlinnan lyseon lukio",
+    "county": " Hämeenlinna"
+  },
+  {
+    "name": "Janakkalan lukio",
+    "county": " Janakkala"
+  },
+  {
+    "name": "Kaurialan lukio",
+    "county": " Hämeenlinna"
+  },
+  {
+    "name": "Lammin lukio",
+    "county": " Hämeenlinna"
+  },
+  {
+    "name": "Lopen lukio",
+    "county": " Loppi"
+  },
+  {
+    "name": "Parolan lukio",
+    "county": " Hattula"
+  },
+  {
+    "name": "Riihimäen lukio",
+    "county": " Riihimäki"
+  },
+  {
+    "name": "Kannuksen lukio",
+    "county": " Kannus"
+  },
+  {
+    "name": "Kaustisen musiikkilukio",
+    "county": " Kaustinen"
+  },
+  {
+    "name": "Perhon lukio",
+    "county": " Perho"
+  },
+  {
+    "name": "Kokkolan suomalainen lukio",
+    "county": " Kokkola"
+  },
+  {
+    "name": "Toholammin lukio",
+    "county": " Toholampi"
+  },
+  {
+    "name": "Karleby Svenska gymnasium",
+    "county": " Kokkola"
+  },
+  {
+    "name": "Hankasalmen lukio",
+    "county": " Hankasalmi"
+  },
+  {
+    "name": "Joutsan lukio",
+    "county": " Joutsa"
+  },
+  {
+    "name": "Jyväskylän lyseon lukio",
+    "county": " Jyväskylä"
+  },
+  {
+    "name": "Jyväskylän normaalikoulu",
+    "county": " Jyväskylä"
+  },
+  {
+    "name": "Jämsän lukio",
+    "county": " Jämsä"
+  },
+  {
+    "name": "Karstulan lukio",
+    "county": " Karstula"
+  },
+  {
+    "name": "Keuruun lukio",
+    "county": " Keuruu"
+  },
+  {
+    "name": "Kinnulan lukio",
+    "county": " Kinnula"
+  },
+  {
+    "name": "Konneveden lukio",
+    "county": " Konnevesi"
+  },
+  {
+    "name": "Kuhmoisten yhtenäiskoulun lukio",
+    "county": " Kuhmoinen"
+  },
+  {
+    "name": "Laukaan lukio",
+    "county": " Laukaa"
+  },
+  {
+    "name": "Muuramen lukio",
+    "county": " Muurame"
+  },
+  {
+    "name": "Petäjäveden lukio",
+    "county": " Petäjävesi"
+  },
+  {
+    "name": "Pihtiputaan lukio",
+    "county": " Pihtipudas"
+  },
+  {
+    "name": "Saarijärven lukio",
+    "county": " Saarijärvi"
+  },
+  {
+    "name": "Schildtin lukio",
+    "county": " Jyväskylä"
+  },
+  {
+    "name": "Viitasaaren lukio",
+    "county": " Viitasaari"
+  },
+  {
+    "name": "Äänekosken lukio",
+    "county": " Äänekoski"
+  },
+  {
+    "name": "Elimäen lukio",
+    "county": " Kouvola"
+  },
+  {
+    "name": "Haminan lukio",
+    "county": " Hamina"
+  },
+  {
+    "name": "Iitin lukio",
+    "county": " Iitti"
+  },
+  {
+    "name": "Karhulan lukio",
+    "county": " Kotka"
+  },
+  {
+    "name": "Kotkan lyseo",
+    "county": " Kotka"
+  },
+  {
+    "name": "Kouvolan Yhteislyseo",
+    "county": " Kouvola"
+  },
+  {
+    "name": "Kuusankosken lukio",
+    "county": " Kouvola"
+  },
+  {
+    "name": "Valkealan lukio",
+    "county": " Kouvola"
+  },
+  {
+    "name": "Virolahden lukio",
+    "county": " Virolahti"
+  },
+  {
+    "name": "Kotka Svenska Samskola",
+    "county": " Kotka"
+  },
+  {
+    "name": "Enontekiön lukio",
+    "county": " Enontekiö"
+  },
+  {
+    "name": "Ivalon lukio",
+    "county": " Inari"
+  },
+  {
+    "name": "Kemijärven lukio",
+    "county": " Kemijärvi"
+  },
+  {
+    "name": "Kemin lyseon lukio",
+    "county": " Kemi"
+  },
+  {
+    "name": "Keminmaan lukio",
+    "county": " Keminmaa"
+  },
+  {
+    "name": "Kittilän lukio",
+    "county": " Kittilä"
+  },
+  {
+    "name": "Kolarin lukio",
+    "county": " Kolari"
+  },
+  {
+    "name": "Korkalovaaran lukio",
+    "county": " Rovaniemi"
+  },
+  {
+    "name": "Lyseonpuiston lukio",
+    "county": " Rovaniemi"
+  },
+  {
+    "name": "Muonion lukio",
+    "county": " Muonio"
+  },
+  {
+    "name": "Ounasvaaran lukio",
+    "county": " Rovaniemi"
+  },
+  {
+    "name": "Pellon lukio",
+    "county": " Pello"
+  },
+  {
+    "name": "Posion lukio",
+    "county": " Posio"
+  },
+  {
+    "name": "Ranuan lukio",
+    "county": " Ranua"
+  },
+  {
+    "name": "Sallan lukio",
+    "county": " Salla"
+  },
+  {
+    "name": "Savukosken lukio",
+    "county": " Savukoski"
+  },
+  {
+    "name": "Simon lukio",
+    "county": " Simo"
+  },
+  {
+    "name": "Sodankylän lukio",
+    "county": " Sodankylä"
+  },
+  {
+    "name": "Tervolan lukio",
+    "county": " Tervola"
+  },
+  {
+    "name": "Tornion yhteislyseon lukio",
+    "county": " Tornio"
+  },
+  {
+    "name": "Utsjoen saamelaislukio",
+    "county": " Utsjoki"
+  },
+  {
+    "name": "Ylitornion yhteiskoulun lukio",
+    "county": " Ylitornio"
+  },
+  {
+    "name": "Akaan lukio",
+    "county": " Akaa"
+  },
+  {
+    "name": "F .E. Sillanpään lukio",
+    "county": " Hämeenkyrö"
+  },
+  {
+    "name": "Hatanpään lukio",
+    "county": " Tampere"
+  },
+  {
+    "name": "Ikaalisten yhteiskoulun lukio",
+    "county": " Ikaalinen"
+  },
+  {
+    "name": "Kalevan lukio",
+    "county": " Tampere"
+  },
+  {
+    "name": "Kangasalan lukio",
+    "county": " Kangasala"
+  },
+  {
+    "name": "Lempäälän lukio",
+    "county": " Lempäälä"
+  },
+  {
+    "name": "Mäntän lukio",
+    "county": " Mänttä-Vilppula"
+  },
+  {
+    "name": "Nokian lukio",
+    "county": " Nokia"
+  },
+  {
+    "name": "Oriveden lukio",
+    "county": " Orivesi"
+  },
+  {
+    "name": "Parkanon lukio",
+    "county": " Parkano"
+  },
+  {
+    "name": "Pirkkalan yhteislukio",
+    "county": " Pirkkala"
+  },
+  {
+    "name": "Punkalaitumen lukio",
+    "county": " Punkalaidun"
+  },
+  {
+    "name": "Pälkäneen lukio",
+    "county": " Pälkäne"
+  },
+  {
+    "name": "Ruoveden lukio",
+    "county": " Ruovesi"
+  },
+  {
+    "name": "Sammon keskuslukio",
+    "county": " Tampere"
+  },
+  {
+    "name": "Tammerkosken lukio",
+    "county": " Tampere"
+  },
+  {
+    "name": "Tampereen klassillinen lukio",
+    "county": " Tampere"
+  },
+  {
+    "name": "Tampereen lyseon lukio",
+    "county": " Tampere"
+  },
+  {
+    "name": "Tampereen normaalikoulun lukio",
+    "county": " Tampere"
+  },
+  {
+    "name": "Tampereen Rudolf Steiner -koulu",
+    "county": " Tampere"
+  },
+  {
+    "name": "Tampereen teknillinen lukio",
+    "county": " Tampere"
+  },
+  {
+    "name": "Tampereen yhteiskoulun lukio",
+    "county": " Tampere"
+  },
+  {
+    "name": "Valkeakosken Tietotien lukio",
+    "county": " Valkeakoski"
+  },
+  {
+    "name": "Vammalan lukio",
+    "county": " Sastamala"
+  },
+  {
+    "name": "Virtain lukio",
+    "county": " Virrat"
+  },
+  {
+    "name": "Väinö Linnan lukio",
+    "county": " Urjala"
+  },
+  {
+    "name": "Ylöjärven lukio",
+    "county": " Ylöjärvi"
+  },
+  {
+    "name": "Svenska Samskolan i Tammerfors",
+    "county": " Tampere"
+  },
+  {
+    "name": "Kristiinankaupungin lukio",
+    "county": " Kristiinankaupunki"
+  },
+  {
+    "name": "Kyrönmaan lukio",
+    "county": " Isokyrö"
+  },
+  {
+    "name": "Laihian lukio",
+    "county": " Laihia"
+  },
+  {
+    "name": "Pietarsaaren lukio",
+    "county": " Pietarsaari"
+  },
+  {
+    "name": "Vaasan lyseon lukio",
+    "county": " Vaasa"
+  },
+  {
+    "name": "Gymnasiet i Petalax",
+    "county": " Maalahti"
+  },
+  {
+    "name": "Jakobstads gymnasium",
+    "county": " Pietarsaari"
+  },
+  {
+    "name": "Korsholms gymnasium",
+    "county": " Mustasaari"
+  },
+  {
+    "name": "Kristinestads gymnasium",
+    "county": " Kristiinankaupunki"
+  },
+  {
+    "name": "Kronoby gymnasium",
+    "county": " Kruunupyy"
+  },
+  {
+    "name": "Närpes gymnasium",
+    "county": " Närpiö"
+  },
+  {
+    "name": "Pedersöre gymnasium",
+    "county": " Pedersören kunta"
+  },
+  {
+    "name": "Topeliusgymnasiet i Nykarleby",
+    "county": " Uusikaarlepyy"
+  },
+  {
+    "name": "Vasa gymnasium",
+    "county": " Vaasa"
+  },
+  {
+    "name": "Vasa övningskolas gymnasium",
+    "county": " Vaasa"
+  },
+  {
+    "name": "Vörå Samgymnasium",
+    "county": " Vöyri"
+  },
+  {
+    "name": "Ilomantsin lukio",
+    "county": " Ilomantsi"
+  },
+  {
+    "name": "Joensuun lyseon lukio",
+    "county": " Joensuu"
+  },
+  {
+    "name": "Joensuun normaalikoulun lukio",
+    "county": " Joensuu"
+  },
+  {
+    "name": "Joensuun yhteiskoulun lukio",
+    "county": " Joensuu"
+  },
+  {
+    "name": "Juuan lukio",
+    "county": " Juuka"
+  },
+  {
+    "name": "Kiteen lukio",
+    "county": " Kitee"
+  },
+  {
+    "name": "Kontiolahden lukio",
+    "county": " Kontiolahti"
+  },
+  {
+    "name": "Lieksan lukio",
+    "county": " Lieksa"
+  },
+  {
+    "name": "Nurmeksen lukio",
+    "county": " Nurmes"
+  },
+  {
+    "name": "Outokummun lukio",
+    "county": " Outokumpu"
+  },
+  {
+    "name": "Polvijärven lukio",
+    "county": " Polvijärvi"
+  },
+  {
+    "name": "Pyhäselän lukio",
+    "county": " Joensuu"
+  },
+  {
+    "name": "Tohmajärven lukio",
+    "county": " Tohmajärvi"
+  },
+  {
+    "name": "Haapajärven lukio",
+    "county": " Haapajärvi"
+  },
+  {
+    "name": "Haapaveden lukio",
+    "county": " Haapavesi"
+  },
+  {
+    "name": "Haukiputaan lukio",
+    "county": " Oulu"
+  },
+  {
+    "name": "Iin lukio",
+    "county": " Ii"
+  },
+  {
+    "name": "Kalajoen lukio",
+    "county": " Kalajoki"
+  },
+  {
+    "name": "Kastellin lukio",
+    "county": " Oulu"
+  },
+  {
+    "name": "Kempeleen lukio",
+    "county": " Kempele"
+  },
+  {
+    "name": "Kiimingin lukio",
+    "county": " Oulu"
+  },
+  {
+    "name": "Kuusamon lukio",
+    "county": " Kuusamo"
+  },
+  {
+    "name": "Kärsämäen lukio",
+    "county": " Kärsämäki"
+  },
+  {
+    "name": "Laanilan lukio",
+    "county": " Oulu"
+  },
+  {
+    "name": "Limingan lukio",
+    "county": " Liminka"
+  },
+  {
+    "name": "Madetojan musiikkilukio",
+    "county": " Oulu"
+  },
+  {
+    "name": "Merikosken lukio",
+    "county": " Oulu"
+  },
+  {
+    "name": "Muhoksen lukio",
+    "county": " Muhos"
+  },
+  {
+    "name": "Nivalan lukio",
+    "county": " Nivala"
+  },
+  {
+    "name": "Oulaisten lukio",
+    "county": " Oulainen"
+  },
+  {
+    "name": "Oulun aikuislukio",
+    "county": " Oulu"
+  },
+  {
+    "name": "Oulun lyseon lukio",
+    "county": " Oulu"
+  },
+  {
+    "name": "Oulun normaalikoulun lukio",
+    "county": " Oulu"
+  },
+  {
+    "name": "Oulun steinerkoulu",
+    "county": " Oulu"
+  },
+  {
+    "name": "Oulun Suomalaisen Yhteiskoulun lukio",
+    "county": " Oulu"
+  },
+  {
+    "name": "Oulunsalon lukio",
+    "county": " Oulu"
+  },
+  {
+    "name": "Pateniemen lukio",
+    "county": " Oulu"
+  },
+  {
+    "name": "Pudasjärven lukio",
+    "county": " Pudasjärvi"
+  },
+  {
+    "name": "Pyhäjoen lukio",
+    "county": " Pyhäjoki"
+  },
+  {
+    "name": "Pyhäjärven lukio",
+    "county": " Pyhäjärvi"
+  },
+  {
+    "name": "Raahen lukio",
+    "county": " Raahe"
+  },
+  {
+    "name": "Reisjärven lukio",
+    "county": " Reisjärvi"
+  },
+  {
+    "name": "Sievin lukio",
+    "county": " Sievi"
+  },
+  {
+    "name": "Siikajoen lukio",
+    "county": " Siikajoki"
+  },
+  {
+    "name": "Siikalatvan lukio",
+    "county": " Siikalatva"
+  },
+  {
+    "name": "Taivalkosken lukio",
+    "county": " Taivalkoski"
+  },
+  {
+    "name": "Utajärven lukio",
+    "county": " Utajärvi"
+  },
+  {
+    "name": "Vaalan lukio",
+    "county": " Vaala"
+  },
+  {
+    "name": "Ylivieskan lukio",
+    "county": " Ylivieska"
+  },
+  {
+    "name": "Svenska Privatskolan i Uleåborg",
+    "county": " Oulu"
+  },
+  {
+    "name": "Iisalmen lyseo",
+    "county": " Iisalmi"
+  },
+  {
+    "name": "Juankosken lukio",
+    "county": " Kuopio"
+  },
+  {
+    "name": "Kallaveden lukio",
+    "county": " Kuopio"
+  },
+  {
+    "name": "Kiuruveden lukio",
+    "county": " Kiuruvesi"
+  },
+  {
+    "name": "Kuopion klassillinen lukio",
+    "county": " Kuopio"
+  },
+  {
+    "name": "Kuopion lyseon lukio",
+    "county": " Kuopio"
+  },
+  {
+    "name": "Lapinlahden lukio",
+    "county": " Lapinlahti"
+  },
+  {
+    "name": "Leppävirran lukio",
+    "county": " Leppävirta"
+  },
+  {
+    "name": "Kuopion taidelukio Lumit",
+    "county": " Kuopio"
+  },
+  {
+    "name": "Nilsiän lukio",
+    "county": " Kuopio"
+  },
+  {
+    "name": "Pielaveden lukio",
+    "county": " Pielavesi"
+  },
+  {
+    "name": "Portaanpään kristillisen opiston lukio",
+    "county": " Lapinlahti"
+  },
+  {
+    "name": "Rautalammin lukio",
+    "county": " Rautalampi"
+  },
+  {
+    "name": "Rautavaaran lukio",
+    "county": " Rautavaara"
+  },
+  {
+    "name": "Siilinjärven lukio",
+    "county": " Siilinjärvi"
+  },
+  {
+    "name": "Sonkajärven lukio",
+    "county": " Sonkajärvi"
+  },
+  {
+    "name": "Suonenjoen lukio",
+    "county": " Suonenjoki"
+  },
+  {
+    "name": "Tuusniemen lukio",
+    "county": " Tuusniemi"
+  },
+  {
+    "name": "Varkauden lukio",
+    "county": " Varkaus"
+  },
+  {
+    "name": "Vesannon lukio",
+    "county": " Vesanto"
+  },
+  {
+    "name": "Vieremän lukio",
+    "county": " Vieremä"
+  },
+  {
+    "name": "Erkko-lukio",
+    "county": " Orimattila"
+  },
+  {
+    "name": "Heinolan lukio",
+    "county": " Heinola"
+  },
+  {
+    "name": "Kannaksen lukio",
+    "county": " Lahti"
+  },
+  {
+    "name": "Lahden lyseo",
+    "county": " Lahti"
+  },
+  {
+    "name": "Lahden yhteiskoulun lukio",
+    "county": " Lahti"
+  },
+  {
+    "name": "Lahden Rudolf Steiner -koulu",
+    "county": " Lahti"
+  },
+  {
+    "name": "Nastopoli lukio",
+    "county": " Lahti"
+  },
+  {
+    "name": "Padasjoen lukio",
+    "county": " Padasjoki"
+  },
+  {
+    "name": "Sysmän yhteiskoulun lukio",
+    "county": " Sysmä"
+  },
+  {
+    "name": "Tiirismaan lukio",
+    "county": " Lahti"
+  },
+  {
+    "name": "Vääksyn Yhteiskoulu",
+    "county": " Asikkala"
+  },
+  {
+    "name": "Eurajoen lukio",
+    "county": " Eurajoki"
+  },
+  {
+    "name": "Euran lukio",
+    "county": " Eura"
+  },
+  {
+    "name": "Harjavallan lukio",
+    "county": " Harjavalta"
+  },
+  {
+    "name": "Honkajoen lukio",
+    "county": " Honkajoki"
+  },
+  {
+    "name": "Kankaanpään yhteislyseo",
+    "county": " Kankaanpää"
+  },
+  {
+    "name": "Kokemäen lukio",
+    "county": " Kokemäki"
+  },
+  {
+    "name": "Lauttakylän lukio",
+    "county": " Huittinen"
+  },
+  {
+    "name": "Merikarvian lukio",
+    "county": " Merikarvia"
+  },
+  {
+    "name": "Nakkilan lukio",
+    "county": " Nakkila"
+  },
+  {
+    "name": "Pomarkun lukio",
+    "county": " Pomarkku"
+  },
+  {
+    "name": "Porin lyseo",
+    "county": " Pori"
+  },
+  {
+    "name": "Porin seudun steinerkoulu",
+    "county": " Pori"
+  },
+  {
+    "name": "Porin suomalaisen yhteislyseon lukio",
+    "county": " Pori"
+  },
+  {
+    "name": "Rauman lyseon lukio",
+    "county": " Rauma"
+  },
+  {
+    "name": "Säkylän seudun lukio",
+    "county": " Säkylä"
+  },
+  {
+    "name": "Ulvilan lukio",
+    "county": " Ulvila"
+  },
+  {
+    "name": "Björneborgs svenska samskola",
+    "county": " Pori"
+  },
+  {
+    "name": "Alppilan lukio",
+    "county": " Helsinki"
+  },
+  {
+    "name": "Apollon yhteiskoulun lukio",
+    "county": " Helsinki"
+  },
+  {
+    "name": "Arkadian yhteislyseon lukio",
+    "county": " Nurmijärvi"
+  },
+  {
+    "name": "Askolan lukio",
+    "county": " Askola"
+  },
+  {
+    "name": "Elias-koulu",
+    "county": " Helsinki"
+  },
+  {
+    "name": "Englantilainen lukio",
+    "county": " Helsinki"
+  },
+  {
+    "name": "Espoonlahden lukio",
+    "county": " Espoo"
+  },
+  {
+    "name": "Espoon steinerkoulu",
+    "county": " Espoo"
+  },
+  {
+    "name": "Espoon yhteislyseon lukio",
+    "county": " Espoo"
+  },
+  {
+    "name": "Etelä-Tapiolan lukio",
+    "county": " Espoo"
+  },
+  {
+    "name": "Etu-Töölön lukio",
+    "county": " Helsinki"
+  },
+  {
+    "name": "Hankoniemen lukio",
+    "county": " Hanko"
+  },
+  {
+    "name": "Haukilahden lukio",
+    "county": " Espoo"
+  },
+  {
+    "name": "Helsingin kielilukio",
+    "county": " Helsinki"
+  },
+  {
+    "name": "Helsingin medialukio",
+    "county": " Helsinki"
+  },
+  {
+    "name": "Helsingin suomalainen yhteiskoulu",
+    "county": " Helsinki"
+  },
+  {
+    "name": "Helsingin uusi yhteiskoulu",
+    "county": " Helsinki"
+  },
+  {
+    "name": "Helsingin normaalilyseo",
+    "county": " Helsinki"
+  },
+  {
+    "name": "Helsingin Rudolf Steiner -koulu",
+    "county": " Helsinki"
+  },
+  {
+    "name": "Helsingin kuvataidelukio",
+    "county": " Helsinki"
+  },
+  {
+    "name": "Helsingin luonnontiedelukio",
+    "county": " Helsinki"
+  },
+  {
+    "name": "Helsingin saksalainen koulu",
+    "county": " Helsinki"
+  },
+  {
+    "name": "Helsingin yhteislyseo",
+    "county": " Helsinki"
+  },
+  {
+    "name": "Helsingin ranskalais-suomalainen koulu",
+    "county": " Helsinki"
+  },
+  {
+    "name": "Helsingin yliopiston Viikin normaalikoulu",
+    "county": "Helsinki"
+  },
+  {
+    "name": "Herttoniemen yhteiskoulu",
+    "county": " Helsinki"
+  },
+  {
+    "name": "Hyvinkään Sveitsin lukio",
+    "county": " Hyvinkää"
+  },
+  {
+    "name": "Hyvinkään yhteiskoulun lukio",
+    "county": " Hyvinkää"
+  },
+  {
+    "name": "International School of Helsinki",
+    "county": " Helsinki"
+  },
+  {
+    "name": "Järvenpään lukio",
+    "county": " Järvenpää"
+  },
+  {
+    "name": "Kaitaan lukio",
+    "county": " Espoo"
+  },
+  {
+    "name": "Kallion lukio",
+    "county": " Helsinki"
+  },
+  {
+    "name": "Karjaan lukio",
+    "county": " Raasepori"
+  },
+  {
+    "name": "Karkkilan lukio",
+    "county": " Karkkila"
+  },
+  {
+    "name": "Kauniaisten lukio",
+    "county": " Kauniainen"
+  },
+  {
+    "name": "Keravan lukio",
+    "county": " Kerava"
+  },
+  {
+    "name": "Kulosaaren yhteiskoulu",
+    "county": " Helsinki"
+  },
+  {
+    "name": "Kuninkaantien lukio",
+    "county": " Espoo"
+  },
+  {
+    "name": "Lauttasaaren yhteiskoulu",
+    "county": " Helsinki"
+  },
+  {
+    "name": "Leppävaaran lukio",
+    "county": " Espoo"
+  },
+  {
+    "name": "Linnankosken lukio",
+    "county": " Porvoo"
+  },
+  {
+    "name": "Lohjan Yhteislyseon lukio",
+    "county": " Lohja"
+  },
+  {
+    "name": "Lumon lukio",
+    "county": " Vantaa"
+  },
+  {
+    "name": "Martinlaakson lukio",
+    "county": " Vantaa"
+  },
+  {
+    "name": "Maunulan yhteiskoulu ja Helsingin matematiikkalukio",
+    "county": " Helsinki"
+  },
+  {
+    "name": "Munkkiniemen yhteiskoulu",
+    "county": " Helsinki"
+  },
+  {
+    "name": "Myllyharjun lukio",
+    "county": " Loviisa"
+  },
+  {
+    "name": "Mäkelänrinteen lukio",
+    "county": " Helsinki"
+  },
+  {
+    "name": "Mäntsälän lukio",
+    "county": " Mäntsälä"
+  },
+  {
+    "name": "Nurmijärven yhteiskoulun lukio",
+    "county": " Nurmijärvi"
+  },
+  {
+    "name": "Nummi-Pusulan lukio lakkautetaan vaiheittain lukuvuosien 2016-2017",
+    "county": " 2017-2018 aikana"
+  },
+  {
+    "name": "Olarin lukio",
+    "county": " Espoo"
+  },
+  {
+    "name": "Oulunkylän yhteiskoulu",
+    "county": " Helsinki"
+  },
+  {
+    "name": "Pohjois-Haagan yhteiskoulu",
+    "county": " Helsinki"
+  },
+  {
+    "name": "Pohjois-Tapiolan lukio",
+    "county": " Espoo"
+  },
+  {
+    "name": "Porkkalan lukio",
+    "county": " Kirkkonummi"
+  },
+  {
+    "name": "Rajamäen lukio",
+    "county": " Nurmijärvi"
+  },
+  {
+    "name": "Ressun lukio",
+    "county": " Helsinki"
+  },
+  {
+    "name": "Sibelius-lukio",
+    "county": " Helsinki"
+  },
+  {
+    "name": "Sipoon lukio",
+    "county": " Sipoo"
+  },
+  {
+    "name": "Sotungin lukio",
+    "county": " Vantaa"
+  },
+  {
+    "name": "Suomalais-venäläinen lukio",
+    "county": " Helsinki"
+  },
+  {
+    "name": "Tapiolan lukio",
+    "county": " Espoo"
+  },
+  {
+    "name": "Tikkurilan lukio",
+    "county": " Vantaa"
+  },
+  {
+    "name": "Tuusulan lukio",
+    "county": " Tuusula"
+  },
+  {
+    "name": "Töölön yhteiskoulu",
+    "county": " Helsinki"
+  },
+  {
+    "name": "Vantaan seudun steinerkoulu",
+    "county": " Vantaa"
+  },
+  {
+    "name": "Vaskivuoren lukio",
+    "county": " Vantaa"
+  },
+  {
+    "name": "Vihdin lukio",
+    "county": " Vihti"
+  },
+  {
+    "name": "Viherlaakson lukio",
+    "county": " Espoo"
+  },
+  {
+    "name": "Vuosaaren lukio",
+    "county": " Helsinki"
+  },
+  {
+    "name": "Yhtenäiskoulun lukio",
+    "county": " Helsinki"
+  },
+  {
+    "name": "Borgå gymnasium",
+    "county": " Porvoo"
+  },
+  {
+    "name": "Brändö gymnasium",
+    "county": " Helsinki"
+  },
+  {
+    "name": "Ekenäs gymnasium",
+    "county": " Raasepori"
+  },
+  {
+    "name": "Gymnasiet Grankulla samskola",
+    "county": " Kauniainen"
+  },
+  {
+    "name": "Gymnasiet Lärkan",
+    "county": " Helsinki"
+  },
+  {
+    "name": "Hangö gymnasium",
+    "county": " Hanko"
+  },
+  {
+    "name": "Rudolf Steiner -skolan i Helsingfors",
+    "county": " Helsinki"
+  },
+  {
+    "name": "Helsinge gymnasium",
+    "county": " Vantaa"
+  },
+  {
+    "name": "Karis-Billnäs Gymnasium",
+    "county": " Raasepori"
+  },
+  {
+    "name": "Kyrkslätts gymnasium",
+    "county": " Kirkkonummi"
+  },
+  {
+    "name": "Lovisa gymnasium",
+    "county": " Loviisa"
+  },
+  {
+    "name": "Mattlidens gymnasium",
+    "county": " Espoo"
+  },
+  {
+    "name": "Sibbo gymnasium",
+    "county": " Sipoo"
+  },
+  {
+    "name": "Tölö gymnasium",
+    "county": " Helsinki"
+  },
+  {
+    "name": "Virkby gymnasium",
+    "county": " Lohja"
+  },
+  {
+    "name": "Elisenvaaran lukio",
+    "county": " Pöytyä"
+  },
+  {
+    "name": "Halikon lukio",
+    "county": " Salo"
+  },
+  {
+    "name": "Kaarinan lukio",
+    "county": " Kaarina"
+  },
+  {
+    "name": "Kerttulin lukio",
+    "county": " Turku"
+  },
+  {
+    "name": "Kosken lukio",
+    "county": " Koski Tl"
+  },
+  {
+    "name": "Laitilan lukio",
+    "county": " Laitila"
+  },
+  {
+    "name": "Liedon lukio",
+    "county": " Lieto"
+  },
+  {
+    "name": "Loimaan lukio",
+    "county": " Loimaa"
+  },
+  {
+    "name": "Luostarivuoren lukio",
+    "county": " Turku"
+  },
+  {
+    "name": "Mynämäen lukio",
+    "county": " Mynämäki"
+  },
+  {
+    "name": "Naantalin lukio",
+    "county": " Naantali"
+  },
+  {
+    "name": "Nousiaisten lukio",
+    "county": " Nousiainen"
+  },
+  {
+    "name": "Paimion lukio",
+    "county": " Paimio"
+  },
+  {
+    "name": "Paraisten lukio",
+    "county": " Parainen"
+  },
+  {
+    "name": "Perniön lukio",
+    "county": " Salo"
+  },
+  {
+    "name": "Puolalanmäen lukio",
+    "county": " Turku"
+  },
+  {
+    "name": "Raision lukio",
+    "county": " Raisio"
+  },
+  {
+    "name": "Salon lukio",
+    "county": " Salo"
+  },
+  {
+    "name": "Someron lukio",
+    "county": " Somero"
+  },
+  {
+    "name": "Suomen kristillinen yhteiskoulu",
+    "county": " Kaarina"
+  },
+  {
+    "name": "Turun klassillinen lukio",
+    "county": " Turku"
+  },
+  {
+    "name": "Turun Lyseon lukio",
+    "county": " Turku"
+  },
+  {
+    "name": "Turun normaalikoulun lukio",
+    "county": " Turku"
+  },
+  {
+    "name": "Turun Steiner-koulu",
+    "county": " Turku"
+  },
+  {
+    "name": "Turun Suomalaisen Yhteiskoulun lukio",
+    "county": " Turku"
+  },
+  {
+    "name": "Uudenkaupungin lukio",
+    "county": " Uusikaupunki"
+  },
+  {
+    "name": "Pargas svenska gymnasium",
+    "county": " Parainen"
+  },
+  {
+    "name": "Katedralskolan i Åbo",
+    "county": " Turku"
+  }
+]
