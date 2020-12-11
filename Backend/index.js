@@ -7,18 +7,16 @@ const {
 const mongoose = require('mongoose')
 const Test  = require('./test.js')
 const Listing = require('./listing.js')
-
-console.log(`${Listing}`)
+const User = require('./User.js')
 
 const typeDefs = gql`
 ${Test}
-
+${User}
 ${Listing}
 
 type Query{
     test: String!
-    Listing(id: ID!): [String!, User!] 
-
+    Listing(id: ID!): Listing!
 }
 
 `

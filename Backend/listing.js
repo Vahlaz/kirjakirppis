@@ -1,7 +1,7 @@
 const Listing = `
-type LISTING(id: ID!) {
+type Listing {
     User: User!
-    Price: Number!
+    Price: Int!
     Information: String
     Series: String!
     Title: String!
@@ -10,6 +10,6 @@ type LISTING(id: ID!) {
     Condition: String! 
     id: ID!
 }
-`,
+`
 
 module.exports = Listing
