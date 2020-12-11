@@ -15,6 +15,7 @@
   "env": {
     "browser": true
   },
+  "ignorePatterns": ["webpack.config.js"],
   "rules": {
     "react/prop-types": "off",
     "quotes": [
