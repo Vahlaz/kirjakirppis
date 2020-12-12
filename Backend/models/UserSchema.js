@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose")
 
 const schema = new mongoose.Schema({
   name: {
@@ -18,17 +18,16 @@ const schema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  listings: {
+  listings: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Listing',
-  },
-  information: {
-    type: String,
-  },
+  }],
+  information: String,
   passwordhash: {
     type: String,
     required: true,
   },
+  school: String,
 })
 
 module.exports = mongoose.model('User', schema)

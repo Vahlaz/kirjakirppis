@@ -1,15 +1,11 @@
-const {
-  ApolloServer,
-  gql,
-  UserInputError,
-  AuthenticationError,
-} = require('apollo-server')
+const { ApolloServer, gql, UserInputError } = require('apollo-server')
 const mongoose = require('mongoose')
 require('dotenv').config()
+
 const Test = require('./test.js')
 const Listing = require('./typedefs/listing.js')
 const User = require('./typedefs/User.js')
-const mongoListing = require('./models/ListingSchema')
+const dbListing = require('./models/ListingSchema')
 
 mongoose
   .connect(process.env.MONGODB_URI, {
@@ -34,6 +30,27 @@ const typeDefs = gql`
     test: String!
     Listing(id: ID!): Listing!
   }
+  type Mutation {
+    createUser(
+      name: String!
+      username: String!
+      phonenumber: String!
+      email: String!
+      information: String
+      password: String!
+      school: String
+    ): User
+    createListing(
+      User: User!
+      Price: String!
+      Information: String
+      Series: String!
+      Title: String!
+      Publisher: String!
+      Subject: String!
+      Condition: String!
+    ): Listing
+  }
 `
 
 const resolvers = {
@@ -49,6 +66,9 @@ const resolvers = {
         return foundListing
       }
     },
+  },
+  Mutation: {
+    createListing: (root, args) => {},
   },
 }
 

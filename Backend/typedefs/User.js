@@ -7,6 +7,7 @@ const User = `
         listings: [Listing]!
         information: String
         passwordhash: String!
+        school: String
         id:ID!
     }
 `

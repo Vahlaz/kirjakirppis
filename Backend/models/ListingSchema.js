@@ -9,9 +9,7 @@ const schema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    Information: {
-        type: String
-    },
+    Information: String,
     Series: {
         type: String,
         required: true
