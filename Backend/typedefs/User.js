@@ -6,7 +6,7 @@ const User = `
         email: String!
         listings: [Listing]!
         information: String
-        password: String!
+        passwordhash: String!
         id:ID!
     }
 `

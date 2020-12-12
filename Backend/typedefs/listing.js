@@ -1,7 +1,7 @@
 const Listing = `
 type Listing {
     User: User!
-    Price: Int!
+    Price: String!
     Information: String
     Series: String!
     Title: String!

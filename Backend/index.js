@@ -5,26 +5,51 @@ const {
   AuthenticationError,
 } = require('apollo-server')
 const mongoose = require('mongoose')
-const Test  = require('./test.js')
-const Listing = require('./listing.js')
-const User = require('./User.js')
+require('dotenv').config()
+const Test = require('./test.js')
+const Listing = require('./typedefs/listing.js')
+const User = require('./typedefs/User.js')
+const mongoListing = require('./models/ListingSchema')
+
+mongoose
+  .connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: true,
+    useCreateIndex: true,
+  })
+  .then(() => {
+    console.log('connected to mongodb')
+  })
+  .catch((error) => {
+    console.log('error connecting to mongodb', error.message)
+  })
 
 const typeDefs = gql`
-${Test}
-${User}
-${Listing}
+  ${Test}
+  ${User}
+  ${Listing}
 
-type Query{
+  type Query {
     test: String!
     Listing(id: ID!): Listing!
-}
-
+  }
 `
 
 const resolvers = {
-    Query: {
-        test: () => {return 'test'}
-    }
+  Query: {
+    test: () => {
+      return 'test'
+    },
+    Listing: (root, args) => {
+      if (args.id) {
+        const foundListing = mongoListing.findById(id).catch((error) => {
+          throw new UserInputError(error.message)
+        })
+        return foundListing
+      }
+    },
+  },
 }
 
 const server = new ApolloServer({
