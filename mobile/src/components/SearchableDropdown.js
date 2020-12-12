@@ -1,5 +1,6 @@
 import React, { useState } from "react"
-import { Text, View, TextInput, FlatList, TouchableHighlight } from "react-native"
+import { Text, View, TextInput, FlatList } from "react-native"
+import { List } from "react-native-paper"
 
 const SearchableDropdown = ({ items, fieldToSearch, onSelected }) => {
 
@@ -7,17 +8,23 @@ const SearchableDropdown = ({ items, fieldToSearch, onSelected }) => {
 
   const renderItem = ({ item }) => {
 
-    const regex = new RegExp(`${search}.*?`, "i")
+    const regex = new RegExp(`${search}`, "i")
 
-    const textArray = item[fieldToSearch].split(regex)
+    let textArray = item[fieldToSearch].split(regex)
 
     const boldPart = item[fieldToSearch].match(regex)
 
-    return <View>
-      <TouchableHighlight onPress={() => onSelected(item[fieldToSearch])}>
-        <Text>{textArray[0]}<Text style={{fontWeight: "bold"}}>{boldPart}</Text>{textArray[1]}</Text>
-      </TouchableHighlight >
-    </View>
+    const firstPart = textArray[0]
+
+    const secondPart = textArray.splice(1).join(boldPart)
+    
+    return (
+        <List.Item
+          title={<Text>{firstPart}<Text style={{ fontWeight: "bold" }}>{boldPart}</Text>{secondPart}</Text>}
+          onPress={() => onSelected(item[fieldToSearch])}>
+        </List.Item>
+
+    )
   }
 
   let filteredItems = search ? items.filter(item => item[fieldToSearch].toLowerCase().includes(search.toLowerCase())) : []

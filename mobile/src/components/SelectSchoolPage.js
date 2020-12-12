@@ -5,9 +5,11 @@ import schools from "../assets/schools.json"
 
 const SelectSchoolPage = ({ setSelectedSchool }) => {
 
+  setSelectedSchool("TESTIKOULU")
+
   return (
     <View>
-      < Text > Valitse koulu</Text >
+      <Text>Valitse koulu</Text>
       <SearchableDropDown items={schools} fieldToSearch="name" onSelected={(school) => setSelectedSchool(school)} />
     </View>
   )

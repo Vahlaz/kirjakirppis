@@ -1,13 +1,23 @@
 import React from "react"
 import Main from "./src/components/Main"
-import { NativeRouter } from "react-router-native"
+import { Provider, DefaultTheme } from "react-native-paper"
 
 const App = () => {
 
+  const theme = {
+    ...DefaultTheme,
+    roundness: 2,
+    colors: {
+      ...DefaultTheme.colors,
+      primary: "#FF00B6",
+      accent: "#8903FF",
+    },
+  }
+
   return (
-    <NativeRouter>
+    <Provider theme={theme}>
       <Main />
-    </NativeRouter>
+    </Provider>
   )
 }
 
