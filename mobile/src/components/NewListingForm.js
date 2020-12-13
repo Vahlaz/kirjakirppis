@@ -6,6 +6,8 @@ import DropDown from "react-native-paper-dropdown"
 import NumberFormat from "react-number-format"
 import SearchableDropdown from "./SearchableDropdown"
 import books from "../assets/books.json"
+import { useMutation } from "@apollo/client"
+import { CREATE_LISTING } from "../graphql/mutations"
 
 const NewListingForm = () => {
   const { control, handleSubmit, errors } = useForm()
@@ -14,36 +16,27 @@ const NewListingForm = () => {
   const [condition, setCondition] = useState(2)
   const [showDropDown, setShowDropDown] = useState(false)
 
+  const [createListing] = useMutation(CREATE_LISTING)
+
   const conditionList = [
     { label: "Erinomainen", value: 3 },
     { label: "Hyvä", value: 2 },
     { label: "Käytettävä", value: 1 },
   ]
 
-  const onSubmit = data => console.log(data)
-
-  /*
-  Book infos
-
-  User
-
-  Price
-  Information
-  Condition
-
-  Series
-  Title
-  Publisher
-  Subject
-  */
+  const onSubmit = data => {
+    data.price = parseFloat(data.price.replace(",", ".").replace(/[^0-9.]/g, ""))
+    console.log(data.price)
+    createListing({ variables: { ...book, ...data } })
+  }
 
   return (
-    <View style={{ flex: "column", justifyContent: "space-evenly", alignItems: "center", flexWrap: "wrap", height: 500 }}>
+    <View style={{ flex: "column", justifyContent: "space-evenly", alignItems: "center", flexWrap: "wrap", height: 500 }} >
       <View >
         <SearchableDropdown
           items={books}
           fieldToSearch="title"
-          onSelected={(book) => setBook(book)}
+          onSelected={(bookTitle) => setBook(books.find(book => book.title === bookTitle))}
           placeholder="Myytävä kirja"
         />
       </View>
@@ -110,7 +103,7 @@ const NewListingForm = () => {
       <Button mode="contained" onPress={handleSubmit(onSubmit)}>
         Tee ilmoitus
       </Button>
-    </View>
+    </View >
   )
 }
 

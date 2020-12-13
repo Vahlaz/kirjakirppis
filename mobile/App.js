@@ -1,8 +1,12 @@
 import React from "react"
 import Main from "./src/components/Main"
 import { Provider, DefaultTheme } from "react-native-paper"
+import { ApolloProvider } from "@apollo/client"
+import createApolloClient from "./src/utils/apolloClient"
 
 const App = () => {
+
+  const apolloClient = createApolloClient()
 
   const theme = {
     ...DefaultTheme,
@@ -15,9 +19,11 @@ const App = () => {
   }
 
   return (
-    <Provider theme={theme}>
-      <Main />
-    </Provider>
+    <ApolloProvider client={apolloClient}>
+      <Provider theme={theme}>
+        <Main />
+      </Provider>
+    </ApolloProvider>
   )
 }
 
