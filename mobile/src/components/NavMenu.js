@@ -1,20 +1,20 @@
 import React, { useState } from "react"
-import { BottomNavigation } from "react-native-paper"
+import { BottomNavigation, withTheme } from "react-native-paper"
 import ListingsPage from "./ListingsPage"
 import ProfilePage from "./ProfilePage"
-import { withTheme } from "react-native-paper"
+
 
 const NavMenu = ({ theme }) => {
 
-  const [index, setIndex] = useState(0)
+  const [index, setIndex] = useState(1)
 
   const ListingsRoute = () => <ListingsPage />
 
   const ProfileRoute = () => <ProfilePage />
 
   const routes = [
-    { key: "listings", title: "Listaukset", icon: "book", color: theme.colors.primary},
-    { key: "profile", title: "Minä", icon: "account-circle", color: theme.colors.accent }
+    { key: "listings", title: "Listaukset", color: theme.colors.primary, icon: "book" },
+    { key: "profile", title: "Minä", color: theme.colors.accent, icon: "account-circle" } 
   ]
 
   const renderScene = BottomNavigation.SceneMap({

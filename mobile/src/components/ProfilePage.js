@@ -1,11 +1,12 @@
 import React from "react"
-import { View, Text } from "react-native"
+import { View } from "react-native"
+import NewListingForm from "./NewListingForm"
 
 const ProfilePage = () => {
 
   return (
     <View>
-      <Text>ProfilePage</Text>
+      <NewListingForm />
     </View>
   )
 }

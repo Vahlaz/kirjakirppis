@@ -1,10 +1,12 @@
 import React, { useState } from "react"
-import { Text, View, TextInput, FlatList } from "react-native"
-import { List } from "react-native-paper"
+import { View, FlatList, Dimensions } from "react-native"
+import { List, Searchbar, Text, Button } from "react-native-paper"
 
-const SearchableDropdown = ({ items, fieldToSearch, onSelected }) => {
+const SearchableDropdown = ({ items, fieldToSearch, onSelected, placeholder }) => {
 
   const [search, setSearch] = useState("")
+  const [focus, setFocus] = useState(false)
+  const [selectedItem, setSelectedItem] = useState(null)
 
   const renderItem = ({ item }) => {
 
@@ -17,13 +19,18 @@ const SearchableDropdown = ({ items, fieldToSearch, onSelected }) => {
     const firstPart = textArray[0]
 
     const secondPart = textArray.splice(1).join(boldPart)
-    
-    return (
-        <List.Item
-          title={<Text>{firstPart}<Text style={{ fontWeight: "bold" }}>{boldPart}</Text>{secondPart}</Text>}
-          onPress={() => onSelected(item[fieldToSearch])}>
-        </List.Item>
 
+    const handlePress = () => {
+      onSelected(item[fieldToSearch])
+      setSearch("")
+      setSelectedItem(item[fieldToSearch])
+    }
+
+    return (
+      <List.Item
+        title={<Text>{firstPart}<Text style={{ fontWeight: "bold" }}>{boldPart}</Text>{secondPart}</Text>}
+        onPress={() => handlePress()}>
+      </List.Item>
     )
   }
 
@@ -38,21 +45,40 @@ const SearchableDropdown = ({ items, fieldToSearch, onSelected }) => {
     filteredItems = filteredItems.slice(0, maxLength)
   }
 
+  const onFocusStyle = focus ? {
+    width: search && Dimensions.get("window").width,
+    position: "static",
+    left: 0,
+    top: 0
+  } : {}
+
   return (
-    <View style={{ width: 350 }}>
-      <TextInput
-        style={{ borderColor: "gray", borderWidth: 1 }}
-        onChangeText={(text) => setSearch(text)}
-        value={search}
-      />
-      <Text>{(!filteredItems.length && search) && "Haullasi ei löytynyt tuloksia"}</Text>
-      <FlatList
-        data={filteredItems}
-        renderItem={renderItem}
-        keyExtractor={item => item[fieldToSearch]}
-      />
-      <Text>{lenghtOver && `...${lenghtOver} lisää`}</Text>
-    </View>
+    <>
+      {
+        selectedItem ?
+          <Text>{selectedItem}<Button icon="close" onPress={() => setSelectedItem(null)}/></Text>
+          : <View style={{ backgroundColor: "white", ...onFocusStyle }}>
+
+            <Searchbar
+              icon={false}
+              onFocus={() => setFocus(true)}
+              onBlur={() => setFocus(false)}
+              placeholder={placeholder || "Etsi"}
+              onChangeText={(text) => setSearch(text)}
+              value={search}
+            />
+
+            {focus && <Text>{(!filteredItems.length && search) && "Haullasi ei löytynyt tuloksia"}</Text>}
+            <FlatList
+              data={filteredItems}
+              renderItem={renderItem}
+              keyExtractor={item => item[fieldToSearch]}
+            />
+            {focus && <Text>{lenghtOver && `...${lenghtOver} lisää`}</Text>}
+
+          </View >
+      }
+    </>
   )
 }
 
