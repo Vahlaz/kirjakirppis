@@ -31,8 +31,16 @@ const typeDefs = gql`
 
   type Query {
     test: String!
-    Listing(id: ID!): Listing!
     allUsers: [User]!
+    allListings(
+      User: ID
+      Series: String
+      Title: String
+      Subject: String
+      Condition: String
+      School: String
+      id: String
+      ): [Listing]!
   }
   type Mutation {
     createUser(
@@ -53,6 +61,7 @@ const typeDefs = gql`
       Publisher: String!
       Subject: String!
       Condition: String!
+      School: String!
     ): Listing
     login(username: String!, password: String!): Token
   }
