@@ -1,11 +1,13 @@
 const { ApolloServer, gql, UserInputError } = require('apollo-server')
 const mongoose = require('mongoose')
 require('dotenv').config()
-
+const jwt = require('jsonwebtoken')
 const Test = require('./test.js')
-const Listing = require('./typedefs/listing.js')
-const User = require('./typedefs/User.js')
-const dbListing = require('./models/ListingSchema')
+const ListingDef = require('./typedefs/listing.js')
+const UserDef = require('./typedefs/User.js')
+const TokenDef = require('./typedefs/token.js')
+const resolvers = require('./resolvers/resolvers.js')
+const User = require('./models/UserSchema')
 
 mongoose
   .connect(process.env.MONGODB_URI, {
@@ -23,12 +25,14 @@ mongoose
 
 const typeDefs = gql`
   ${Test}
-  ${User}
-  ${Listing}
+  ${UserDef}
+  ${ListingDef}
+  ${TokenDef}
 
   type Query {
     test: String!
     Listing(id: ID!): Listing!
+    allUsers: [User]!
   }
   type Mutation {
     createUser(
@@ -42,7 +46,7 @@ const typeDefs = gql`
     ): User
     createListing(
       User: ID!
-      Price: String!
+      Price: Float!
       Information: String
       Series: String!
       Title: String!
@@ -50,25 +54,9 @@ const typeDefs = gql`
       Subject: String!
       Condition: String!
     ): Listing
+    login(username: String!, password: String!): Token
   }
 `
-
-const resolvers = {
-  Query: {
-    test: () => {
-      return 'test'
-    },
-    Listing: (root, args) => {
-      if (args.id) {
-        const foundListing = mongoListing.findById(id).catch((error) => {
-          throw new UserInputError(error.message)
-        })
-        return foundListing
-      }
-    },
-  },
-
-}
 
 const server = new ApolloServer({
   typeDefs,
@@ -76,7 +64,7 @@ const server = new ApolloServer({
   context: async ({ req }) => {
     const auth = req ? req.headers.authorization : null
     if (auth && auth.toLowerCase().startsWith('bearer ')) {
-      const decodedToken = jwt.verify(auth.substring(7), JWT_SECRET)
+      const decodedToken = jwt.verify(auth.substring(7), process.env.JWT_SECRET)
       const currentUser = await User.findById(decodedToken.id)
       return { currentUser }
     }
