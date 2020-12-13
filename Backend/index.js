@@ -41,7 +41,7 @@ const typeDefs = gql`
       school: String
     ): User
     createListing(
-      User: User!
+      User: ID!
       Price: String!
       Information: String
       Series: String!
@@ -67,9 +67,7 @@ const resolvers = {
       }
     },
   },
-  Mutation: {
-    createListing: (root, args) => {},
-  },
+
 }
 
 const server = new ApolloServer({
