@@ -27,3 +27,21 @@ export const CREATE_LISTING = gql`
     }
   }
 `
+
+export const LOGIN = gql`
+  mutation login($username: String!, $password: String!) {
+    login(username: $username, password: $password)  {
+      token
+      username
+      id
+    }
+  }
+`
+
+export const CREATE_USER = gql`
+  mutation createUser($username: String!, $password: String!, $email: String!) {
+    createUser(username: $username, password: $password, email: $email)  {
+      id
+    }
+  }
+`

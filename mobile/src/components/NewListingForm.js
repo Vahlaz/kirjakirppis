@@ -31,45 +31,58 @@ const NewListingForm = () => {
   }
 
   return (
-    <View style={{ flex: "column", justifyContent: "space-evenly", alignItems: "center", flexWrap: "wrap", height: 500 }} >
-      <View >
-        <SearchableDropdown
-          items={books}
-          fieldToSearch="title"
-          onSelected={(bookTitle) => setBook(books.find(book => book.title === bookTitle))}
-          placeholder="Myytävä kirja"
+    <View style={{ justifyContent: "space-evenly", alignItems: "center", flexWrap: "wrap", height: 500 }} >
+      <SearchableDropdown
+        items={books}
+        fieldToSearch="title"
+        onSelected={(bookTitle) => setBook(books.find(book => book.title === bookTitle))}
+        placeholder="Myytävä kirja"
+      />
+      <View style={{ flexDirection: "row", width: 320, justifyContent: "space-between" }}>
+        <Controller
+          control={control}
+          render={({ onChange, onBlur, value }) => (
+            <NumberFormat
+              style={{ width: 140 }}
+              label="hinta"
+              mode={"outlined"}
+              onChangeText={value => onChange(value)}
+              value={value}
+              customInput={TextInput}
+              thousandSeparator=" "
+              suffix="€"
+              onBlur={onBlur}
+              decimalSeparator=","
+              allowNegative={false}
+              fixedDecimalScale={true}
+              decimalScale={2}
+            />
+          )}
+          name="price"
+          rules={{ required: true }}
+          defaultValue="0"
         />
+        <View style={{ width: 140 }}>
+          <DropDown
+            label={"Kunto"}
+            mode={"outlined"}
+            value={condition}
+            setValue={setCondition}
+            list={conditionList}
+            visible={showDropDown}
+            showDropDown={() => setShowDropDown(true)}
+            onDismiss={() => setShowDropDown(false)}
+            inputProps={{
+              right: <TextInput.Icon name={"menu-down"} />,
+            }}
+          />
+        </View>
       </View>
       <Controller
         control={control}
         render={({ onChange, onBlur, value }) => (
-          <NumberFormat
-            style={{ width: 300 }}
-            label="hinta"
-            mode={"outlined"}
-            onChangeText={value => onChange(value)}
-            value={value}
-            customInput={TextInput}
-            thousandSeparator=" "
-            suffix="€"
-            onBlur={onBlur}
-            decimalSeparator=","
-            allowNegative={false}
-            fixedDecimalScale={true}
-            decimalScale={2}
-          />
-        )}
-        name="price"
-        rules={{ required: true }}
-        defaultValue="0"
-      />
-
-
-      <Controller
-        control={control}
-        render={({ onChange, onBlur, value }) => (
           <TextInput
-            style={{ width: 300 }}
+            style={{ width: 320 }}
             mode={"outlined"}
             label="Lisätietoja"
             onBlur={onBlur}
@@ -77,28 +90,12 @@ const NewListingForm = () => {
             value={value}
             error={errors.description}
             multiline={true}
-            numberOfLines={4}
+            numberOfLines={8}
           />
         )}
         name="description"
         defaultValue=""
       />
-
-      <View style={{ width: 300 }}>
-        <DropDown
-          label={"Kunto"}
-          mode={"outlined"}
-          value={condition}
-          setValue={setCondition}
-          list={conditionList}
-          visible={showDropDown}
-          showDropDown={() => setShowDropDown(true)}
-          onDismiss={() => setShowDropDown(false)}
-          inputProps={{
-            right: <TextInput.Icon name={"menu-down"} />,
-          }}
-        />
-      </View>
 
       <Button mode="contained" onPress={handleSubmit(onSubmit)}>
         Tee ilmoitus

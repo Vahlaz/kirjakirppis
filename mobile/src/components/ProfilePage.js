@@ -1,12 +1,18 @@
-import React from "react"
+import React, { useState } from "react"
 import { View } from "react-native"
 import NewListingForm from "./NewListingForm"
+import LoginForm from "./LoginForm"
 
 const ProfilePage = () => {
 
+  const [loggedIn, setLoggedIn] = useState(false)
+
   return (
     <View>
-      <NewListingForm />
+      {loggedIn 
+      ? <NewListingForm />
+      : <LoginForm/>
+    }
     </View>
   )
 }
