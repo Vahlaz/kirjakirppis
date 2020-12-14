@@ -1,19 +1,26 @@
-import React, { useState } from "react"
+import React from "react"
 import { View } from "react-native"
-import NewListingForm from "./NewListingForm"
+import { Text, Button } from "react-native-paper"
 import LoginForm from "./LoginForm"
+import LogoutButton from "./LogoutButton"
+import useSchool from "../hooks/useSchool"
 
-const ProfilePage = () => {
+const ProfilePage = ({ userInfo }) => {
 
-  const [loggedIn, setLoggedIn] = useState(false)
+  // eslint-disable-next-line no-unused-vars
+  const [school, setSchool, removeSchool] = useSchool()
 
   return (
     <View>
-      {loggedIn 
-      ? <NewListingForm />
-      : <LoginForm/>
-    }
-    </View>
+      { userInfo
+        ? <View style={{ flex: 1 }}>
+          <Text>Koulusi: {school}</Text>
+          <Button mode="contained" onPress={() => removeSchool()}>Vaihda koulua</Button>
+          <LogoutButton />
+        </View>
+        : <LoginForm />
+      }
+    </View >
   )
 }
 

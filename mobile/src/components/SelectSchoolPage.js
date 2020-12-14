@@ -6,8 +6,6 @@ import { Title } from "react-native-paper"
 
 const SelectSchoolPage = ({ setSelectedSchool }) => {
 
-  setSelectedSchool("TESTIKOULU")
-
   return (
     <View>
       <Title>Valitse koulu</Title>

@@ -8,9 +8,15 @@ import SearchableDropdown from "./SearchableDropdown"
 import books from "../assets/books.json"
 import { useMutation } from "@apollo/client"
 import { CREATE_LISTING } from "../graphql/mutations"
+import useSchool from "../hooks/useSchool"
+import useUserInfo from "../hooks/useUserInfo"
 
-const NewListingForm = () => {
+const ListingForm = () => {
   const { control, handleSubmit, errors } = useForm()
+
+  const [school] = useSchool()
+  const userInfo = useUserInfo()
+
 
   const [book, setBook] = useState(null)
   const [condition, setCondition] = useState(2)
@@ -26,8 +32,7 @@ const NewListingForm = () => {
 
   const onSubmit = data => {
     data.price = parseFloat(data.price.replace(",", ".").replace(/[^0-9.]/g, ""))
-    console.log(data.price)
-    createListing({ variables: { ...book, ...data } })
+    createListing({ variables: { ...book, ...data, school, user: userInfo.id } })
   }
 
   return (
@@ -104,5 +109,5 @@ const NewListingForm = () => {
   )
 }
 
-export default NewListingForm
+export default ListingForm
 

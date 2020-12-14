@@ -1,16 +1,17 @@
-import React, { useState } from "react"
+import React from "react"
 import { View } from "react-native"
 import SelectSchoolPage from "./SelectSchoolPage"
 import NavMenu from "./NavMenu"
+import useSchool from "../hooks/useSchool"
 
 const Main = () => {
 
-  const [selectedSchool, setSelectedSchool] = useState("")
+  const [school, setSchool] = useSchool()
 
   return (
     <>
-      {!selectedSchool ?
-        <SelectSchoolPage setSelectedSchool={setSelectedSchool} />
+      {!school ?
+        <SelectSchoolPage setSelectedSchool={setSchool} />
         : <>
           <View style={{ flex: 1 }} >
             <NavMenu />

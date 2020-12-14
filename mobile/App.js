@@ -3,14 +3,14 @@ import Main from "./src/components/Main"
 import { Provider, DefaultTheme } from "react-native-paper"
 import { ApolloProvider } from "@apollo/client"
 import createApolloClient from "./src/utils/apolloClient"
-import AuthStorage from "./src/utils/authStorage"
-import AuthStorageContext from "./src/contexts/AuthStorageContext"
+import UserStorage from "./src/utils/UserStorage"
+import UserStorageContext from "./src/contexts/UserStorageContext"
 
-const authStorage = new AuthStorage()
+const userStorage = new UserStorage()
 
 const App = () => {
 
-  const apolloClient = createApolloClient(authStorage)
+  const apolloClient = createApolloClient(userStorage)
 
   const theme = {
     ...DefaultTheme,
@@ -24,11 +24,11 @@ const App = () => {
 
   return (
     <ApolloProvider client={apolloClient}>
-      <AuthStorageContext.Provider value={authStorage}>
+      <UserStorageContext.Provider value={userStorage}>
         <Provider theme={theme}>
           <Main />
         </Provider>
-      </AuthStorageContext.Provider>
+      </UserStorageContext.Provider>
     </ApolloProvider>
   )
 }
