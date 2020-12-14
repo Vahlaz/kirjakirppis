@@ -27,7 +27,7 @@ const schema = new mongoose.Schema({
     required: true,
   },
   Condition: {
-    type: String,
+    type: Number,
     required: true,
   },
   School: {

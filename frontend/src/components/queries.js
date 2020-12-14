@@ -7,7 +7,7 @@ export const ALL_LISTINGS = gql`
     $title: String
     $publisher: String
     $subject: String
-    $condition: String
+    $condition: Int
     $school: String
   ) {
     allListings(
@@ -21,6 +21,9 @@ export const ALL_LISTINGS = gql`
     ) {
       User{
           name
+          username
+          id
+          phonenumber
       }
       Price
       Information
@@ -30,6 +33,7 @@ export const ALL_LISTINGS = gql`
       Subject
       Condition
       School
+      id
     }
   }
 `

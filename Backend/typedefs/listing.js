@@ -7,7 +7,7 @@ const Listing = `
         Title: String!
         Publisher: String!
         Subject: String!
-        Condition: String!
+        Condition: Int!
         School: String!
         id: ID!
     }

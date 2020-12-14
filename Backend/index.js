@@ -38,10 +38,10 @@ const typeDefs = gql`
       Title: String
       Publisher: String
       Subject: String
-      Condition: String
+      Condition: Int
       School: String
       id: String
-      ): [Listing]!
+    ): [Listing]!
   }
   type Mutation {
     createUser(
@@ -61,7 +61,7 @@ const typeDefs = gql`
       Title: String!
       Publisher: String!
       Subject: String!
-      Condition: String!
+      Condition: Int!
       School: String!
     ): Listing
     login(username: String!, password: String!): Token
