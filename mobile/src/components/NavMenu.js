@@ -11,10 +11,6 @@ const NavMenu = ({ theme }) => {
 
   const userInfo = useUserInfo()
 
-  useEffect(() => {
-    console.log(userInfo)
-  }, [userInfo])
-
   const ListingsRoute = () => <ListingsPage />
 
   const MyListingsRoute = () => <MyListingsPage />

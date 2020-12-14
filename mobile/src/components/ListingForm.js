@@ -10,6 +10,7 @@ import { useMutation } from "@apollo/client"
 import { CREATE_LISTING } from "../graphql/mutations"
 import useSchool from "../hooks/useSchool"
 import useUserInfo from "../hooks/useUserInfo"
+import { turnToNumber } from "../utils/functions"
 
 const ListingForm = () => {
   const { control, handleSubmit, errors } = useForm()
@@ -31,8 +32,8 @@ const ListingForm = () => {
   ]
 
   const onSubmit = data => {
-    data.price = parseFloat(data.price.replace(",", ".").replace(/[^0-9.]/g, ""))
-    createListing({ variables: { ...book, ...data, school, user: userInfo.id } })
+    data.price = turnToNumber(data.price)
+    createListing({ variables: { ...book, ...data, condition, school, user: userInfo.id } })
   }
 
   return (

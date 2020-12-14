@@ -9,7 +9,7 @@ export const CREATE_LISTING = gql`
     $title: String!
     $publisher: String!
     $subject: String!
-    $condition: String!
+    $condition: Int!
     $school: String!
     ) {
       createListing(
