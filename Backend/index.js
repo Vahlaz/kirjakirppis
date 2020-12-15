@@ -42,6 +42,7 @@ const typeDefs = gql`
       School: String
       id: String
     ): [Listing]!
+    me: User
   }
   type Mutation {
     createUser(

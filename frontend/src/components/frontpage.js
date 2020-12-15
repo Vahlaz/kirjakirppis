@@ -1,4 +1,4 @@
-import schools from './assets/schools.json'
+import schools from '../assets/schools.json'
 import SearchDropDown from './searchDropDown'
 import React from 'react'
 

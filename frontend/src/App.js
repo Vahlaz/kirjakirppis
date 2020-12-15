@@ -1,5 +1,5 @@
-import { Container, Grid, Paper } from '@material-ui/core'
-import React, { useState } from 'react'
+import { Container, Paper } from '@material-ui/core'
+import React from 'react'
 import { Switch, Route, useHistory } from 'react-router-dom'
 import FrontPage from './components/frontpage'
 import SchoolFrontPage from './components/schoolFrontPage'
@@ -20,9 +20,10 @@ const App = () => {
     history.push(`/school/${schoolurl}`)
   }
 
+
   return (
     <div>
-      <Container component={Paper} style={{ height: '100vh' }} >
+      <Container component={Paper} >
         <Switch>
           <Route path='/school/:name'>
             <SchoolFrontPage />

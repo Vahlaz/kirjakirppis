@@ -15,10 +15,11 @@ import { BrowserRouter as Router } from 'react-router-dom'
 
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem('KirjaKirppis-user-token')
+  console.log(token)
   return {
     headers: {
       ...headers,
-      Authorization: token ? `bearer${token}` : null,
+      Authorization: token ? `bearer ${token}` : null,
     },
   }
 })
