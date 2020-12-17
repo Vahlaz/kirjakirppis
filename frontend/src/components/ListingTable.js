@@ -1,21 +1,23 @@
 import React, { useState } from 'react'
-import Table from '@material-ui/core/Table'
-import TableBody from '@material-ui/core/TableBody'
-import TableCell from '@material-ui/core/TableCell'
-import TableContainer from '@material-ui/core/TableContainer'
-import TableHead from '@material-ui/core/TableHead'
-import TableRow from '@material-ui/core/TableRow'
+import {
+  Table,
+  TableHead,
+  TableBody,
+  TableRow,
+  TableCell,
+  TableContainer,
+} from '@material-ui/core'
 import { Box, Collapse, IconButton, Paper, Typography } from '@material-ui/core'
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown'
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp'
 import { makeStyles } from '@material-ui/core/styles'
+import books from '../assets/books.json'
 
 const ListingTable = ({ data }) => {
   const useRowStyles = makeStyles({
     root: {
       '& > *': {
         borderBottom: 'unset',
-        
       },
     },
   })
@@ -26,6 +28,13 @@ const ListingTable = ({ data }) => {
     return (
       <>
         <TableRow key={listing.id} className={classes.root}>
+          <TableCell>
+            <img
+              src={books.find((a) => a.title === listing.Title).imageLink}
+              width='80'
+              alt=''
+            />
+          </TableCell>
           <TableCell>
             <Typography variant='subtitle1'>{listing.Title}</Typography>
           </TableCell>
@@ -77,6 +86,7 @@ const ListingTable = ({ data }) => {
       <Table className={'table'} aria-label='Uusimmat ilmoitukset'>
         <TableHead>
           <TableRow>
+            <TableCell></TableCell>
             <TableCell>
               <Typography variant='h6'>Kirja</Typography>
             </TableCell>

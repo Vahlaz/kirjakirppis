@@ -4,6 +4,7 @@ import Autocomplete from '@material-ui/lab/Autocomplete'
 
 const SearchDropDown = ({ options, onChangeFunction }) => {
   const [value, setValue] = useState('')
+  
   return (
     <div className='search-box'>
       <div>

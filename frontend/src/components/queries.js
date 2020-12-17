@@ -19,11 +19,11 @@ export const ALL_LISTINGS = gql`
       Condition: $condition
       School: $school
     ) {
-      User{
-          name
-          username
-          id
-          phonenumber
+      User {
+        name
+        username
+        id
+        phonenumber
       }
       Price
       Information
@@ -36,4 +36,32 @@ export const ALL_LISTINGS = gql`
       id
     }
   }
+`
+
+export const LOGIN = gql`
+  mutation login($username: String!, $password: String!) {
+    login(username: $username, password: $password) {
+      token
+      username
+      id
+    }
+  }
+`
+
+export const ME = gql`
+query {
+  me {
+    name
+    username
+    phonenumber
+    email
+    listings {
+      Title
+    }
+    information
+    passwordhash
+    school
+    id
+  }
+}
 `
