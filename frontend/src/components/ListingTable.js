@@ -29,7 +29,11 @@ const ListingTable = ({ data }) => {
       <>
         <TableRow key={listing.id} className={classes.root}>
           <TableCell>
-            <img src={books.find((a) => a.title === listing.Title).imageLink} width="80" />
+            <img
+              src={books.find((a) => a.title === listing.Title).imageLink}
+              width='80'
+              alt=''
+            />
           </TableCell>
           <TableCell>
             <Typography variant='subtitle1'>{listing.Title}</Typography>
@@ -82,6 +86,7 @@ const ListingTable = ({ data }) => {
       <Table className={'table'} aria-label='Uusimmat ilmoitukset'>
         <TableHead>
           <TableRow>
+            <TableCell></TableCell>
             <TableCell>
               <Typography variant='h6'>Kirja</Typography>
             </TableCell>

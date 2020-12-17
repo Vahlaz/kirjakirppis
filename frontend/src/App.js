@@ -8,24 +8,23 @@ import './App.css'
 const App = () => {
   const history = useHistory()
   if (window.localStorage.getItem('KirjaKirppis-school')) {
-    const schoolurl = window.localStorage
-      .getItem('KirjaKirppis-school')
-      .replace(/\s/g, '')
-    history.push(`/school/${schoolurl}`)
+    history.push(`/school`)
   }
 
   const changeSchool = (value) => {
     window.localStorage.setItem('KirjaKirppis-school', value.name)
-    const schoolurl = value.name.replace(/\s/g, '')
-    history.push(`/school/${schoolurl}`)
+    history.push(`/school`)
   }
 
+  if (!window.localStorage.getItem('KirjaKirppis-school')) {
+    history.push(`/`)
+  }
 
   return (
     <div>
       <Container component={Paper} >
         <Switch>
-          <Route path='/school/:name'>
+          <Route path='/school'>
             <SchoolFrontPage />
           </Route>
           <Route path='/'>
