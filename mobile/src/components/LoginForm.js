@@ -13,7 +13,7 @@ const LoginForm = () => {
   const onSubmit = (data) => signIn(data)
 
   useEffect(() => {
-    console.log(result)
+    //console.log(result)
   }, [result])
 
   return (
@@ -55,7 +55,7 @@ const LoginForm = () => {
         defaultValue=""
       />
 
-      <Button mode="contained" onPress={handleSubmit(onSubmit)}>
+      <Button mode="outlined " onPress={handleSubmit(onSubmit)}>
         Kirjaudu
       </Button>
     </View >

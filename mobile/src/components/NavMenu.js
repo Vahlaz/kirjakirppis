@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import { BottomNavigation, withTheme } from "react-native-paper"
 import ListingsPage from "./ListingsPage"
 import MyListingsPage from "./MyListingsPage"
 import ProfilePage from "./ProfilePage"
 import useUserInfo from "../hooks/useUserInfo"
+import { getIcon } from "../utils/functions"
+
 
 const NavMenu = ({ theme }) => {
 
@@ -18,9 +20,9 @@ const NavMenu = ({ theme }) => {
   const ProfileRoute = () => <ProfilePage userInfo={userInfo} />
 
   const routes = [
-    { key: "listings", title: "Listaukset", color: theme.colors.primary, icon: "book" },
-    { key: "myListings", title: "Minun listaukseni", color: theme.colors.primary, icon: "book-account" },
-    { key: "profile", title: "Profiili", color: theme.colors.accent, icon: "account-circle" }
+    { key: "listings", title: "Listaukset", color: theme.colors.primary, icon: () => getIcon("book") },
+    { key: "myListings", title: "Minun listaukseni", color: theme.colors.primary, icon: () => getIcon("book-account") },
+    { key: "profile", title: "Profiili", color: theme.colors.accent, icon: () => getIcon("account-circle") }
   ]
 
   const renderScene = BottomNavigation.SceneMap({

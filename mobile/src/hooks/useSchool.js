@@ -12,6 +12,7 @@ const useSchool = () => {
 
   const setSchool = async (school) => {
     await userStorage.setSchool(school)
+    getSchool()
   }
 
   const removeSchool = async (school) => {

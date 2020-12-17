@@ -1,6 +1,9 @@
 import React, { useState } from "react"
-import { View, FlatList, Dimensions } from "react-native"
-import { List, Searchbar, Text, Button } from "react-native-paper"
+import { View, FlatList } from "react-native"
+import { List, Searchbar, Text, Chip } from "react-native-paper"
+import { Ionicons } from "@expo/vector-icons"
+import { getIcon } from "../utils/functions"
+
 
 const SearchableDropdown = ({ items, fieldToSearch, onSelected, placeholder }) => {
 
@@ -24,6 +27,7 @@ const SearchableDropdown = ({ items, fieldToSearch, onSelected, placeholder }) =
       onSelected(item[fieldToSearch])
       setSearch("")
       setSelectedItem(item[fieldToSearch])
+      setFocus(false)
     }
 
     return (
@@ -45,40 +49,48 @@ const SearchableDropdown = ({ items, fieldToSearch, onSelected, placeholder }) =
     filteredItems = filteredItems.slice(0, maxLength)
   }
 
-  const onFocusStyle = focus ? {
-    width: search && Dimensions.get("window").width,
-    position: "static",
+  const style = focus ? {
+    width: "100%",
+    height: "100%",
+    zIndex: 10,
+    position: "absolute",
     left: 0,
-    top: 0
-  } : {}
+    top: 0,
+    flex: 1
+  } : {
+      height: 100,
+      width: 300
+    }
 
   return (
-    <>
+    <View style={style} >
       {
         selectedItem ?
-          <Text>{selectedItem}<Button icon="close" onPress={() => setSelectedItem(null)}/></Text>
-          : <View style={{ backgroundColor: "white", ...onFocusStyle }}>
-
+          <Chip icon={() => getIcon("book", "black")} onPress={() => { setFocus(false); setSelectedItem(null) }} >{selectedItem}</Chip>
+          : <>
             <Searchbar
-              icon={false}
+              icon={() => <Ionicons size={24} name="search" />}
               onFocus={() => setFocus(true)}
-              onBlur={() => setFocus(false)}
               placeholder={placeholder || "Etsi"}
               onChangeText={(text) => setSearch(text)}
               value={search}
+              clearIcon={() => <Ionicons size={24} name="close" onPress={() => setFocus(false)} />}
+              onClear
             />
-
-            {focus && <Text>{(!filteredItems.length && search) && "Haullasi ei löytynyt tuloksia"}</Text>}
-            <FlatList
-              data={filteredItems}
-              renderItem={renderItem}
-              keyExtractor={item => item[fieldToSearch]}
-            />
-            {focus && <Text>{lenghtOver && `...${lenghtOver} lisää`}</Text>}
-
-          </View >
+            {focus &&
+              <View style={{ backgroundColor: "white", height: "100%" }}>
+                <Text>{(!filteredItems.length && search) && "Haullasi ei löytynyt tuloksia"}</Text>
+                <FlatList
+                  data={filteredItems}
+                  renderItem={renderItem}
+                  keyExtractor={item => item[fieldToSearch]}
+                />
+                <Text>{lenghtOver && `...${lenghtOver} lisää`}</Text>
+              </View >
+            }
+          </>
       }
-    </>
+    </View>
   )
 }
 

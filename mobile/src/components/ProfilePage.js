@@ -15,7 +15,7 @@ const ProfilePage = ({ userInfo }) => {
       { userInfo
         ? <View style={{ flex: 1 }}>
           <Text>Koulusi: {school}</Text>
-          <Button mode="contained" onPress={() => removeSchool()}>Vaihda koulua</Button>
+          <Button mode="outlined " onPress={() => removeSchool()}>Vaihda koulua</Button>
           <LogoutButton />
         </View>
         : <LoginForm />

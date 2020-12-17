@@ -6,7 +6,7 @@ const LogoutButton = () => {
 
   const signOut = useSignOut()
 
-  return <Button mode="contained" onPress={signOut}>Kirjaudu ulos</Button>
+  return <Button mode="outlined " onPress={signOut}>Kirjaudu ulos</Button>
 }
 
 export default LogoutButton

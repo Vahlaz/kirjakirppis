@@ -11,6 +11,7 @@ import { CREATE_LISTING } from "../graphql/mutations"
 import useSchool from "../hooks/useSchool"
 import useUserInfo from "../hooks/useUserInfo"
 import { turnToNumber } from "../utils/functions"
+import { getIcon } from "../utils/functions"
 
 const ListingForm = () => {
   const { control, handleSubmit, errors } = useForm()
@@ -37,7 +38,7 @@ const ListingForm = () => {
   }
 
   return (
-    <View style={{ justifyContent: "space-evenly", alignItems: "center", flexWrap: "wrap", height: 500 }} >
+    <View style={{ alignItems: "center", flexWrap: "wrap", height: 500., alignContent: "center" }} >
       <SearchableDropdown
         items={books}
         fieldToSearch="title"
@@ -79,7 +80,7 @@ const ListingForm = () => {
             showDropDown={() => setShowDropDown(true)}
             onDismiss={() => setShowDropDown(false)}
             inputProps={{
-              right: <TextInput.Icon name={"menu-down"} />,
+              right: () => getIcon("menu-down"),
             }}
           />
         </View>
@@ -103,7 +104,7 @@ const ListingForm = () => {
         defaultValue=""
       />
 
-      <Button mode="contained" onPress={handleSubmit(onSubmit)}>
+      <Button mode="outlined " onPress={handleSubmit(onSubmit)}>
         Tee ilmoitus
       </Button>
     </View >

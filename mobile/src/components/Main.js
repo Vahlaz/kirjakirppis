@@ -3,24 +3,24 @@ import { View } from "react-native"
 import SelectSchoolPage from "./SelectSchoolPage"
 import NavMenu from "./NavMenu"
 import useSchool from "../hooks/useSchool"
+import { withTheme, Headline } from "react-native-paper"
 
-const Main = () => {
+const Main = ({ theme }) => {
 
   const [school, setSchool] = useSchool()
 
   return (
-    <>
+    <View style={{ flex: 1 }} >
+      <View style={{ height: 100, backgroundColor: theme.colors.primary, alignItems: "center", justifyContent: "center"}}>
+        <Headline style={{ color: "white" }} >Kirjakirppis</Headline>
+      </View>
       {!school ?
         <SelectSchoolPage setSelectedSchool={setSchool} />
-        : <>
-          <View style={{ flex: 1 }} >
-            <NavMenu />
-          </View>
-        </>
+        : <NavMenu />
       }
-    </>
+    </View>
   )
 }
 
 
-export default Main
+export default withTheme(Main)

@@ -1,4 +1,5 @@
-import { Switch } from "react-native"
+import React from "react"
+import { MaterialCommunityIcons } from "@expo/vector-icons"
 
 export const turnToNumber = (string) => {
   return parseFloat(string.replace(",", ".").replace(/[^0-9.]/g, ""))
@@ -17,5 +18,9 @@ export const parseCondition = (conditionNumber) => {
   else {
     return "Väärin merkitty kuntoluokka"
   }
+}
+
+export const getIcon = (name, color) => {
+  return <MaterialCommunityIcons name={name} size={24} color={color || "white"} />
 }
 

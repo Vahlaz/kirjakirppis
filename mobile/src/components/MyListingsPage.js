@@ -7,6 +7,7 @@ import { ALL_LISTINGS } from "../graphql/queries"
 import { useQuery } from "@apollo/client"
 import useSchool from "../hooks/useSchool"
 import useUserInfo from "../hooks/useUserInfo"
+import { getIcon } from "../utils/functions"
 
 const MyListingsPage = () => {
 
@@ -26,21 +27,21 @@ const MyListingsPage = () => {
 
   return (
     <View style={{ flex: 1 }}>
+      {showForm
+        ? <ListingForm />
+        : <ListingList listings={listings} />
+      }
       <FAB
         style={{
           position: "absolute",
           margin: 16,
           right: 0,
           bottom: 0,
-          zIndex: 300
+          zIndex: 10
         }}
-        icon={showForm ? "minus" : "plus"}
+        icon={() => showForm ? getIcon("minus") : getIcon("plus")}
         onPress={() => setShowForm(!showForm)}
       />
-      {showForm
-        ? <ListingForm />
-        : <ListingList listings={listings} />
-      }
     </View>
   )
 }
