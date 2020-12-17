@@ -1,20 +1,16 @@
-import React, { useEffect } from "react"
+import React from "react"
 import { View } from "react-native"
 import { useForm, Controller } from "react-hook-form"
 import { TextInput, Button } from "react-native-paper"
-import useSignIn from "../hooks/useSignIn"
+import useAuth from "../hooks/useAuth"
 
 const LoginForm = () => {
 
   const { control, handleSubmit, errors } = useForm()
 
-  const [signIn, result] = useSignIn()
+  const { signIn } = useAuth()
 
   const onSubmit = (data) => signIn(data)
-
-  useEffect(() => {
-    //console.log(result)
-  }, [result])
 
   return (
     <View style={{ justifyContent: "space-evenly", alignItems: "center", flexWrap: "wrap", height: 500 }} >

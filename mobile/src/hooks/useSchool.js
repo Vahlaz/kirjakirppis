@@ -1,29 +1,29 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext } from "react"
 import UserStorageContext from "../contexts/UserStorageContext"
+import UserStore from "../stores/UserStore"
 
 const useSchool = () => {
 
-  const [schoolInfo, setSchoolInfo] = useState()
+  const school = UserStore.useState(s => s.school)
+
   const userStorage = useContext(UserStorageContext)
 
   const getSchool = async () => {
-    setSchoolInfo(await userStorage.getSchool())
+    const newSchool = await userStorage.getSchool()
+    UserStore.update(s => { s.school = newSchool })
   }
 
-  const setSchool = async (school) => {
-    await userStorage.setSchool(school)
-    getSchool()
+  const setSchool = async (newSchool) => {
+    await userStorage.setSchool(newSchool)
+    UserStore.update(s => { s.school = newSchool })
   }
 
   const removeSchool = async (school) => {
     await userStorage.removeSchool(school)
+    UserStore.update(s => { s.school = null })
   }
 
-  useEffect(() => {
-    getSchool()
-  }, [])
-
-  return [schoolInfo, setSchool, removeSchool]
+  return { school, setSchool, removeSchool, getSchool }
 }
 
 export default useSchool

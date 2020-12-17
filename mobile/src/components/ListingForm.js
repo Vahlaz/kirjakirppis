@@ -16,7 +16,7 @@ import { getIcon } from "../utils/functions"
 const ListingForm = () => {
   const { control, handleSubmit, errors } = useForm()
 
-  const [school] = useSchool()
+  const { school } = useSchool()
   const userInfo = useUserInfo()
 
 

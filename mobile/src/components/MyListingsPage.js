@@ -13,7 +13,7 @@ const MyListingsPage = () => {
 
   const [showForm, setShowForm] = useState(false)
 
-  const [school] = useSchool()
+  const { school } = useSchool()
 
   const userInfo = useUserInfo()
 

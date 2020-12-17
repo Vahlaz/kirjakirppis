@@ -7,15 +7,15 @@ import useSchool from "../hooks/useSchool"
 
 const ProfilePage = ({ userInfo }) => {
 
-  // eslint-disable-next-line no-unused-vars
-  const [school, setSchool, removeSchool] = useSchool()
+  const { school, removeSchool } = useSchool()
 
   return (
     <View>
-      { userInfo
+      <Text>{school}</Text>
+      <Button mode="outlined " onPress={() => removeSchool()}>Vaihda koulua</Button>
+      { userInfo.username && userInfo.token && userInfo.id
         ? <View style={{ flex: 1 }}>
-          <Text>Koulusi: {school}</Text>
-          <Button mode="outlined " onPress={() => removeSchool()}>Vaihda koulua</Button>
+          <Text>{userInfo.username}</Text>
           <LogoutButton />
         </View>
         : <LoginForm />

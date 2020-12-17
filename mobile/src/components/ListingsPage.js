@@ -7,7 +7,7 @@ import useSchool from "../hooks/useSchool"
 
 const ListingsPage = () => {
 
-  const [school] = useSchool()
+  const { school } = useSchool()
 
   const result = useQuery(ALL_LISTINGS, { variables: { school } })
 

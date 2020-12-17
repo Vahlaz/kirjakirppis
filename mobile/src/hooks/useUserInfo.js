@@ -1,20 +1,24 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext } from "react"
 import UserStorageContext from "../contexts/UserStorageContext"
+import UserStore from "../stores/UserStore"
 
 const useUserInfo = () => {
-
-  const [info, setInfo] = useState()
   const userStorage = useContext(UserStorageContext)
 
-  const getInfo = async () => {
-    setInfo(await userStorage.getUserInfo())
+  const userInfo = UserStore.useState()
+
+  const getUserInfo = async () => {
+    const info = await userStorage.getUserInfo()
+    const token = await userStorage.getAccessToken()
+    if (info && token) {
+      const { id, username } = info
+      UserStore.update(s => { s.token = token })
+      UserStore.update(s => { s.id = id })
+      UserStore.update(s => { s.username = username })
+    }
   }
 
-  useEffect(() => {
-    getInfo()
-  }, [])
-
-  return info
+  return { userInfo, getUserInfo }
 }
 
 export default useUserInfo

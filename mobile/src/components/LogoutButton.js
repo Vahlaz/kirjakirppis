@@ -1,10 +1,10 @@
 import React from "react"
 import { Button } from "react-native-paper"
-import useSignOut from "../hooks/useSignOut"
+import useAuth from "../hooks/useAuth"
 
 const LogoutButton = () => {
 
-  const signOut = useSignOut()
+  const { signOut } = useAuth()
 
   return <Button mode="outlined " onPress={signOut}>Kirjaudu ulos</Button>
 }
