@@ -49,19 +49,57 @@ export const LOGIN = gql`
 `
 
 export const ME = gql`
-query {
-  me {
-    name
-    username
-    phonenumber
-    email
-    listings {
-      Title
+  query {
+    me {
+      name
+      username
+      phonenumber
+      email
+      listings {
+        Title
+      }
+      information
+      passwordhash
+      school
+      id
     }
-    information
-    passwordhash
-    school
-    id
   }
-}
+`
+
+export const CREATE_LISTING = gql`
+  mutation createListing(
+    $user: ID!
+    $price: Float!
+    $information: String
+    $series: String!
+    $title: String!
+    $publisher: String!
+    $subject: String!
+    $condition: Int!
+    $school: String!
+  ) {
+    createListing(
+      User: $user
+      Price: $price
+      Information: $information
+      Series: $series
+      Title: $title
+      Publisher: $publisher
+      Subject: $subject
+      Condition: $condition
+      School: $school
+    ) {
+      User {
+        id
+      }
+      Price
+      Information
+      Series
+      Title
+      Publisher
+      Subject
+      Condition
+      School
+    }
+  }
 `
