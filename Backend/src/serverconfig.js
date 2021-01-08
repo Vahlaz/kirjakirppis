@@ -1,13 +1,15 @@
-const { ApolloServer, gql, UserInputError } = require('apollo-server')
-const mongoose = require('mongoose')
-require('dotenv').config()
-const jwt = require('jsonwebtoken')
-const Test = require('./test.js')
+const { gql } = require('apollo-server-lambda')
+
 const ListingDef = require('./typedefs/listing.js')
 const UserDef = require('./typedefs/User.js')
 const TokenDef = require('./typedefs/token.js')
 const resolvers = require('./resolvers/resolvers.js')
 const User = require('./models/UserSchema')
+const mongoose = require('mongoose')
+const jwt = require('jsonwebtoken')
+const Test = require('./test.js')
+
+const JWT_SECRET = process.env.JWT_SECRET
 
 mongoose
   .connect(process.env.MONGODB_URI, {
@@ -68,20 +70,23 @@ const typeDefs = gql`
     login(username: String!, password: String!): Token
   }
 `
-
-const server = new ApolloServer({
+const serverConfig = {
   typeDefs,
   resolvers,
-  context: async ({ req }) => {
-    const auth = req ? req.headers.authorization : null
+  context: async ({ event, req }) => {
+    let auth
+    if (req) {
+      auth = req.headers.authorization
+    } else if (event) {
+      auth = event.headers.Authorization
+    }
     if (auth && auth.toLowerCase().startsWith('bearer ')) {
-      const decodedToken = jwt.verify(auth.substring(7), process.env.JWT_SECRET)
+      const decodedToken = jwt.verify(auth.substring(7), JWT_SECRET)
       const currentUser = await User.findById(decodedToken.id)
+
       return { currentUser }
     }
   },
-})
+}
 
-server.listen().then(({ url }) => {
-  console.log(`Server ready at ${url}`)
-})
+module.exports = serverConfig

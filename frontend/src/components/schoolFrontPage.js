@@ -38,7 +38,7 @@ const SchoolFrontPage = () => {
   console.log(allListings)
   return (
     <div>
-      <Grid container direction='row' justify='center'spacing={1}>
+      <Grid container direction='row' justify='center' spacing={1}>
         <Grid item>
           <Typography variant='h3'>{School}</Typography>
           <button
@@ -59,7 +59,13 @@ const SchoolFrontPage = () => {
               <UserWindow token={token} user={user} />
             </Grid>
             <Grid item>
-              {user.school===School ? <NewListingForm user={user} /> :<Typography variant="subtitle1">Voit luoda listauksia vain omaan kouluusi</Typography>}
+              {user?.school === School ? (
+                <NewListingForm user={user} />
+              ) : (
+                <Typography variant='subtitle1'>
+                  Voit luoda listauksia vain omaan kouluusi
+                </Typography>
+              )}
             </Grid>
           </Grid>
         </Grid>

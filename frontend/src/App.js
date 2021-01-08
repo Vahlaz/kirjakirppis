@@ -22,7 +22,7 @@ const App = () => {
 
   return (
     <div>
-      <Container component={Paper} >
+      <Container component={Paper}>
         <Switch>
           <Route path='/school'>
             <SchoolFrontPage />
