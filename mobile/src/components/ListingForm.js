@@ -38,12 +38,13 @@ const ListingForm = () => {
   }
 
   return (
-    <View style={{ alignItems: "center", flexWrap: "wrap", height: 500., alignContent: "center" }} >
+    <View style={{ alignItems: "center", flexWrap: "wrap", height: 500, alignContent: "center" }} >
       <SearchableDropdown
         items={books}
         fieldToSearch="title"
         onSelected={(bookTitle) => setBook(books.find(book => book.title === bookTitle))}
-        placeholder="Myytävä kirja"
+        placeholder="Valitse myytävä kirja"
+        icon="book"
       />
       <View style={{ flexDirection: "row", width: 320, justifyContent: "space-between" }}>
         <Controller
@@ -80,7 +81,7 @@ const ListingForm = () => {
             showDropDown={() => setShowDropDown(true)}
             onDismiss={() => setShowDropDown(false)}
             inputProps={{
-              right: () => getIcon("menu-down"),
+              right: () => getIcon({name: "menu-down"}),
             }}
           />
         </View>
@@ -104,7 +105,7 @@ const ListingForm = () => {
         defaultValue=""
       />
 
-      <Button mode="outlined " onPress={handleSubmit(onSubmit)}>
+      <Button mode="contained" style={{ elevation: 0 }} onPress={handleSubmit(onSubmit)}>
         Tee ilmoitus
       </Button>
     </View >

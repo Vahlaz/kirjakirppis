@@ -18,12 +18,12 @@ const NavMenu = ({ theme }) => {
 
   const MyListingsRoute = () => <MyListingsPage />
 
-  const ProfileRoute = () => <ProfilePage userInfo={userInfo}/>
+  const ProfileRoute = () => <ProfilePage userInfo={userInfo} />
 
   const routes = [
-    { key: "listings", title: "Listaukset", color: theme.colors.primary, icon: () => getIcon("book") },
-    { key: "myListings", title: "Minun listaukseni", color: theme.colors.primary, icon: () => getIcon("book-account") },
-    { key: "profile", title: "Profiili", color: theme.colors.accent, icon: () => getIcon("account-circle") }
+    { key: "listings", title: "Listaukset", color: theme.colors.primary, icon: () => getIcon({ name: "book" }) },
+    { key: "myListings", title: "Minun listaukseni", color: theme.colors.primary, icon: () => getIcon({ name: "book-account" }) },
+    { key: "profile", title: "Profiili", color: theme.colors.accent, icon: () => getIcon({ name: "account-circle" }) }
   ]
 
   const renderScene = BottomNavigation.SceneMap({

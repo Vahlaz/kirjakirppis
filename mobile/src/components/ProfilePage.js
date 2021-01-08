@@ -12,9 +12,9 @@ const ProfilePage = ({ userInfo }) => {
   return (
     <View>
       <Text>{school}</Text>
-      <Button mode="outlined " onPress={() => removeSchool()}>Vaihda koulua</Button>
-      { userInfo.username && userInfo.token && userInfo.id
-        ? <View style={{ flex: 1 }}>
+      <Button mode="contained" onPress={() => removeSchool()}>Vaihda koulua</Button>
+      {userInfo.username && userInfo.token && userInfo.id
+        ? <View>
           <Text>{userInfo.username}</Text>
           <LogoutButton />
         </View>

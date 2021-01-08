@@ -13,7 +13,7 @@ const LoginForm = () => {
   const onSubmit = (data) => signIn(data)
 
   return (
-    <View style={{ justifyContent: "space-evenly", alignItems: "center", flexWrap: "wrap", height: 500 }} >
+    <View style={{ justifyContent: "space-evenly", alignItems: "center", flexWrap: "wrap", height: 500, alignContent: "center" }} >
       <Controller
         control={control}
         render={({ onChange, onBlur, value }) => (
@@ -51,7 +51,7 @@ const LoginForm = () => {
         defaultValue=""
       />
 
-      <Button mode="outlined " onPress={handleSubmit(onSubmit)}>
+      <Button mode="contained " onPress={handleSubmit(onSubmit)}>
         Kirjaudu
       </Button>
     </View >

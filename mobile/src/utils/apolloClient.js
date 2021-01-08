@@ -1,5 +1,5 @@
 import ApolloClient from "apollo-boost"
-import { Platform } from "react-native"
+//import { Platform } from "react-native"
 
 const createApolloClient = (authStorage) => {
   return new ApolloClient({
@@ -15,7 +15,7 @@ const createApolloClient = (authStorage) => {
         console.log(error)
       }
     },
-    uri: `http://${Platform.OS === "web" ? "127.0.0.1" : "10.0.2.2"}:4000/graphql`,
+    uri: "https://nhc02zvzbj.execute-api.eu-central-1.amazonaws.com/dev/graphql" //`http://${Platform.OS === "web" ? "127.0.0.1" : "10.0.2.2"}:4000/graphql`,
   })
 }
 

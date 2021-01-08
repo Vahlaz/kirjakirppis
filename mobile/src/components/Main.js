@@ -17,7 +17,6 @@ const Main = ({ theme }) => {
     getUserInfo()
   }, [])
 
-
   return (
     <View style={{ flex: 1 }} >
       <View style={{ height: 100, backgroundColor: theme.colors.primary, alignItems: "center", justifyContent: "center" }}>

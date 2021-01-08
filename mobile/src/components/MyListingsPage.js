@@ -39,7 +39,7 @@ const MyListingsPage = () => {
           bottom: 0,
           zIndex: 10
         }}
-        icon={() => showForm ? getIcon("minus") : getIcon("plus")}
+        icon={() => showForm ? getIcon({name:  "minus"}) : getIcon({name:  "plus"})}
         onPress={() => setShowForm(!showForm)}
       />
     </View>
