@@ -1,8 +1,7 @@
 const token = `
 type Token {
     token: String!
-    username: String!
-    id: String!
+    user: User!
 }
 `
 module.exports = token

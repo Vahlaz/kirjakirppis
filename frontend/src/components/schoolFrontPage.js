@@ -11,11 +11,15 @@ import NewListingForm from './NewListingsForm.js'
 
 const SchoolFrontPage = () => {
   const history = useHistory()
+  const [token, setToken] = useState('')
+  const [user, setUser] = useState()
+
   const School = localStorage.getItem('KirjaKirppis-school')
-  const token = localStorage.getItem('KirjaKirppis-user-token')
   const result = useQuery(ALL_LISTINGS, {
     variables: { school: `${School}` },
   })
+  useEffect(() => setToken(localStorage.getItem('KirjaKirppis-user-token')), [])
+
   const userResult = useQuery(ME)
 
   if (userResult.loading) {
@@ -25,7 +29,11 @@ const SchoolFrontPage = () => {
       </>
     )
   }
-  const user = userResult.data.me
+console.log(userResult.data)
+  if (!user && userResult.data.me) {
+    setUser(userResult.data.me)
+  }
+
   if (result.loading) {
     return (
       <>
@@ -56,7 +64,7 @@ const SchoolFrontPage = () => {
         <Grid item xs={3}>
           <Grid container justify='center' direction='column' spacing={1}>
             <Grid item>
-              <UserWindow token={token} user={user} />
+              <UserWindow token={token} setUser={setUser} user={user} />
             </Grid>
             <Grid item>
               {user?.school === School ? (

@@ -8,18 +8,6 @@ const createUser = async (root, args) => {
   console.log(args)
   console.log(user)
 
-  if (!args.username || args.username.length < 3) {
-    throw new UserInputError('Käyttäjänimi liian lyhyt')
-  }
-
-  if (args.username > 30) {
-    throw new UserInputError('Käyttäjänimi liian pitkä (max 30 merkkiä)')
-  }
-
-  if (await User.findOne({ username: args.username })) {
-    throw new UserInputError('Käyttäjänimi varattu')
-  }
-
   if (!args.email || (await User.findOne({ email: args.email }))) {
     throw new UserInputError('Sähköposti varattu')
   }

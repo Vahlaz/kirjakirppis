@@ -1,33 +1,30 @@
-import { Button, Grid, TextField, Typography } from '@material-ui/core'
+import { Button, Grid, TextField } from '@material-ui/core'
 import React, { useState } from 'react'
 import { useMutation } from '@apollo/client'
 import { LOGIN } from './queries'
 import { Alert } from '@material-ui/lab'
-import { Link } from 'react-router-dom'
 
-const LoginForm = () => {
+const LoginForm =  () => {
   const [login, { result }] = useMutation(LOGIN)
   const [errormessage, setErrormessage] = useState('')
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    const username = event.target.username.value
+    const email = event.target.email.value
     const password = event.target.password.value
     try {
       const data = await login({
         variables: {
-          username,
+          email,
           password,
         },
       })
       if (data.data.login) {
         const { token, username, id } = data.data.login
         localStorage.setItem('KirjaKirppis-user-token', token)
-        console.log(username)
       }
-    } catch (event) {
-      console.log('kirjautuminen epäonnistui')
-      setErrormessage('Salasana tai käyttäjänimi väärin')
+    } catch (error) {
+      setErrormessage(error.message)
       setTimeout(() => setErrormessage(''), 3000)
     }
   }
@@ -36,12 +33,14 @@ const LoginForm = () => {
     <form onSubmit={handleSubmit}>
       <Grid container justify='center' direction='column'>
         <TextField
-          id='username'
-          label='Käyttäjänimi'
+        required
+          id='email'
+          label='sähköposti'
           variant='outlined'
           style={{ padding: 2 }}
         />
         <TextField
+          required
           id='password'
           label='Salasana'
           variant='outlined'

@@ -3,7 +3,6 @@ import {
   Paper,
   Grid,
   Table,
-  TableHead,
   TableBody,
   TableRow,
   TableCell,
@@ -13,17 +12,18 @@ import React from 'react'
 import LoginForm from './LoginForm.js'
 import FaceOutlinedIcon from '@material-ui/icons/FaceOutlined'
 
-const UserWindow = ({ token, user }) => {
-  if (!token) {
+const UserWindow = ({ token, setUser, user }) => {
+  if (!user) {
     return (
       <Container component={Paper}>
-        <LoginForm />
+        <LoginForm setUser={setUser} />
       </Container>
     )
   }
 
   return (
     <Container component={Paper} align='center'>
+      {console.log(user)}
       <Grid container justify='center'>
         <FaceOutlinedIcon fontSize='large' />
         <TableContainer>

@@ -5,8 +5,8 @@ require('dotenv').config()
 const { UserInputError } = require('apollo-server')
 
 const login = async (root, args) => {
-  const username = args.username
-  const user = await User.findOne({ username: username })
+  const email = args.email
+  const user = await User.findOne({ email: email })
   const credentialsCorrect =
     user && (await bcrypt.compare(args.password, user.passwordhash))
   if (!credentialsCorrect) {
@@ -14,8 +14,7 @@ const login = async (root, args) => {
   }
   return {
     token: jwt.sign({ id: user.id }, process.env.JWT_SECRET),
-    username,
-    id: user.id,
+    user: user
   }
 }
 
