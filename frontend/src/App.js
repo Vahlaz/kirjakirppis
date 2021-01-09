@@ -1,4 +1,4 @@
-import { Container, Paper } from '@material-ui/core'
+import { Box, Container, Paper } from '@material-ui/core'
 import React from 'react'
 import { Switch, Route, useHistory } from 'react-router-dom'
 import FrontPage from './components/frontpage'
@@ -22,16 +22,18 @@ const App = () => {
 
   return (
     <div>
-      <Container component={Paper}>
-        <Switch>
-          <Route path='/school'>
-            <SchoolFrontPage />
-          </Route>
-          <Route path='/'>
-            <FrontPage changeSchool={changeSchool} />
-          </Route>
-        </Switch>
-      </Container>
+      <Box component={Paper} >
+        <Container >
+          <Switch>
+            <Route path='/school'>
+              <SchoolFrontPage />
+            </Route>
+            <Route path='/'>
+              <FrontPage changeSchool={changeSchool} />
+            </Route>
+          </Switch>
+        </Container>
+      </Box>
     </div>
   )
 }

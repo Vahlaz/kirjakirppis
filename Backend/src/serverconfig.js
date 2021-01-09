@@ -49,7 +49,6 @@ const typeDefs = gql`
   type Mutation {
     createUser(
       name: String!
-      username: String!
       phonenumber: String!
       email: String!
       information: String
@@ -67,7 +66,7 @@ const typeDefs = gql`
       Condition: Int!
       School: String!
     ): Listing
-    login(username: String!, password: String!): Token
+    login(email: String!, password: String!): Token
   }
 `
 const serverConfig = {

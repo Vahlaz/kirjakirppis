@@ -21,7 +21,7 @@ export const ALL_LISTINGS = gql`
     ) {
       User {
         name
-        username
+        email
         id
         phonenumber
       }
@@ -39,11 +39,22 @@ export const ALL_LISTINGS = gql`
 `
 
 export const LOGIN = gql`
-  mutation login($username: String!, $password: String!) {
-    login(username: $username, password: $password) {
+  mutation login($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
       token
-      username
-      id
+      user{
+        name
+        phonenumber
+        email
+        listings {
+          Title
+        }
+        information
+        passwordhash
+        school
+        id
+      }
+      
     }
   }
 `
@@ -52,7 +63,6 @@ export const ME = gql`
   query {
     me {
       name
-      username
       phonenumber
       email
       listings {
