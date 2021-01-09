@@ -4,8 +4,8 @@ import { useMutation } from '@apollo/client'
 import { LOGIN } from './queries'
 import { Alert } from '@material-ui/lab'
 
-const LoginForm =  () => {
-  const [login, { result }] = useMutation(LOGIN)
+const LoginForm =  ({setUser}) => {
+  const [login, { result }] = useMutation(LOGIN, )
   const [errormessage, setErrormessage] = useState('')
 
   const handleSubmit = async (event) => {
@@ -22,6 +22,7 @@ const LoginForm =  () => {
       if (data.data.login) {
         const { token, username, id } = data.data.login
         localStorage.setItem('KirjaKirppis-user-token', token)
+        setUser(data.data.login.user)
       }
     } catch (error) {
       setErrormessage(error.message)

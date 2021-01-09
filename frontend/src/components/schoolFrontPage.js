@@ -29,7 +29,6 @@ const SchoolFrontPage = () => {
       </>
     )
   }
-console.log(userResult.data)
   if (!user && userResult.data.me) {
     setUser(userResult.data.me)
   }
@@ -43,7 +42,6 @@ console.log(userResult.data)
   }
 
   const allListings = result.data.allListings
-  console.log(allListings)
   return (
     <div>
       <Grid container direction='row' justify='center' spacing={1}>
