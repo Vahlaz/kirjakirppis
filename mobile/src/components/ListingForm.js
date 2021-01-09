@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { View } from "react-native"
 import { useForm, Controller } from "react-hook-form"
-import { TextInput, Button } from "react-native-paper"
+import { TextInput, Button, Text } from "react-native-paper"
 import DropDown from "react-native-paper-dropdown"
 import NumberFormat from "react-number-format"
 import SearchableDropdown from "./SearchableDropdown"
@@ -17,8 +17,7 @@ const ListingForm = () => {
   const { control, handleSubmit, errors } = useForm()
 
   const { school } = useSchool()
-  const userInfo = useUserInfo()
-
+  const { userInfo } = useUserInfo()
 
   const [book, setBook] = useState(null)
   const [condition, setCondition] = useState(2)
@@ -50,20 +49,15 @@ const ListingForm = () => {
         <Controller
           control={control}
           render={({ onChange, onBlur, value }) => (
-            <NumberFormat
+            <TextInput
               style={{ width: 140 }}
-              label="hinta"
               mode={"outlined"}
+              label="Hinta"
+              onBlur={onBlur}
               onChangeText={value => onChange(value)}
               value={value}
-              customInput={TextInput}
-              thousandSeparator=" "
-              suffix="€"
-              onBlur={onBlur}
-              decimalSeparator=","
-              allowNegative={false}
-              fixedDecimalScale={true}
-              decimalScale={2}
+              error={errors.price}
+              keyboardType="numeric"
             />
           )}
           name="price"
@@ -81,7 +75,7 @@ const ListingForm = () => {
             showDropDown={() => setShowDropDown(true)}
             onDismiss={() => setShowDropDown(false)}
             inputProps={{
-              right: () => getIcon({name: "menu-down"}),
+              right: () => getIcon({ name: "menu-down" }),
             }}
           />
         </View>

@@ -15,7 +15,7 @@ const MyListingsPage = () => {
 
   const { school } = useSchool()
 
-  const userInfo = useUserInfo()
+  const {userInfo} = useUserInfo()
 
   const result = useQuery(ALL_LISTINGS, { variables: { school, user: userInfo?.id } })
 
