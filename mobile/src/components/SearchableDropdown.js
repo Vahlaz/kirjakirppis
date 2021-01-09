@@ -1,14 +1,16 @@
 import React, { useState } from "react"
-import { View, FlatList } from "react-native"
-import { List, Searchbar, Text, Chip } from "react-native-paper"
+import { View, FlatList, Dimensions } from "react-native"
+import { List, Searchbar, Text, Chip, Modal, Portal } from "react-native-paper"
 import { getIcon } from "../utils/functions"
 
 
-const SearchableDropdown = ({ items, fieldToSearch, onSelected, placeholder, icon, iconFamily }) => {
+const SearchableDropdown = ({ items, fieldToSearch, onSelected, placeholder, icon, iconFamily, additionalKeyField }) => {
 
   const [search, setSearch] = useState("")
-  const [focus, setFocus] = useState(false)
+  const [visible, setVisible] = useState(false)
   const [selectedItem, setSelectedItem] = useState(null)
+
+  const { height } = Dimensions.get("window")
 
   const renderItem = ({ item }) => {
 
@@ -26,7 +28,7 @@ const SearchableDropdown = ({ items, fieldToSearch, onSelected, placeholder, ico
       onSelected(item[fieldToSearch])
       setSearch("")
       setSelectedItem(item[fieldToSearch])
-      setFocus(false)
+      setVisible(false)
     }
 
     return (
@@ -39,74 +41,48 @@ const SearchableDropdown = ({ items, fieldToSearch, onSelected, placeholder, ico
 
   let filteredItems = search ? items.filter(item => item[fieldToSearch].toLowerCase().includes(search.toLowerCase())) : []
 
-  let lenghtOver = null
+  filteredItems = filteredItems.slice(0,50)
 
-  const maxLength = 9
-
-  if (filteredItems.length > maxLength) {
-    lenghtOver = filteredItems.length - maxLength
-    filteredItems = filteredItems.slice(0, maxLength)
-  }
-
-  const style = focus ? {
-    width: "100%",
-    height: "100%",
-    zIndex: 10,
-    position: "absolute",
-    left: 0,
-    top: 0,
-    flex: 1,
-    elevation: 100
-  } : {
-      height: 100,
-      width: 300,
-    }
+  const CustomChip = ({ hasClose, onPress, text }) => (
+    <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "center", marginTop: 20, marginBottom: 20 }}>
+      <Chip icon={() => getIcon({ name: icon, color: "black" }, iconFamily)} onPress={onPress}>
+        <View style={{ flexDirection: "row", maxWidth: 240 }}>
+          <Text numberOfLines={1} ellipsizeMode="tail">{text}</Text>
+        </View>
+        {hasClose && getIcon({ name: "close", size: 20, color: "black" }, "ioni")}
+      </Chip>
+    </View>
+  )
 
   return (
-    <View style={style} >
-      {
-        selectedItem ?
-          <>
-            <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "center", marginTop: 20 }}>
-              <Chip icon={() => getIcon({ name: icon, color: "black" })} onPress={() => { setFocus(false); setSelectedItem(null) }}>
-                <View style={{ flexDirection: "row", maxWidth: 240 }}>
-                  <Text numberOfLines={1} ellipsizeMode="tail">{selectedItem}</Text>
-                </View>
-                {getIcon({ name: "close", size: 20 }, "ioni")}
-              </Chip>
-            </View>
-          </>
-          : <>
-            {focus ?
-              <View style={{ backgroundColor: "white", flex: 1 }}>
-                <Searchbar
-                  icon={() => getIcon({ name: "search" }, "ioni")}
-                  onFocus={() => setFocus(true)}
-                  placeholder={placeholder || "Etsi"}
-                  onChangeText={(text) => setSearch(text)}
-                  value={search}
-                  clearIcon={() => getIcon({ name: "close", onPress: () => setFocus(false) }, "ioni")}
-                  autoFocus
-                />
-
+    selectedItem ? <CustomChip onPress={() => { setVisible(false); setSelectedItem(null) }} text={selectedItem} hasClose />
+      :
+      <View>
+        <Portal>
+          <Modal onDismiss={() => setVisible(false)} visible={visible} contentContainerStyle={{ backgroundColor: "white", padding: 20, height }} >
+            <View>
+              <Searchbar
+                icon={() => getIcon({ name: "search", color: "black" }, "ioni")}
+                placeholder={placeholder || "Etsi"}
+                onChangeText={(text) => setSearch(text)}
+                value={search}
+                clearIcon={() => getIcon({ name: "close", onPress: () => setVisible(false), color: "black" }, "ioni")}
+                autoFocus
+              />
+              <View style={{height: 530}}>
                 <Text>{(!filteredItems.length && search) && "Haullasi ei löytynyt tuloksia"}</Text>
                 <FlatList
                   data={filteredItems}
                   renderItem={renderItem}
-                  keyExtractor={item => item[fieldToSearch]}
+                  keyExtractor={item => item[fieldToSearch] + item[additionalKeyField]}
+                  keyboardShouldPersistTaps="handled"
                 />
-                <Text>{lenghtOver && `...${lenghtOver} lisää`}</Text>
-              </View >
-              :
-              <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "center", marginTop: 20 }}>
-                <Chip icon={() => getIcon({ name: icon, color: "black" }, iconFamily)} onPress={() => setFocus(true)}>
-                  <View><Text>{placeholder}</Text></View>
-                </Chip>
               </View>
-            }
-          </>
-      }
-    </View>
+            </View >
+          </Modal>
+        </Portal>
+        <CustomChip onPress={() => setVisible(true)} text={placeholder} />
+      </View>
   )
 }
 

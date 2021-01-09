@@ -23,8 +23,8 @@ class UserStorage {
     return rawInfo ? JSON.parse(rawInfo) : null
   }
 
-  async setUserInfo({ name, id }) {
-    await AsyncStorage.setItem(`${this.namespace}:info`, JSON.stringify({ name, id }))
+  async setUserInfo({ name, id, email, phonenumber }) {
+    await AsyncStorage.setItem(`${this.namespace}:info`, JSON.stringify({ name, id, email, phonenumber}))
   }
 
   async removeUserInfo() {

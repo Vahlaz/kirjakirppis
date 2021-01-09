@@ -1,9 +1,8 @@
 import React, { useState } from "react"
 import { View } from "react-native"
 import { useForm, Controller } from "react-hook-form"
-import { TextInput, Button, Text } from "react-native-paper"
+import { TextInput, Button, Provider } from "react-native-paper"
 import DropDown from "react-native-paper-dropdown"
-import NumberFormat from "react-number-format"
 import SearchableDropdown from "./SearchableDropdown"
 import books from "../assets/books.json"
 import { useMutation } from "@apollo/client"
@@ -37,72 +36,75 @@ const ListingForm = () => {
   }
 
   return (
-    <View style={{ alignItems: "center", flexWrap: "wrap", height: 500, alignContent: "center" }} >
-      <SearchableDropdown
-        items={books}
-        fieldToSearch="title"
-        onSelected={(bookTitle) => setBook(books.find(book => book.title === bookTitle))}
-        placeholder="Valitse myytävä kirja"
-        icon="book"
-      />
-      <View style={{ flexDirection: "row", width: 320, justifyContent: "space-between" }}>
+    <Provider>
+      <View style={{ alignItems: "center", flexWrap: "wrap", height: 500, alignContent: "center" }} >
+        <SearchableDropdown
+          items={books}
+          fieldToSearch="title"
+          onSelected={(bookTitle) => setBook(books.find(book => book.title === bookTitle))}
+          placeholder="Valitse myytävä kirja"
+          icon="book"
+          additionalKeyField="subject"
+        />
+        <View style={{ flexDirection: "row", width: 320, justifyContent: "space-between" }}>
+          <Controller
+            control={control}
+            render={({ onChange, onBlur, value }) => (
+              <TextInput
+                style={{ width: 140 }}
+                mode={"outlined"}
+                label="Hinta"
+                onBlur={onBlur}
+                onChangeText={value => onChange(value)}
+                value={value}
+                error={errors.price}
+                keyboardType="numeric"
+              />
+            )}
+            name="price"
+            rules={{ required: true }}
+            defaultValue="0,00"
+          />
+          <View style={{ width: 140 }}>
+            <DropDown
+              label={"Kunto"}
+              mode={"outlined"}
+              value={condition}
+              setValue={setCondition}
+              list={conditionList}
+              visible={showDropDown}
+              showDropDown={() => setShowDropDown(true)}
+              onDismiss={() => setShowDropDown(false)}
+              inputProps={{
+                right: () => getIcon({ name: "menu-down" }),
+              }}
+            />
+          </View>
+        </View>
         <Controller
           control={control}
           render={({ onChange, onBlur, value }) => (
             <TextInput
-              style={{ width: 140 }}
+              style={{ width: 320 }}
               mode={"outlined"}
-              label="Hinta"
+              label="Lisätietoja"
               onBlur={onBlur}
               onChangeText={value => onChange(value)}
               value={value}
-              error={errors.price}
-              keyboardType="numeric"
+              error={errors.information}
+              multiline={true}
+              numberOfLines={8}
             />
           )}
-          name="price"
-          rules={{ required: true }}
-          defaultValue="0"
+          name="information"
+          defaultValue=""
         />
-        <View style={{ width: 140 }}>
-          <DropDown
-            label={"Kunto"}
-            mode={"outlined"}
-            value={condition}
-            setValue={setCondition}
-            list={conditionList}
-            visible={showDropDown}
-            showDropDown={() => setShowDropDown(true)}
-            onDismiss={() => setShowDropDown(false)}
-            inputProps={{
-              right: () => getIcon({ name: "menu-down" }),
-            }}
-          />
-        </View>
-      </View>
-      <Controller
-        control={control}
-        render={({ onChange, onBlur, value }) => (
-          <TextInput
-            style={{ width: 320 }}
-            mode={"outlined"}
-            label="Lisätietoja"
-            onBlur={onBlur}
-            onChangeText={value => onChange(value)}
-            value={value}
-            error={errors.description}
-            multiline={true}
-            numberOfLines={8}
-          />
-        )}
-        name="description"
-        defaultValue=""
-      />
 
-      <Button mode="contained" style={{ elevation: 0 }} onPress={handleSubmit(onSubmit)}>
-        Tee ilmoitus
+        <Button mode="contained" style={{ elevation: 0 }} onPress={handleSubmit(onSubmit)}>
+          Tee ilmoitus
       </Button>
-    </View >
+      </View >
+    </Provider>
   )
 }
 

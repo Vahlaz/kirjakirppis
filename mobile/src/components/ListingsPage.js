@@ -17,8 +17,9 @@ const ListingsPage = () => {
 
   const listings = result.data.allListings
 
+
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <ListingList listings={listings} />
     </View>
   )

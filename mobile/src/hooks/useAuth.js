@@ -25,7 +25,7 @@ const useSignIn = () => {
   const signOut = async () => {
     await userStorage.removeAccessToken()
     await userStorage.removeUserInfo()
-    UserStore.update(s => { s.token = null, s.id = null, s.name = name, s.email = null, s.phonenumber = null })
+    UserStore.update(s => { s.token = null, s.id = null, s.name = null, s.email = null, s.phonenumber = null })
     apolloClient.resetStore()
   }
 

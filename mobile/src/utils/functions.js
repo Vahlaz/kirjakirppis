@@ -27,4 +27,3 @@ export const getIcon = (props, library) => {
   }
   return <MaterialCommunityIcons {...props} />
 }
-

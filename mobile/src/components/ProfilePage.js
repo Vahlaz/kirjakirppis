@@ -14,21 +14,25 @@ const ProfilePage = ({ userInfo }) => {
 
   return (
     <View style={{ alignItems: "center", flexWrap: "wrap", alignContent: "center", height: 500 }} >
-      <Text>{school}</Text>
+      <Subheading style={{marginTop: 10}}>{school}</Subheading>
       <Button mode="contained" onPress={() => removeSchool()}>Vaihda koulua</Button>
       {userInfo.name && userInfo.token && userInfo.id
-        ? <View>
-          <Text>{userInfo.name}</Text>
+        ? <>
+          <Subheading style={{marginTop: 40}}>{userInfo.name}</Subheading>
+          <Subheading>{userInfo.email}</Subheading>
+          <Subheading>{userInfo.phonenumber}</Subheading>
           <LogoutButton />
+        </>
+        : <View>
+          {isLoginPage ? <LoginForm /> : <NewUserForm />}
+          <Subheading style={{ marginTop: 10 }} onPress={() => setIsLoginPage(!isLoginPage)}>
+            <Text>
+              {isLoginPage ? "Etkö ole vielä käyttäjä? Rekisteröidy " : "Oletko jo käyttäjä? Kirjaudu "}
+              <Text style={{ fontWeight: "bold" }}>tästä</Text>
+            </Text>
+          </Subheading>
         </View>
-        : isLoginPage ? <LoginForm /> : <NewUserForm />
       }
-      <Subheading style={{ marginTop: 10 }} onPress={() => setIsLoginPage(!isLoginPage)}>
-        <Text>
-          {isLoginPage ? "Etkö ole vielä käyttäjä? Rekisteröidy " : "Oletko jo käyttäjä? Kirjaudu "}
-          <Text style={{ fontWeight: "bold" }}>tästä</Text>
-        </Text>
-      </Subheading>
     </View >
   )
 }
