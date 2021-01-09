@@ -13,22 +13,24 @@ const LoginForm = () => {
   const onSubmit = (data) => signIn(data)
 
   return (
-    <View style={{ justifyContent: "space-evenly", alignItems: "center", flexWrap: "wrap", height: 500, alignContent: "center" }} >
+    <View>
       <Controller
         control={control}
         render={({ onChange, onBlur, value }) => (
           <TextInput
             style={{ width: 320 }}
             mode={"outlined"}
-            label="Käyttäjänimi"
+            label="Sähköposti"
             onBlur={onBlur}
             onChangeText={value => onChange(value)}
             value={value}
-            error={errors.username}
-            autoCompleteType="username"
+            error={errors.email}
+            autoCompleteType="email"
+            autoCapitalize="none"
+            keyboardType="email-address"
           />
         )}
-        name="username"
+        name="email"
         defaultValue=""
       />
 
@@ -51,7 +53,7 @@ const LoginForm = () => {
         defaultValue=""
       />
 
-      <Button mode="contained " onPress={handleSubmit(onSubmit)}>
+      <Button mode="contained" onPress={handleSubmit(onSubmit)}>
         Kirjaudu
       </Button>
     </View >

@@ -21,7 +21,6 @@ export const ALL_LISTINGS = gql`
     ) {
       User{
           name
-          username
           id
           phonenumber
       }

@@ -2,7 +2,9 @@ import { Store } from "pullstate"
 
 const UserStore = new Store({
   school: null,
-  username: null,
+  name: null,
+  email: null,
+  phonenumber: null,
   id: null,
   token: null
 })

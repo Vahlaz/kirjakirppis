@@ -10,15 +10,14 @@ const useSignIn = () => {
 
   const [login] = useMutation(LOGIN)
 
-  const signIn = async ({ username, password }) => {
-    const { data } = await login({ variables: { username, password } })
+  const signIn = async ({ email, password }) => {
+    const { data } = await login({ variables: { email, password } })
     if (data?.login) {
-      const { token, username, id } = data.login
+      const { token, user } = data.login
+      const { name, id, email, phonenumber } = user
       await userStorage.setAccessToken(token)
-      await userStorage.setUserInfo({ username, id })
-      UserStore.update(s => { s.username = username })
-      UserStore.update(s => { s.id = id })
-      UserStore.update(s => { s.token = token })
+      await userStorage.setUserInfo({ name, id, email, phonenumber })
+      UserStore.update(s => { s.token = token, s.id = id, s.name = name, s.email = email, s.phonenumber = phonenumber })
       apolloClient.resetStore()
     }
   }
@@ -26,9 +25,7 @@ const useSignIn = () => {
   const signOut = async () => {
     await userStorage.removeAccessToken()
     await userStorage.removeUserInfo()
-    UserStore.update(s => { s.username = null })
-    UserStore.update(s => { s.id = null })
-    UserStore.update(s => { s.token = null })
+    UserStore.update(s => { s.token = null, s.id = null, s.name = name, s.email = null, s.phonenumber = null })
     apolloClient.resetStore()
   }
 

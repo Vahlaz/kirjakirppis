@@ -29,19 +29,29 @@ export const CREATE_LISTING = gql`
 `
 
 export const LOGIN = gql`
-  mutation login($username: String!, $password: String!) {
-    login(username: $username, password: $password)  {
+  mutation login($email: String!, $password: String!) {
+    login(email: $email, password: $password)  {
       token
-      username
+      user{
+      name
+      email
+      phonenumber
       id
+      }
     }
   }
 `
 
 export const CREATE_USER = gql`
-  mutation createUser($username: String!, $password: String!, $email: String!) {
-    createUser(username: $username, password: $password, email: $email)  {
+  mutation createUser($email: String!, $password: String!, $name: String!, $phonenumber: String!) {
+    createUser(
+      email: $email,
+      password: $password, 
+      name: $name,
+      phonenumber: $phonenumber
+      ){
       id
+      name
     }
   }
 `

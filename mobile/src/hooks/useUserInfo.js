@@ -11,10 +11,8 @@ const useUserInfo = () => {
     const info = await userStorage.getUserInfo()
     const token = await userStorage.getAccessToken()
     if (info && token) {
-      const { id, username } = info
-      UserStore.update(s => { s.token = token })
-      UserStore.update(s => { s.id = id })
-      UserStore.update(s => { s.username = username })
+      const { id, name, email, phonenumber } = info
+      UserStore.update(s => { s.token = token, s.id = id, s.name = name, s.email = email, s.phonenumber = phonenumber })
     }
   }
 
