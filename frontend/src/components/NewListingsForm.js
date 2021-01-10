@@ -6,10 +6,8 @@ import {
   Paper,
   TextField,
   Typography,
-  Select,
   MenuItem,
   Button,
-  InputLabel,
 } from '@material-ui/core'
 import Autocomplete from '@material-ui/lab/Autocomplete'
 import { useState } from 'react'
@@ -17,7 +15,7 @@ import books from '../assets/books.json'
 import { CREATE_LISTING } from './queries'
 
 const NewListingForm = ({ user }) => {
-  const [createListing, result] = useMutation(CREATE_LISTING)
+  const [createListing] = useMutation(CREATE_LISTING)
   const [condition, setCondition] = useState('')
   const [book, setBook] = useState({})
   const [information, setInformation] = useState('')
@@ -53,7 +51,7 @@ const NewListingForm = ({ user }) => {
       <Typography variant='h6'>Luo uusi listaus</Typography>
       <form onSubmit={submit}>
         <Grid container justify='center' direction='column' spacing={2}>
-          <Grid item>
+          <Grid item >
             <Autocomplete
               onChange={(event, newValue) => {
                 setBook(newValue)
@@ -67,9 +65,9 @@ const NewListingForm = ({ user }) => {
               )}
             />
           </Grid>
-          <Grid item>
+          <Grid item >
             <TextField
-              type='number'
+              type='react-number-format'
               id='hinta'
               label='Hinta'
               onChange={(event) => setPrice(event.target.value)}
@@ -79,7 +77,7 @@ const NewListingForm = ({ user }) => {
               style={{ minWidth: 250 }}
             />
           </Grid>
-          <Grid item>
+          <Grid item >
             <TextField
             select
               id='kunto'
@@ -92,8 +90,8 @@ const NewListingForm = ({ user }) => {
               <MenuItem value={1}>Ihan ok</MenuItem>
               <MenuItem value={2}>Huono</MenuItem>
             </TextField>
-          </Grid>
-          <Grid item>
+          </Grid >
+          <Grid item >
             <TextField
               id='informaatio'
               label='Lisätietoa kirjasta'
@@ -101,7 +99,7 @@ const NewListingForm = ({ user }) => {
               value={information}
               onChange={(event) => setInformation(event.target.value)}
               style={{ minWidth: 250 }}
-              helperText="Kerro lisää kirjan kunnosta tai hakutavasta"
+              helperText="Kerro lisää kirjan kunnosta tai noutotavasta"
             />
           </Grid>
           <Grid item>
