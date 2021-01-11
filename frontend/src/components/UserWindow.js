@@ -47,7 +47,7 @@ const UserWindow = ({ setUser, user }) => {
       <Button
         onClick={() => {
           localStorage.removeItem('KirjaKirppis-user-token')
-          setUser()
+          setUser(null)
           client.clearStore()
         }}
       >
