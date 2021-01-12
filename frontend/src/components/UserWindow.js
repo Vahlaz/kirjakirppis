@@ -7,16 +7,44 @@ import {
   TableRow,
   TableCell,
   TableContainer,
+  Button,
 } from '@material-ui/core'
-import React from 'react'
+import React, { useState } from 'react'
 import LoginForm from './LoginForm.js'
 import FaceOutlinedIcon from '@material-ui/icons/FaceOutlined'
+import { useApolloClient } from '@apollo/client'
+import NewUser from './NewUser.js'
 
-const UserWindow = ({ token, setUser, user }) => {
+const UserWindow = ({ setUser, user }) => {
+  const [loginform, setLoginform] = useState(true)
+  console.log(loginform)
+  const client = useApolloClient()
   if (!user) {
     return (
       <Container component={Paper}>
-        <LoginForm setUser={setUser} />
+        <Grid container justify='center' spacing={1}>
+          <Grid item>
+            {loginform ? (
+              <LoginForm setUser={setUser} />
+            ) : (
+              <NewUser setLoginform={setLoginform} />
+            )}
+          </Grid>
+          <Grid item>
+            <Button
+              onClick={(event) => {
+                event.preventDefault()
+                setLoginform(!loginform)
+                console.log(loginform)
+              }}
+              variant='outlined'
+              color='secondary'
+              size="small"
+            >
+              {loginform ? 'luo uusi käyttäjä' : 'kirjaudu sisään'}
+            </Button>
+          </Grid>
+        </Grid>
       </Container>
     )
   }
@@ -31,7 +59,7 @@ const UserWindow = ({ token, setUser, user }) => {
             <TableBody>
               <TableRow>
                 <TableCell align='center'> {user.name} </TableCell>
-                <TableCell align='center'> {user.username}</TableCell>
+                <TableCell align='center'> </TableCell>
               </TableRow>
               <TableRow>
                 <TableCell align='center'>{user.phonenumber}</TableCell>
@@ -41,13 +69,15 @@ const UserWindow = ({ token, setUser, user }) => {
           </Table>
         </TableContainer>
       </Grid>
-      <button
+      <Button
         onClick={() => {
           localStorage.removeItem('KirjaKirppis-user-token')
+          setUser('')
+          client.clearStore()
         }}
       >
         kirjaudu ulos
-      </button>
+      </Button>
     </Container>
   )
 }

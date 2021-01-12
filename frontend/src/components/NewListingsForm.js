@@ -6,10 +6,8 @@ import {
   Paper,
   TextField,
   Typography,
-  Select,
   MenuItem,
   Button,
-  InputLabel,
 } from '@material-ui/core'
 import Autocomplete from '@material-ui/lab/Autocomplete'
 import { useState } from 'react'
@@ -17,12 +15,12 @@ import books from '../assets/books.json'
 import { CREATE_LISTING } from './queries'
 
 const NewListingForm = ({ user }) => {
-  const [createListing, result] = useMutation(CREATE_LISTING)
+  const [createListing] = useMutation(CREATE_LISTING)
   const [condition, setCondition] = useState('')
   const [book, setBook] = useState({})
   const [information, setInformation] = useState('')
   const [price, setPrice] = useState('')
-
+  const school = window.localStorage.getItem('KirjaKirppis-school')
   const submit = async (event) => {
     event.preventDefault()
     const newListing = {
@@ -31,7 +29,7 @@ const NewListingForm = ({ user }) => {
       condition: condition,
       information: information,
       user: user.id,
-      school: user.school,
+      school: school,
     }
     console.log(newListing)
     const data = await createListing({ variables: { ...newListing } })
@@ -69,7 +67,7 @@ const NewListingForm = ({ user }) => {
           </Grid>
           <Grid item>
             <TextField
-              type='number'
+              type='react-number-format'
               id='hinta'
               label='Hinta'
               onChange={(event) => setPrice(event.target.value)}
@@ -81,7 +79,7 @@ const NewListingForm = ({ user }) => {
           </Grid>
           <Grid item>
             <TextField
-            select
+              select
               id='kunto'
               label='kunto'
               value={condition}
@@ -101,7 +99,7 @@ const NewListingForm = ({ user }) => {
               value={information}
               onChange={(event) => setInformation(event.target.value)}
               style={{ minWidth: 250 }}
-              helperText="Kerro lisää kirjan kunnosta tai hakutavasta"
+              helperText='Kerro lisää kirjan kunnosta tai noutotavasta'
             />
           </Grid>
           <Grid item>

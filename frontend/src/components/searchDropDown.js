@@ -1,16 +1,14 @@
-import React, { useState } from 'react'
+import React from 'react'
 import TextField from '@material-ui/core/TextField'
 import Autocomplete from '@material-ui/lab/Autocomplete'
 
 const SearchDropDown = ({ options, onChangeFunction }) => {
-  const [value, setValue] = useState('')
   
   return (
     <div className='search-box'>
       <div>
         <Autocomplete
           onChange={(event, newValue) => {
-            setValue(newValue)
             onChangeFunction(newValue)
           }}
           options={options}

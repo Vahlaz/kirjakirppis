@@ -4,8 +4,8 @@ import { useMutation } from '@apollo/client'
 import { LOGIN } from './queries'
 import { Alert } from '@material-ui/lab'
 
-const LoginForm =  ({setUser}) => {
-  const [login, { result }] = useMutation(LOGIN, )
+const LoginForm = ({ setUser }) => {
+  const [login] = useMutation(LOGIN)
   const [errormessage, setErrormessage] = useState('')
 
   const handleSubmit = async (event) => {
@@ -20,7 +20,7 @@ const LoginForm =  ({setUser}) => {
         },
       })
       if (data.data.login) {
-        const { token, username, id } = data.data.login
+        const { token } = data.data.login
         localStorage.setItem('KirjaKirppis-user-token', token)
         setUser(data.data.login.user)
       }
@@ -34,7 +34,7 @@ const LoginForm =  ({setUser}) => {
     <form onSubmit={handleSubmit}>
       <Grid container justify='center' direction='column'>
         <TextField
-        required
+          required
           id='email'
           label='sähköposti'
           variant='outlined'
@@ -48,7 +48,13 @@ const LoginForm =  ({setUser}) => {
           type='password'
           style={{ padding: 2 }}
         />
-        <Button type='submit' style={{ padding: 2 }} variant='outlined'>
+        <Button
+          type='submit'
+          style={{ padding: 2 }}
+          variant='outlined'
+          size='medium'
+          color='primary'
+        >
           Kirjaudu sisään
         </Button>
         {errormessage ? <Alert severity='error'>{errormessage}</Alert> : null}

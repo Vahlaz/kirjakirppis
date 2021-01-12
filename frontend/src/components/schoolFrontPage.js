@@ -1,16 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useQuery } from '@apollo/client'
 import { ALL_LISTINGS } from './queries.js'
-import { CircularProgress, Fab, Grid, Typography } from '@material-ui/core'
+import { CircularProgress, Grid, Typography } from '@material-ui/core'
 import ListingTable from './ListingTable'
-import { useHistory } from 'react-router-dom'
-import AddIcon from '@material-ui/icons/Add'
 import UserWindow from './UserWindow.js'
 import { ME } from './queries.js'
 import NewListingForm from './NewListingsForm.js'
 
-const SchoolFrontPage = () => {
-  const history = useHistory()
+const SchoolFrontPage = ({ setSchool }) => {
   const [token, setToken] = useState('')
   const [user, setUser] = useState()
 
@@ -50,7 +47,7 @@ const SchoolFrontPage = () => {
           <button
             onClick={() => {
               window.localStorage.removeItem('KirjaKirppis-school')
-              history.push('/')
+              setSchool('')
             }}
           >
             removeschool

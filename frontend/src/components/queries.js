@@ -42,7 +42,7 @@ export const LOGIN = gql`
   mutation login($email: String!, $password: String!) {
     login(email: $email, password: $password) {
       token
-      user{
+      user {
         name
         phonenumber
         email
@@ -54,7 +54,6 @@ export const LOGIN = gql`
         school
         id
       }
-      
     }
   }
 `
@@ -110,6 +109,21 @@ export const CREATE_LISTING = gql`
       Subject
       Condition
       School
+    }
+  }
+`
+
+export const CREATE_USER = gql`
+  mutation createUser($email: String!, $password: String!, $name: String!, $phonenumber: String!, $school: String! ) {
+    createUser(
+      email: $email,
+      password: $password, 
+      name: $name,
+      phonenumber: $phonenumber
+      school: $school
+      ){
+      id
+      name
     }
   }
 `
