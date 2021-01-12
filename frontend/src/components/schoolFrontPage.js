@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useQuery } from '@apollo/client'
 import { ALL_LISTINGS } from './queries.js'
-import { CircularProgress, Grid, Typography } from '@material-ui/core'
+import { Button, CircularProgress, Grid, Typography } from '@material-ui/core'
 import ListingTable from './ListingTable'
 import UserWindow from './UserWindow.js'
 import { ME } from './queries.js'
@@ -29,7 +29,6 @@ const SchoolFrontPage = ({ setSchool }) => {
   if (!user && userResult.data.me) {
     setUser(userResult.data.me)
   }
-
   if (result.loading) {
     return (
       <>
@@ -43,18 +42,24 @@ const SchoolFrontPage = ({ setSchool }) => {
     <div>
       <Grid container direction='row' justify='center' spacing={1}>
         <Grid item>
-          <Typography variant='h3'>{School}</Typography>
-          <button
-            onClick={() => {
-              window.localStorage.removeItem('KirjaKirppis-school')
-              setSchool('')
-            }}
-          >
-            removeschool
-          </button>
+          <Grid container direction='column' justify='center'>
+            <Grid item>
+              <Typography variant='h4'>{School}</Typography>
+            </Grid>
+            <Grid item>
+              <Button
+                onClick={() => {
+                  window.localStorage.removeItem('KirjaKirppis-school')
+                  setSchool('')
+                }}
+              >
+                Vaihda koulua
+              </Button>
+            </Grid>
+          </Grid>
         </Grid>
         <Grid item xs={9}>
-          <ListingTable data={allListings} />
+          <ListingTable data={allListings} user={user} />
         </Grid>
         <Grid item xs={3}>
           <Grid container justify='center' direction='column' spacing={1}>

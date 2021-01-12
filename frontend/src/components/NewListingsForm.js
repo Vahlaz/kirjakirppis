@@ -86,9 +86,9 @@ const NewListingForm = ({ user }) => {
               onChange={(event) => setCondition(event.target.value)}
               style={{ minWidth: 250 }}
             >
-              <MenuItem value={0}>Hyvä</MenuItem>
-              <MenuItem value={1}>Ihan ok</MenuItem>
-              <MenuItem value={2}>Huono</MenuItem>
+              <MenuItem value={1}>Käytettävä</MenuItem>
+              <MenuItem value={2}>Hyvä</MenuItem>
+              <MenuItem value={3}>Erinomainen</MenuItem>
             </TextField>
           </Grid>
           <Grid item>

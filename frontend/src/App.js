@@ -11,11 +11,8 @@ const App = () => {
   const changeSchool = (value) => {
     window.localStorage.setItem('KirjaKirppis-school', value.name)
     setSchool(value.name)
-    console.log(school)
   }
-  if (school) {
-    console.log(school)
-  }
+
 
   return (
     <div>

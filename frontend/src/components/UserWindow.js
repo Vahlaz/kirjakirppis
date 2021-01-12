@@ -17,7 +17,6 @@ import NewUser from './NewUser.js'
 
 const UserWindow = ({ setUser, user }) => {
   const [loginform, setLoginform] = useState(true)
-  console.log(loginform)
   const client = useApolloClient()
   if (!user) {
     return (
@@ -51,7 +50,6 @@ const UserWindow = ({ setUser, user }) => {
 
   return (
     <Container component={Paper} align='center'>
-      {console.log(user)}
       <Grid container justify='center'>
         <FaceOutlinedIcon fontSize='large' />
         <TableContainer>
@@ -72,7 +70,7 @@ const UserWindow = ({ setUser, user }) => {
       <Button
         onClick={() => {
           localStorage.removeItem('KirjaKirppis-user-token')
-          setUser('')
+          setUser()
           client.clearStore()
         }}
       >

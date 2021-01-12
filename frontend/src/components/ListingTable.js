@@ -5,9 +5,10 @@ import {
   AccordionDetails,
   Typography,
   Grid,
+  IconButton,
 } from '@material-ui/core'
 import books from '../assets/books.json'
-import { ExpandMoreOutlined } from '@material-ui/icons'
+import { DeleteOutlined, ExpandMoreOutlined } from '@material-ui/icons'
 
 const ListingText = ({ text }) => {
   return (
@@ -17,7 +18,22 @@ const ListingText = ({ text }) => {
   )
 }
 
-const ListingTable = ({ data }) => {
+const DeleteButton = ({ user, listingId }) => {
+  if (!user) {
+    return <> </>
+  }
+  if (user.id !== listingId) {
+    return <> </>
+  }
+
+  return (
+    <IconButton onClick={() => console.log('bruh')}>
+      <DeleteOutlined />
+    </IconButton>
+  )
+}
+
+const ListingTable = ({ data, user }) => {
   return (
     <>
       {data.map((listing) => (
@@ -47,10 +63,17 @@ const ListingTable = ({ data }) => {
             </Grid>
           </AccordionSummary>
           <AccordionDetails>
-            <Grid container spacing={1} direction='column'>
-              <ListingText text={`Myyjä: ${listing.User.name}`} />
-              <ListingText text={`puh: ${listing.User.phonenumber}`} />
-              <ListingText text={`sähköposti: ${listing.User.email}`} />
+            <Grid container direction='row'>
+              <Grid item xs={11}>
+                <Grid container spacing={1} direction='column'>
+                  <ListingText text={`Myyjä: ${listing.User.name}`} />
+                  <ListingText text={`puh: ${listing.User.phonenumber}`} />
+                  <ListingText text={`sähköposti: ${listing.User.email}`} />
+                </Grid>
+              </Grid>
+              <Grid item xs={1}>
+                <DeleteButton user={user} listingId={listing.User.id} />
+              </Grid>
             </Grid>
           </AccordionDetails>
         </Accordion>
