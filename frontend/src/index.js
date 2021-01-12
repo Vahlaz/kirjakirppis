@@ -11,8 +11,6 @@ import {
   InMemoryCache,
 } from '@apollo/client'
 
-import { BrowserRouter as Router } from 'react-router-dom'
-
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem('KirjaKirppis-user-token')
   return {
@@ -42,9 +40,7 @@ ReactDOM.render(
       rel='stylesheet'
       href='https://fonts.googleapis.com/icon?family=Material+Icons'
     />
-    <Router>
       <App />
-    </Router>
   </ApolloProvider>,
   document.getElementById('root')
 )
