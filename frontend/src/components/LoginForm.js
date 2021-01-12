@@ -23,6 +23,7 @@ const LoginForm = ({ setUser }) => {
         const { token } = data.data.login
         localStorage.setItem('KirjaKirppis-user-token', token)
         setUser(data.data.login.user)
+        console.log(data.data.login)
       }
     } catch (error) {
       setErrormessage(error.message)
