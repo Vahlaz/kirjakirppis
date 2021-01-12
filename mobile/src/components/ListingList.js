@@ -27,7 +27,7 @@ const ListingItem = ({ item }) => {
         </View>
         <Text>Myyjän puhelinnumero: <Text style={{ fontWeight: "bold" }}>{item.User.phonenumber}</Text></Text>
         {item.Information && <>
-          <Text>Lisätietoja:</Text>
+          <Text></Text>
           <Text>{item.Information}</Text>
         </>
         }
