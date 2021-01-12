@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { View } from "react-native"
 import { useForm } from "react-hook-form"
-import { Button, Provider } from "react-native-paper"
+import { Button, Provider, ActivityIndicator } from "react-native-paper"
 import DropDown from "react-native-paper-dropdown"
 import SearchableDropdown from "./SearchableDropdown"
 import books from "../assets/books.json"
@@ -12,7 +12,7 @@ import useUserInfo from "../hooks/useUserInfo"
 import { turnToNumber, getIcon } from "../utils/functions"
 import TextField from "./TextField"
 
-const ListingForm = () => {
+const ListingForm = ({ setShowForm }) => {
   const { control, handleSubmit, errors } = useForm()
 
   const { school } = useSchool()
@@ -22,7 +22,7 @@ const ListingForm = () => {
   const [condition, setCondition] = useState(2)
   const [showDropDown, setShowDropDown] = useState(false)
 
-  const [createListing] = useMutation(CREATE_LISTING)
+  const [createListing, { loading }] = useMutation(CREATE_LISTING, { refetchQueries: ["allListings"] })
 
   const conditionList = [
     { label: "Erinomainen", value: 3 },
@@ -30,9 +30,10 @@ const ListingForm = () => {
     { label: "Käytettävä", value: 1 },
   ]
 
-  const onSubmit = data => {
+  const onSubmit = async data => {
     data.price = turnToNumber(data.price)
-    createListing({ variables: { ...book, ...data, condition, school, user: userInfo.id } })
+    await createListing({ variables: { ...book, ...data, condition, school, user: userInfo.id } })
+    setShowForm(false)
   }
 
   return (
@@ -88,6 +89,8 @@ const ListingForm = () => {
         <Button mode="contained" style={{ elevation: 0 }} onPress={handleSubmit(onSubmit)}>
           Tee ilmoitus
       </Button>
+
+        {loading && <ActivityIndicator style={{ marginTop: 10 }} animating />}
       </View >
     </Provider>
   )

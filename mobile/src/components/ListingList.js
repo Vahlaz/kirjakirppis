@@ -1,11 +1,19 @@
 import React, { useState } from "react"
 import { FlatList, Image, View } from "react-native"
-import { List, Modal, Provider, Portal, Text, } from "react-native-paper"
+import { List, Modal, Provider, Portal, Text, Button } from "react-native-paper"
+import { DELETE_LISTING } from "../graphql/mutations"
+import { useMutation } from "@apollo/client"
 import books from "../assets/books.json"
 import { parseCondition } from "../utils/functions"
+import useUserInfo from "../hooks/useUserInfo"
 
 const ListingItem = ({ item }) => {
   const [visible, setVisible] = useState(false)
+
+  const [deleteListing] = useMutation(DELETE_LISTING, { refetchQueries: ["allListings"] })
+
+  const { userInfo } = useUserInfo()
+
   return <>
     <List.Item
       left={() => <Image style={{ width: 75, height: 100 }} source={{ uri: books.find(book => book.title === item.Title)?.imageLink }} />}
@@ -26,11 +34,13 @@ const ListingItem = ({ item }) => {
           </View>
         </View>
         <Text>Myyjän puhelinnumero: <Text style={{ fontWeight: "bold" }}>{item.User.phonenumber}</Text></Text>
-        {item.Information && <>
+        {item.Information ? <>
           <Text></Text>
           <Text>{item.Information}</Text>
         </>
+          : null
         }
+        {userInfo.id === item.User?.id && <Button mode="contained" onPress={() => deleteListing({ variables: { id: item.id } })}>Poista listaus</Button>}
       </Modal>
     </Portal>
   </>

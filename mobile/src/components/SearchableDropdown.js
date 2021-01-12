@@ -1,8 +1,7 @@
-import React, { useState } from "react"
+import React, { useState} from "react"
 import { View, FlatList, Dimensions } from "react-native"
 import { List, Searchbar, Text, Chip, Modal, Portal } from "react-native-paper"
 import { getIcon } from "../utils/functions"
-
 
 const SearchableDropdown = ({ items, fieldToSearch, onSelected, placeholder, icon, iconFamily, additionalKeyField }) => {
 
@@ -41,8 +40,6 @@ const SearchableDropdown = ({ items, fieldToSearch, onSelected, placeholder, ico
 
   let filteredItems = search ? items.filter(item => item[fieldToSearch].toLowerCase().includes(search.toLowerCase())) : []
 
-  filteredItems = filteredItems.slice(0,50)
-
   const CustomChip = ({ hasClose, onPress, text }) => (
     <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "center", marginTop: 20, marginBottom: 20 }}>
       <Chip icon={() => getIcon({ name: icon, color: "black" }, iconFamily)} onPress={onPress}>
@@ -53,6 +50,7 @@ const SearchableDropdown = ({ items, fieldToSearch, onSelected, placeholder, ico
       </Chip>
     </View>
   )
+
 
   return (
     selectedItem ? <CustomChip onPress={() => { setVisible(false); setSelectedItem(null) }} text={selectedItem} hasClose />
@@ -65,11 +63,10 @@ const SearchableDropdown = ({ items, fieldToSearch, onSelected, placeholder, ico
                 icon={() => getIcon({ name: "search", color: "black" }, "ioni")}
                 placeholder={placeholder || "Etsi"}
                 onChangeText={(text) => setSearch(text)}
-                value={search}
                 clearIcon={() => getIcon({ name: "close", onPress: () => setVisible(false), color: "black" }, "ioni")}
                 autoFocus
               />
-              <View style={{height: 530}}>
+              <View style={{ height: 530 }}>
                 <Text>{(!filteredItems.length && search) && "Haullasi ei löytynyt tuloksia"}</Text>
                 <FlatList
                   data={filteredItems}

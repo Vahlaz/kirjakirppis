@@ -1,19 +1,22 @@
 import React from "react"
 import { View } from "react-native"
 import { useForm } from "react-hook-form"
-import { Button } from "react-native-paper"
+import { Button, ActivityIndicator } from "react-native-paper"
 import { CREATE_USER } from "../graphql/mutations"
 import { useMutation } from "@apollo/client"
 import TextField from "./TextField"
+import useAuth from "../hooks/useAuth"
 
 const NewUserForm = () => {
 
   const { control, handleSubmit, errors, setError } = useForm()
 
-  const [createUser] = useMutation(CREATE_USER, {
+  const { signIn } = useAuth()
+
+  const [createUser, { loading }] = useMutation(CREATE_USER, {
     onError: (error) => {
       const message = error.message.replace("GraphQL error:", "").trim()
-      
+
       const fieldNames = [
         ["sähköpos", "email"],
         ["nim", "name"],
@@ -27,14 +30,13 @@ const NewUserForm = () => {
         }
       })
     },
-    onCompleted: (data) => {
-      console.log(data)
-    }
-
   })
 
   const onSubmit = async (variables) => {
-    await createUser({ variables: { ...variables } })
+    const response = await createUser({ variables: { ...variables } })
+    if (response) {
+      signIn({ ...variables })
+    }
   }
 
   return (
@@ -81,6 +83,8 @@ const NewUserForm = () => {
       />
 
       <Button mode="contained" onPress={handleSubmit(onSubmit)}>Rekisteröidy</Button>
+
+      {loading && <ActivityIndicator style={{marginTop: 10}} animating />}
     </View >
   )
 }

@@ -28,9 +28,9 @@ const MyListingsPage = () => {
   return (
     <View style={{ flex: 1 }}>
       {showForm
-        ? <ListingForm />
+        ? <ListingForm setShowForm={setShowForm}/>
         : listings.length !== 0
-          ? <ListingList listings={listings} />
+          ? <ListingList listings={listings}/>
           : <Subheading style={{padding: 20}}>Et ole vielä tehnyt yhtään myynti-ilmoitusta. Voit tehdä uuden listauksen painamalla +-nappia</Subheading>
       }
       <FAB
