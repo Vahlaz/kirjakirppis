@@ -21,9 +21,9 @@ const createUser = async (root, args) => {
   }
 
   try {
-    await user.save().then(console.log('saved'))
+    await user.save()
   } catch (error) {
-    throw new UserInputError((error) => error.message)
+    throw new UserInputError(error.message)
   }
   return user
 }

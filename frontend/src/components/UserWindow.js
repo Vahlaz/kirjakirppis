@@ -9,17 +9,42 @@ import {
   TableContainer,
   Button,
 } from '@material-ui/core'
-import React from 'react'
+import React, { useState } from 'react'
 import LoginForm from './LoginForm.js'
 import FaceOutlinedIcon from '@material-ui/icons/FaceOutlined'
 import { useApolloClient } from '@apollo/client'
+import NewUser from './NewUser.js'
 
 const UserWindow = ({ setUser, user }) => {
+  const [loginform, setLoginform] = useState(true)
+  console.log(loginform)
   const client = useApolloClient()
   if (!user) {
     return (
       <Container component={Paper}>
-        <LoginForm setUser={setUser} />
+        <Grid container justify='center' spacing={1}>
+          <Grid item>
+            {loginform ? (
+              <LoginForm setUser={setUser} />
+            ) : (
+              <NewUser setLoginform={setLoginform} />
+            )}
+          </Grid>
+          <Grid item>
+            <Button
+              onClick={(event) => {
+                event.preventDefault()
+                setLoginform(!loginform)
+                console.log(loginform)
+              }}
+              variant='outlined'
+              color='secondary'
+              size="small"
+            >
+              {loginform ? 'luo uusi käyttäjä' : 'kirjaudu sisään'}
+            </Button>
+          </Grid>
+        </Grid>
       </Container>
     )
   }
@@ -47,7 +72,7 @@ const UserWindow = ({ setUser, user }) => {
       <Button
         onClick={() => {
           localStorage.removeItem('KirjaKirppis-user-token')
-          setUser(null)
+          setUser('')
           client.clearStore()
         }}
       >

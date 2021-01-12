@@ -20,7 +20,7 @@ const NewListingForm = ({ user }) => {
   const [book, setBook] = useState({})
   const [information, setInformation] = useState('')
   const [price, setPrice] = useState('')
-
+  const school = window.localStorage.getItem('KirjaKirppis-school')
   const submit = async (event) => {
     event.preventDefault()
     const newListing = {
@@ -29,7 +29,7 @@ const NewListingForm = ({ user }) => {
       condition: condition,
       information: information,
       user: user.id,
-      school: user.school,
+      school: school,
     }
     console.log(newListing)
     const data = await createListing({ variables: { ...newListing } })
@@ -51,7 +51,7 @@ const NewListingForm = ({ user }) => {
       <Typography variant='h6'>Luo uusi listaus</Typography>
       <form onSubmit={submit}>
         <Grid container justify='center' direction='column' spacing={2}>
-          <Grid item >
+          <Grid item>
             <Autocomplete
               onChange={(event, newValue) => {
                 setBook(newValue)
@@ -65,7 +65,7 @@ const NewListingForm = ({ user }) => {
               )}
             />
           </Grid>
-          <Grid item >
+          <Grid item>
             <TextField
               type='react-number-format'
               id='hinta'
@@ -77,9 +77,9 @@ const NewListingForm = ({ user }) => {
               style={{ minWidth: 250 }}
             />
           </Grid>
-          <Grid item >
+          <Grid item>
             <TextField
-            select
+              select
               id='kunto'
               label='kunto'
               value={condition}
@@ -90,8 +90,8 @@ const NewListingForm = ({ user }) => {
               <MenuItem value={1}>Ihan ok</MenuItem>
               <MenuItem value={2}>Huono</MenuItem>
             </TextField>
-          </Grid >
-          <Grid item >
+          </Grid>
+          <Grid item>
             <TextField
               id='informaatio'
               label='Lisätietoa kirjasta'
@@ -99,7 +99,7 @@ const NewListingForm = ({ user }) => {
               value={information}
               onChange={(event) => setInformation(event.target.value)}
               style={{ minWidth: 250 }}
-              helperText="Kerro lisää kirjan kunnosta tai noutotavasta"
+              helperText='Kerro lisää kirjan kunnosta tai noutotavasta'
             />
           </Grid>
           <Grid item>
