@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { View } from "react-native"
-import { useForm, Controller } from "react-hook-form"
-import { TextInput, Button, Provider } from "react-native-paper"
+import { useForm } from "react-hook-form"
+import { Button, Provider } from "react-native-paper"
 import DropDown from "react-native-paper-dropdown"
 import SearchableDropdown from "./SearchableDropdown"
 import books from "../assets/books.json"
@@ -9,8 +9,8 @@ import { useMutation } from "@apollo/client"
 import { CREATE_LISTING } from "../graphql/mutations"
 import useSchool from "../hooks/useSchool"
 import useUserInfo from "../hooks/useUserInfo"
-import { turnToNumber } from "../utils/functions"
-import { getIcon } from "../utils/functions"
+import { turnToNumber, getIcon } from "../utils/functions"
+import TextField from "./TextField"
 
 const ListingForm = () => {
   const { control, handleSubmit, errors } = useForm()
@@ -47,27 +47,21 @@ const ListingForm = () => {
           additionalKeyField="subject"
         />
         <View style={{ flexDirection: "row", width: 320, justifyContent: "space-between" }}>
-          <Controller
+
+          <TextField
             control={control}
-            render={({ onChange, onBlur, value }) => (
-              <TextInput
-                style={{ width: 140 }}
-                mode={"outlined"}
-                label="Hinta"
-                onBlur={onBlur}
-                onChangeText={value => onChange(value)}
-                value={value}
-                error={errors.price}
-                keyboardType="numeric"
-              />
-            )}
+            label="Hinta"
+            error={errors.price}
+            keyboardType="numeric"
             name="price"
-            rules={{ required: true }}
             defaultValue="0,00"
+            width={140}
+            required
           />
+
           <View style={{ width: 140 }}>
             <DropDown
-              label={"Kunto"}
+              label={"*Kunto"}
               mode={"outlined"}
               value={condition}
               setValue={setCondition}
@@ -81,23 +75,14 @@ const ListingForm = () => {
             />
           </View>
         </View>
-        <Controller
+
+        <TextField
           control={control}
-          render={({ onChange, onBlur, value }) => (
-            <TextInput
-              style={{ width: 320 }}
-              mode={"outlined"}
-              label="Lisätietoja"
-              onBlur={onBlur}
-              onChangeText={value => onChange(value)}
-              value={value}
-              error={errors.information}
-              multiline={true}
-              numberOfLines={8}
-            />
-          )}
+          label="Lisätietoja"
+          error={errors.information}
+          multiline={true}
+          numberOfLines={8}
           name="information"
-          defaultValue=""
         />
 
         <Button mode="contained" style={{ elevation: 0 }} onPress={handleSubmit(onSubmit)}>

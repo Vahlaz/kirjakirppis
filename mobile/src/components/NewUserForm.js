@@ -1,103 +1,83 @@
 import React from "react"
 import { View } from "react-native"
-import { useForm, Controller } from "react-hook-form"
-import { TextInput, Button } from "react-native-paper"
-import useSchool from "../hooks/useSchool"
+import { useForm } from "react-hook-form"
+import { Button } from "react-native-paper"
 import { CREATE_USER } from "../graphql/mutations"
 import { useMutation } from "@apollo/client"
+import TextField from "./TextField"
 
 const NewUserForm = () => {
 
-  const { control, handleSubmit, errors } = useForm()
+  const { control, handleSubmit, errors, setError } = useForm()
 
-  const [createUser] = useMutation(CREATE_USER)
+  const [createUser] = useMutation(CREATE_USER, {
+    onError: (error) => {
+      const message = error.message.replace("GraphQL error:", "").trim()
+      
+      const fieldNames = [
+        ["sähköpos", "email"],
+        ["nim", "name"],
+        ["salas", "password"],
+        ["puhelinnum", "phonenumber"]
+      ]
 
-  const { school } = useSchool()
+      fieldNames.forEach((field) => {
+        if (message.toLowerCase().includes(field[0])) {
+          setError(field[1], { message })
+        }
+      })
+    },
+    onCompleted: (data) => {
+      console.log(data)
+    }
+
+  })
 
   const onSubmit = async (variables) => {
-    const { data } = await createUser({ variables: { ...variables, school } })
-    console.log("RESPONSE", data)
+    await createUser({ variables: { ...variables } })
   }
-
-  const width = 320
 
   return (
     <View>
-      <Controller
+      <TextField
         control={control}
-        render={({ onChange, onBlur, value }) => (
-          <TextInput
-            style={{ width: 320 }}
-            mode={"outlined"}
-            label="Sähköposti"
-            onBlur={onBlur}
-            onChangeText={value => onChange(value)}
-            value={value}
-            error={errors.email}
-            autoCompleteType="email"
-            autoCapitalize="none"
-            keyboardType="email-address"
-          />
-        )}
+        label="Sähköposti"
+        error={errors.email}
+        autoCompleteType="email"
+        autoCapitalize="none"
+        keyboardType="email-address"
         name="email"
-        defaultValue=""
+        required
       />
 
-      <Controller
+      <TextField
         control={control}
-        render={({ onChange, onBlur, value }) => (
-          <TextInput
-            style={{ width }}
-            mode={"outlined"}
-            label="Nimi"
-            onBlur={onBlur}
-            onChangeText={value => onChange(value)}
-            value={value}
-            error={errors.name}
-            autoCompleteType="name"
-            autoCapitalize="words"
-          />
-        )}
+        label="Nimi"
+        error={errors.name}
+        autoCompleteType="name"
+        autoCapitalize="words"
         name="name"
-        defaultValue=""
+        required
       />
 
-      <Controller
+      <TextField
         control={control}
-        render={({ onChange, onBlur, value }) => (
-          <TextInput
-            style={{ width }}
-            mode={"outlined"}
-            label="Salasana"
-            onBlur={onBlur}
-            onChangeText={value => onChange(value)}
-            value={value}
-            error={errors.password}
-            autoCompleteType="password"
-            secureTextEntry={true}
-          />
-        )}
+        label="Salasana"
+        error={errors.password}
+        autoCompleteType="password"
+        secureTextEntry={true}
         name="password"
-        defaultValue=""
+        required
       />
 
-      <Controller
+      <TextField
         control={control}
-        render={({ onChange, onBlur, value }) => (
-          <TextInput
-            style={{ width }}
-            mode={"outlined"}
-            label="Puhelinnumero"
-            onBlur={onBlur}
-            onChangeText={value => onChange(value)}
-            value={value}
-            error={errors.phonenumber}
-            autoCompleteType="tel"
-            keyboardType="phone-pad"
-          />
-        )}
+        label="Puhelinnumero"
+        error={errors.phonenumber}
+        autoCompleteType="tel"
+        keyboardType="phone-pad"
         name="phonenumber"
-        defaultValue=""
+        required
       />
 
       <Button mode="contained" onPress={handleSubmit(onSubmit)}>Rekisteröidy</Button>

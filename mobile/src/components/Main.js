@@ -19,7 +19,7 @@ const Main = ({ theme }) => {
 
   return (
     <View style={{ flex: 1 }} >
-      <View style={{ height: 100, backgroundColor: theme.colors.primary, alignItems: "center", justifyContent: "center" }}>
+      <View style={{ height: 80, backgroundColor: theme.colors.primary, alignItems: "center", justifyContent: "center" }}>
         <Headline style={{ color: "white" }} >Kirjakirppis</Headline>
       </View>
       {!school ?

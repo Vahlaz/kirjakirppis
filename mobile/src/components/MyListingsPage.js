@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { View } from "react-native"
-import { FAB } from "react-native-paper"
+import { FAB, Subheading } from "react-native-paper"
 import ListingForm from "./ListingForm"
 import ListingList from "./ListingList"
 import { ALL_LISTINGS } from "../graphql/queries"
@@ -15,7 +15,7 @@ const MyListingsPage = () => {
 
   const { school } = useSchool()
 
-  const {userInfo} = useUserInfo()
+  const { userInfo } = useUserInfo()
 
   const result = useQuery(ALL_LISTINGS, { variables: { school, user: userInfo?.id } })
 
@@ -29,7 +29,9 @@ const MyListingsPage = () => {
     <View style={{ flex: 1 }}>
       {showForm
         ? <ListingForm />
-        : <ListingList listings={listings} />
+        : listings.length !== 0
+          ? <ListingList listings={listings} />
+          : <Subheading style={{padding: 20}}>Et ole vielä tehnyt yhtään myynti-ilmoitusta. Voit tehdä uuden listauksen painamalla +-nappia</Subheading>
       }
       <FAB
         style={{
@@ -39,7 +41,7 @@ const MyListingsPage = () => {
           bottom: 0,
           zIndex: 10
         }}
-        icon={() => showForm ? getIcon({name:  "minus"}) : getIcon({name:  "plus"})}
+        icon={() => showForm ? getIcon({ name: "minus" }) : getIcon({ name: "plus" })}
         onPress={() => setShowForm(!showForm)}
       />
     </View>

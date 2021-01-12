@@ -1,5 +1,6 @@
 import React from "react"
 import { View } from "react-native"
+import { Subheading } from "react-native-paper"
 import ListingList from "./ListingList"
 import { ALL_LISTINGS } from "../graphql/queries"
 import { useQuery } from "@apollo/client"
@@ -20,7 +21,10 @@ const ListingsPage = () => {
 
   return (
     <View style={{ flex: 1 }}>
-      <ListingList listings={listings} />
+      {listings && listings.length !== 0
+        ? <ListingList listings={listings} />
+        : <Subheading style={{ padding: 20 }}>Koulullasi ei ole vielä yhtään myynti-ilmoitusta</Subheading>
+      }
     </View>
   )
 }
