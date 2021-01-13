@@ -9,11 +9,11 @@ import { useMutation } from "@apollo/client"
 import { CREATE_LISTING } from "../graphql/mutations"
 import useSchool from "../hooks/useSchool"
 import useUserInfo from "../hooks/useUserInfo"
-import { turnToNumber, getIcon } from "../utils/functions"
+import { turnToNumber, getIcon, errorParser } from "../utils/functions"
 import TextField from "./TextField"
 
 const ListingForm = ({ setShowForm }) => {
-  const { control, handleSubmit, errors } = useForm()
+  const { control, handleSubmit, errors, setError } = useForm()
 
   const { school } = useSchool()
   const { userInfo } = useUserInfo()
@@ -22,7 +22,12 @@ const ListingForm = ({ setShowForm }) => {
   const [condition, setCondition] = useState(2)
   const [showDropDown, setShowDropDown] = useState(false)
 
-  const [createListing, { loading }] = useMutation(CREATE_LISTING, { refetchQueries: ["allListings"] })
+  const [createListing, { loading }] = useMutation(CREATE_LISTING, {
+    refetchQueries: ["allListings"],
+    onError: (error) => {
+      errorParser(error, setError, ["information","price"])
+    }
+  })
 
   const conditionList = [
     { label: "Erinomainen", value: 3 },

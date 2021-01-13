@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { FlatList, Image, View } from "react-native"
 import { List, Modal, Provider, Portal, Text, Button } from "react-native-paper"
 import { DELETE_LISTING } from "../graphql/mutations"
-import { useMutation } from "@apollo/client"
+import { useMutation, useApolloClient } from "@apollo/client"
 import books from "../assets/books.json"
 import { parseCondition } from "../utils/functions"
 import useUserInfo from "../hooks/useUserInfo"
@@ -48,6 +48,8 @@ const ListingItem = ({ item }) => {
 
 
 const ListingList = ({ listings }) => {
+  
+  const client = useApolloClient()
 
   const renderItem = ({ item }) => <ListingItem item={item} />
 
@@ -57,6 +59,8 @@ const ListingList = ({ listings }) => {
         data={listings}
         renderItem={renderItem}
         keyExtractor={item => item.id}
+        onRefresh={() => client.reFetchObservableQueries()}
+        refreshing={!listings}
       />
     </Provider >
   )

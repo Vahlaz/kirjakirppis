@@ -11,14 +11,18 @@ const useSignIn = () => {
   const [login] = useMutation(LOGIN)
 
   const signIn = async ({ email, password }) => {
-    const { data } = await login({ variables: { email, password } })
-    if (data?.login) {
-      const { token, user } = data.login
-      const { name, id, email, phonenumber } = user
-      await userStorage.setAccessToken(token)
-      await userStorage.setUserInfo({ name, id, email, phonenumber })
-      UserStore.update(s => { s.token = token, s.id = id, s.name = name, s.email = email, s.phonenumber = phonenumber })
-      apolloClient.resetStore()
+    try {
+      const { data } = await login({ variables: { email, password } })
+      if (data?.login) {
+        const { token, user } = data.login
+        const { name, id, email, phonenumber } = user
+        await userStorage.setAccessToken(token)
+        await userStorage.setUserInfo({ name, id, email, phonenumber })
+        UserStore.update(s => { s.token = token, s.id = id, s.name = name, s.email = email, s.phonenumber = phonenumber })
+        apolloClient.resetStore()
+      }
+    } catch (error) {
+      return error
     }
   }
 

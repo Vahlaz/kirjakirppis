@@ -19,6 +19,10 @@ const MyListingsPage = () => {
 
   const result = useQuery(ALL_LISTINGS, { variables: { school, user: userInfo?.id } })
 
+  if(!userInfo.id){
+    return <Subheading style={{padding: 20}}>Kirjaudu sisään tehdäksesi listauksia</Subheading>
+  }
+
   if (!result || result.loading || !result.data) {
     return null
   }

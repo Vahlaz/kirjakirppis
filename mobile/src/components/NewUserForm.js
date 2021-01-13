@@ -6,6 +6,7 @@ import { CREATE_USER } from "../graphql/mutations"
 import { useMutation } from "@apollo/client"
 import TextField from "./TextField"
 import useAuth from "../hooks/useAuth"
+import { errorParser } from "../utils/functions"
 
 const NewUserForm = () => {
 
@@ -15,20 +16,7 @@ const NewUserForm = () => {
 
   const [createUser, { loading }] = useMutation(CREATE_USER, {
     onError: (error) => {
-      const message = error.message.replace("GraphQL error:", "").trim()
-
-      const fieldNames = [
-        ["sähköpos", "email"],
-        ["nim", "name"],
-        ["salas", "password"],
-        ["puhelinnum", "phonenumber"]
-      ]
-
-      fieldNames.forEach((field) => {
-        if (message.toLowerCase().includes(field[0])) {
-          setError(field[1], { message })
-        }
-      })
+      errorParser(error, setError, ["email","name", "password", "phonenumber"] )
     },
   })
 
@@ -69,6 +57,7 @@ const NewUserForm = () => {
         autoCompleteType="password"
         secureTextEntry={true}
         name="password"
+        password
         required
       />
 
@@ -84,7 +73,7 @@ const NewUserForm = () => {
 
       <Button mode="contained" onPress={handleSubmit(onSubmit)}>Rekisteröidy</Button>
 
-      {loading && <ActivityIndicator style={{marginTop: 10}} animating />}
+      {loading && <ActivityIndicator style={{ marginTop: 10 }} animating />}
     </View >
   )
 }

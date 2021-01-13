@@ -27,3 +27,23 @@ export const getIcon = (props, library) => {
   }
   return <MaterialCommunityIcons {...props} />
 }
+
+
+export const errorParser = (error, setError, fields) => {
+  const message = error.message.replace("GraphQL error:", "").trim()
+
+  const fieldNames = [
+    ["sähköpos", "email"],
+    ["nim", "name"],
+    ["salas", "password"],
+    ["puhelinnum", "phonenumber"],
+    ["lisäti", "information"],
+    ["hint", "price"]
+  ]
+
+  fieldNames.forEach((field) => {
+    if (message.toLowerCase().includes(field[0]) && fields.includes(field[1])) {
+      setError(field[1], { message })
+    }
+  })
+}
