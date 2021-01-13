@@ -26,7 +26,7 @@ const TextField = ({ control, error, width, name, required, label, defaultValue,
           secureTextEntry={passwordIsVisible}
           right={password ?
             < TextInput.Icon
-              icon={() => getIcon({ name: passwordIsVisible ? "eye-off-outline" : "eye-outline", color: "black" }, "ioni")}
+              icon={() => getIcon({ name: passwordIsVisible ? "eye-off-outline" : "eye-outline"}, "ioni")}
               onPress={() => setPasswordIsVisible(!passwordIsVisible)}
             /> : null
           }

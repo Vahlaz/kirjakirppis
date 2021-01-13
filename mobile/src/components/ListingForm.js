@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { View } from "react-native"
 import { useForm } from "react-hook-form"
-import { Button, Provider, ActivityIndicator } from "react-native-paper"
+import { Button, ActivityIndicator} from "react-native-paper"
 import DropDown from "react-native-paper-dropdown"
 import SearchableDropdown from "./SearchableDropdown"
 import books from "../assets/books.json"
@@ -25,7 +25,7 @@ const ListingForm = ({ setShowForm }) => {
   const [createListing, { loading }] = useMutation(CREATE_LISTING, {
     refetchQueries: ["allListings"],
     onError: (error) => {
-      errorParser(error, setError, ["information","price"])
+      errorParser(error, setError, ["information", "price"])
     }
   })
 
@@ -42,62 +42,60 @@ const ListingForm = ({ setShowForm }) => {
   }
 
   return (
-    <Provider>
-      <View style={{ alignItems: "center", flexWrap: "wrap", height: 500, alignContent: "center" }} >
-        <SearchableDropdown
-          items={books}
-          fieldToSearch="title"
-          onSelected={(bookTitle) => setBook(books.find(book => book.title === bookTitle))}
-          placeholder="Valitse myytävä kirja"
-          icon="book"
-          additionalKeyField="subject"
-        />
-        <View style={{ flexDirection: "row", width: 320, justifyContent: "space-between" }}>
-
-          <TextField
-            control={control}
-            label="Hinta"
-            error={errors.price}
-            keyboardType="numeric"
-            name="price"
-            defaultValue="0,00"
-            width={140}
-            required
-          />
-
-          <View style={{ width: 140 }}>
-            <DropDown
-              label={"*Kunto"}
-              mode={"outlined"}
-              value={condition}
-              setValue={setCondition}
-              list={conditionList}
-              visible={showDropDown}
-              showDropDown={() => setShowDropDown(true)}
-              onDismiss={() => setShowDropDown(false)}
-              inputProps={{
-                right: () => getIcon({ name: "menu-down" }),
-              }}
-            />
-          </View>
-        </View>
+    <View style={{ alignItems: "center", flexWrap: "wrap", height: 500, alignContent: "center" }} >
+      <SearchableDropdown
+        items={books}
+        fieldToSearch="title"
+        onSelected={(bookTitle) => setBook(books.find(book => book.title === bookTitle))}
+        placeholder="Valitse myytävä kirja"
+        icon="book"
+        additionalKeyField="subject"
+      />
+      <View style={{ flexDirection: "row", width: 320, justifyContent: "space-between" }}>
 
         <TextField
           control={control}
-          label="Lisätietoja"
-          error={errors.information}
-          multiline={true}
-          numberOfLines={8}
-          name="information"
+          label="Hinta"
+          error={errors.price}
+          keyboardType="numeric"
+          name="price"
+          defaultValue="0,00"
+          width={140}
+          required
         />
 
-        <Button mode="contained" style={{ elevation: 0 }} onPress={handleSubmit(onSubmit)}>
-          Tee ilmoitus
+        <View style={{ width: 140 }}>
+          <DropDown
+            label={"*Kunto"}
+            mode={"outlined"}
+            value={condition}
+            setValue={setCondition}
+            list={conditionList}
+            visible={showDropDown}
+            showDropDown={() => setShowDropDown(true)}
+            onDismiss={() => setShowDropDown(false)}
+            inputProps={{
+              right: () => getIcon({ name: "menu-down" }),
+            }}
+          />
+        </View>
+      </View>
+
+      <TextField
+        control={control}
+        label="Lisätietoja"
+        error={errors.information}
+        multiline={true}
+        numberOfLines={8}
+        name="information"
+      />
+
+      <Button mode="contained" style={{ elevation: 0 }} onPress={handleSubmit(onSubmit)}>
+        Tee ilmoitus
       </Button>
 
-        {loading && <ActivityIndicator style={{ marginTop: 10 }} animating />}
-      </View >
-    </Provider>
+      {loading && <ActivityIndicator style={{ marginTop: 10 }} animating />}
+    </View >
   )
 }
 

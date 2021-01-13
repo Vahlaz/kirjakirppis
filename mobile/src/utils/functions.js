@@ -1,5 +1,6 @@
 import React from "react"
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons"
+import { useTheme } from "react-native-paper"
 
 export const turnToNumber = (string) => {
   return parseFloat(string.replace(",", ".").replace(/[^0-9.]/g, ""))
@@ -21,7 +22,17 @@ export const parseCondition = (conditionNumber) => {
 }
 
 export const getIcon = (props, library) => {
-  props = { ...props, color: props.color || "white", size: props.size || 24 }
+  const { colors } = useTheme()
+
+  let color = props.color
+
+  if (!color) {
+    color = colors.text
+  } else if (["primary", "accent", "background", "surface", "text", "placeholder"].includes(color)) {
+    color = colors[color]
+  }
+
+  props = { ...props, color, size: props.size || 24 }
   if (library === "ioni") {
     return <Ionicons {...props} />
   }
