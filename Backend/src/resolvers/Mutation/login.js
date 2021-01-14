@@ -10,11 +10,11 @@ const login = async (root, args) => {
   const credentialsCorrect =
     user && (await bcrypt.compare(args.password, user.passwordhash))
   if (!credentialsCorrect) {
-    throw new UserInputError('Käyttäjänimi tai salasana väärin')
+    throw new UserInputError('sähkoposti tai salasana väärin')
   }
   return {
     token: jwt.sign({ id: user.id }, process.env.JWT_SECRET),
-    user: user
+    user: user,
   }
 }
 

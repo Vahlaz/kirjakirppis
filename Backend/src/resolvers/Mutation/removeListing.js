@@ -4,10 +4,13 @@ const Listing = require('../../models/ListingSchema')
 const removeListing = async (root, args, context) => {
   const user = context.currentUser.id
   const listingId = args.id
-  const foundListing = await Listing.findById(listingId)
+
+  const foundListing = await Listing.findById(listingId).catch((error) => {
+    throw new Error('Ilmoitus id väärin')
+  })
+
   const foundListingid = `${foundListing._id}`
   const foundListingUser = `${foundListing.User}`
-
   if (foundListingUser === user) {
     try {
       await Listing.findByIdAndRemove(foundListingid)
