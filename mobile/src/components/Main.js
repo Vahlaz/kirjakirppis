@@ -4,9 +4,9 @@ import SelectSchoolPage from "./SelectSchoolPage"
 import NavMenu from "./NavMenu"
 import useSchool from "../hooks/useSchool"
 import useUserInfo from "../hooks/useUserInfo"
-import { withTheme, Headline } from "react-native-paper"
+import { useTheme, Headline } from "react-native-paper"
 
-const Main = ({ theme }) => {
+const Main = () => {
 
   const { school, setSchool, getSchool } = useSchool()
 
@@ -17,10 +17,13 @@ const Main = ({ theme }) => {
     getUserInfo()
   }, [])
 
+  const { colors } = useTheme()
+
+
   return (
-    <View style={{ flex: 1 }} >
-      <View style={{ height: 80, backgroundColor: theme.colors.primary, alignItems: "center", justifyContent: "center" }}>
-        <Headline style={{ color: "white" }} >Kirjakirppis</Headline>
+    <View style={{ flex: 1, backgroundColor: colors.background }} >
+      <View style={{ height: 80, backgroundColor: colors.primary, alignItems: "center", justifyContent: "center" }}>
+        <Headline>Kirjakirppis</Headline>
       </View>
       {!school ?
         <SelectSchoolPage setSelectedSchool={setSchool} />
@@ -30,5 +33,4 @@ const Main = ({ theme }) => {
   )
 }
 
-
-export default withTheme(Main)
+export default Main

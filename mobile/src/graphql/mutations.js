@@ -23,7 +23,20 @@ export const CREATE_LISTING = gql`
       Condition: $condition
       School: $school
       ) {
+        User{
+          name
+          id
+          phonenumber
+        }
+        id
         Title
+        Publisher
+        Series
+        Title
+        Subject
+        Condition
+        Information
+        Price
     }
   }
 `
@@ -53,5 +66,13 @@ export const CREATE_USER = gql`
       id
       name
     }
+  }
+`
+
+export const DELETE_LISTING = gql`
+  mutation removeListing($id: ID!) {
+    removeListing(
+      id: $id,
+      )
   }
 `

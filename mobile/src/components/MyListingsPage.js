@@ -19,6 +19,10 @@ const MyListingsPage = () => {
 
   const result = useQuery(ALL_LISTINGS, { variables: { school, user: userInfo?.id } })
 
+  if(!userInfo.id){
+    return <Subheading style={{padding: 20}}>Kirjaudu sisään tehdäksesi listauksia</Subheading>
+  }
+
   if (!result || result.loading || !result.data) {
     return null
   }
@@ -28,9 +32,9 @@ const MyListingsPage = () => {
   return (
     <View style={{ flex: 1 }}>
       {showForm
-        ? <ListingForm />
+        ? <ListingForm setShowForm={setShowForm}/>
         : listings.length !== 0
-          ? <ListingList listings={listings} />
+          ? <ListingList listings={listings}/>
           : <Subheading style={{padding: 20}}>Et ole vielä tehnyt yhtään myynti-ilmoitusta. Voit tehdä uuden listauksen painamalla +-nappia</Subheading>
       }
       <FAB

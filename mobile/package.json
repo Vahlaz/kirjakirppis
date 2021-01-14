@@ -27,7 +27,8 @@
     "react-native-paper-dropdown": "0.0.5",
     "react-native-vector-icons": "^7.1.0",
     "react-native-web": "^0.14.10",
-    "react-number-format": "^4.4.1"
+    "react-number-format": "^4.4.1",
+    "styled-components": "^5.2.1"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",

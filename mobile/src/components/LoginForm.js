@@ -4,14 +4,21 @@ import { useForm } from "react-hook-form"
 import { Button } from "react-native-paper"
 import useAuth from "../hooks/useAuth"
 import TextField from "./TextField"
+import { errorParser } from "../utils/functions"
 
 const LoginForm = () => {
 
-  const { control, handleSubmit, errors } = useForm()
+  const { control, handleSubmit, errors, setError } = useForm()
+
 
   const { signIn } = useAuth()
 
-  const onSubmit = (data) => signIn(data)
+  const onSubmit = async (data) => {
+    const error = await signIn(data)
+    if (error) {
+      errorParser(error, setError, ["email","password"])
+    }
+  }
 
   return (
     <View>
@@ -23,15 +30,15 @@ const LoginForm = () => {
         autoCapitalize="none"
         keyboardType="email-address"
         name="email"
-        />
+      />
 
       <TextField
         control={control}
         label="Salasana"
         error={errors.password}
         autoCompleteType="password"
-        secureTextEntry={true}
         name="password"
+        password
       />
 
       <Button mode="contained" onPress={handleSubmit(onSubmit)}>
