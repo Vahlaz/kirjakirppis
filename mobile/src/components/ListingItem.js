@@ -1,11 +1,12 @@
 import React, { useState } from "react"
-import { Image, View } from "react-native"
-import { List, Modal, Portal, Text, Button, ThemeProvider } from "react-native-paper"
+import { Image } from "react-native"
+import { List, Modal, Portal, Button, ThemeProvider } from "react-native-paper"
 import { DELETE_LISTING } from "../graphql/mutations"
 import { useMutation } from "@apollo/client"
 import books from "../assets/books.json"
 import { parseCondition } from "../utils/functions"
 import useUserInfo from "../hooks/useUserInfo"
+import { View, Text } from "./styled"
 
 const ListingItem = ({ item, theme }) => {
   const [visible, setVisible] = useState(false)
@@ -25,16 +26,16 @@ const ListingItem = ({ item, theme }) => {
     />
     <Portal>
       <Modal visible={visible} onDismiss={() => setVisible(false)} contentContainerStyle={{ padding: 20, marginHorizontal: 20, backgroundColor: theme.colors.background }}>
-        <View style={{ flexDirection: "row" }}>
+        <View row>
           <Image style={{ width: 100, height: 150 }} source={{ uri: books.find(book => book.title === item.Title)?.imageLink }} />
-          <View style={{ flex: 1, marginLeft: 10, justifyContent: "space-evenly" }}>
+          <View marginx={10} justifyContent="space-evenly">
             <Text numberOfLines={4} ellipsizeMode="tail">{item.Title}</Text>
             <Text>{item.Series}</Text>
             <Text>{item.Publisher}</Text>
             <Text>{item.Subject}</Text>
           </View>
         </View>
-        <Text>Myyjän puhelinnumero: <Text style={{ fontWeight: "bold" }}>{item.User.phonenumber}</Text></Text>
+        <Text>Myyjän puhelinnumero: <Text bold>{item.User.phonenumber}</Text></Text>
         {item.Information ? <>
           <Text></Text>
           <Text>{item.Information}</Text>

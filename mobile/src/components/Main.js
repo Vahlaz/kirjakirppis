@@ -1,10 +1,10 @@
 import React, { useEffect } from "react"
-import { View } from "react-native"
 import SelectSchoolPage from "./SelectSchoolPage"
 import NavMenu from "./NavMenu"
 import useSchool from "../hooks/useSchool"
 import useUserInfo from "../hooks/useUserInfo"
 import { useTheme, Headline } from "react-native-paper"
+import { View } from "./styled"
 
 const Main = () => {
 
@@ -21,8 +21,8 @@ const Main = () => {
 
 
   return (
-    <View style={{ flex: 1, backgroundColor: colors.background }} >
-      <View style={{ height: 80, backgroundColor: colors.primary, alignItems: "center", justifyContent: "center" }}>
+    <View flexGrow backgroundColor={colors.background}>
+      <View centerx height={80} centery backgroundColor={colors.primary}>
         <Headline>Kirjakirppis</Headline>
       </View>
       {!school ?

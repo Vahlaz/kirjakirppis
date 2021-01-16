@@ -1,11 +1,10 @@
 import React from "react"
-import { View } from "react-native"
-import { Subheading } from "react-native-paper"
 import ListingList from "./ListingList"
 import { ALL_LISTINGS } from "../graphql/queries"
 import { useQuery } from "@apollo/client"
 import useSchool from "../hooks/useSchool"
 import useUserInfo from "../hooks/useUserInfo"
+import { Subheading, View } from "./styled"
 
 const ListingsPage = () => {
 
@@ -22,10 +21,10 @@ const ListingsPage = () => {
   const listings = result.data.allListings
 
   return (
-    <View style={{ flex: 1 }}>
+    <View flexGrow>
       {listings && listings.length !== 0
         ? <ListingList listings={listings.filter(listing => listing.User.id !== userInfo.id)} />
-        : <Subheading style={{ padding: 20 }}>Koulullasi ei ole vielä yhtään myynti-ilmoitusta</Subheading>
+        : <Subheading padding={20}>Koulullasi ei ole vielä yhtään myynti-ilmoitusta</Subheading>
       }
     </View>
   )

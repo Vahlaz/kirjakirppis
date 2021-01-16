@@ -1,7 +1,6 @@
 import React, { useState } from "react"
-import { View } from "react-native"
 import { useForm } from "react-hook-form"
-import { Button, ActivityIndicator} from "react-native-paper"
+import { Button, ActivityIndicator } from "react-native-paper"
 import DropDown from "react-native-paper-dropdown"
 import SearchableDropdown from "./SearchableDropdown"
 import books from "../assets/books.json"
@@ -11,6 +10,7 @@ import useSchool from "../hooks/useSchool"
 import useUserInfo from "../hooks/useUserInfo"
 import { turnToNumber, getIcon, errorParser } from "../utils/functions"
 import TextField from "./TextField"
+import { View } from "./styled"
 
 const ListingForm = ({ setShowForm }) => {
   const { control, handleSubmit, errors, setError } = useForm()
@@ -42,7 +42,7 @@ const ListingForm = ({ setShowForm }) => {
   }
 
   return (
-    <View style={{ alignItems: "center", flexWrap: "wrap", height: 500, alignContent: "center" }} >
+    <View centerx>
       <SearchableDropdown
         items={books}
         fieldToSearch="title"
@@ -51,8 +51,7 @@ const ListingForm = ({ setShowForm }) => {
         icon="book"
         additionalKeyField="subject"
       />
-      <View style={{ flexDirection: "row", width: 320, justifyContent: "space-between" }}>
-
+      <View row justifyContent="space-between" width={320}>
         <TextField
           control={control}
           label="Hinta"
@@ -64,7 +63,7 @@ const ListingForm = ({ setShowForm }) => {
           required
         />
 
-        <View style={{ width: 140 }}>
+        <View width={140}>
           <DropDown
             label={"*Kunto"}
             mode={"outlined"}

@@ -1,7 +1,8 @@
 import React, { useState } from "react"
-import { View, FlatList, Dimensions } from "react-native"
-import { List, Searchbar, Text, Chip, Modal, Portal, ThemeProvider, useTheme } from "react-native-paper"
+import { FlatList, Dimensions } from "react-native"
+import { List, Searchbar, Chip, Modal, Portal, ThemeProvider, useTheme } from "react-native-paper"
 import { getIcon } from "../utils/functions"
+import { View , Text} from "./styled"
 
 const SearchableDropdown = ({ items, fieldToSearch, onSelected, placeholder, icon, iconFamily, additionalKeyField }) => {
 
@@ -34,7 +35,7 @@ const SearchableDropdown = ({ items, fieldToSearch, onSelected, placeholder, ico
 
     return (
       <List.Item
-        title={<Text>{firstPart}<Text style={{ fontWeight: "bold" }}>{boldPart}</Text>{secondPart}</Text>}
+        title={<Text>{firstPart}<Text bold>{boldPart}</Text>{secondPart}</Text>}
         onPress={() => handlePress()}>
       </List.Item>
     )
@@ -43,14 +44,14 @@ const SearchableDropdown = ({ items, fieldToSearch, onSelected, placeholder, ico
   let filteredItems = search ? items.filter(item => item[fieldToSearch].toLowerCase().includes(search.toLowerCase())) : []
 
   const CustomChip = ({ hasClose, onPress, text }) => (
-      <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "center", marginTop: 20, marginBottom: 20 }}>
-        <Chip icon={() => getIcon({ name: icon, color: theme.colors.text }, iconFamily)} onPress={onPress} style={{backgroundColor: theme.colors.primary}} mode="outlined">
-          <View style={{ flexDirection: "row", maxWidth: 240 }}>
-            <Text numberOfLines={1} ellipsizeMode="tail">{text}</Text>
-          </View>
-          {hasClose && getIcon({ name: "close", size: 20}, "ioni")}
-        </Chip>
-      </View>
+    <View row centerx centery marginy={20}>
+      <Chip icon={() => getIcon({ name: icon, color: theme.colors.text }, iconFamily)} onPress={onPress} style={{ backgroundColor: theme.colors.primary }} mode="outlined">
+        <View row maxWidth={240}>
+          <Text numberOfLines={1} ellipsizeMode="tail">{text}</Text>
+        </View>
+        {hasClose && getIcon({ name: "close", size: 20 }, "ioni")}
+      </Chip>
+    </View>
   )
 
 
@@ -69,7 +70,7 @@ const SearchableDropdown = ({ items, fieldToSearch, onSelected, placeholder, ico
                   clearIcon={() => getIcon({ name: "close", onPress: () => setVisible(false) }, "ioni")}
                   autoFocus
                 />
-                <View style={{ height: 530 }}>
+                <View height={530}>
                   <Text>{(!filteredItems.length && search) && "Haullasi ei löytynyt tuloksia"}</Text>
                   <FlatList
                     data={filteredItems}
