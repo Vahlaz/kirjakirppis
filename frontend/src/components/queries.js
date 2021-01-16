@@ -114,16 +114,27 @@ export const CREATE_LISTING = gql`
 `
 
 export const CREATE_USER = gql`
-  mutation createUser($email: String!, $password: String!, $name: String!, $phonenumber: String!, $school: String! ) {
+  mutation createUser(
+    $email: String!
+    $password: String!
+    $name: String!
+    $phonenumber: String!
+    $school: String!
+  ) {
     createUser(
-      email: $email,
-      password: $password, 
-      name: $name,
+      email: $email
+      password: $password
+      name: $name
       phonenumber: $phonenumber
       school: $school
-      ){
+    ) {
       id
       name
     }
+  }
+`
+export const REMOVE_LISTING = gql`
+  mutation removeListing($id: ID!) {
+    removeListing(id: $id)
   }
 `

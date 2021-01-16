@@ -40,7 +40,7 @@ ReactDOM.render(
       rel='stylesheet'
       href='https://fonts.googleapis.com/icon?family=Material+Icons'
     />
-      <App />
+    <App />
   </ApolloProvider>,
   document.getElementById('root')
 )

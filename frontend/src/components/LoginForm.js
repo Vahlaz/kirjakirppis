@@ -33,31 +33,36 @@ const LoginForm = ({ setUser }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Grid container justify='center' direction='column'>
-        <TextField
-          required
-          id='email'
-          label='sähköposti'
-          variant='outlined'
-          style={{ padding: 2 }}
-        />
-        <TextField
-          required
-          id='password'
-          label='Salasana'
-          variant='outlined'
-          type='password'
-          style={{ padding: 2 }}
-        />
-        <Button
-          type='submit'
-          style={{ padding: 2 }}
-          variant='outlined'
-          size='medium'
-          color='primary'
-        >
-          Kirjaudu sisään
-        </Button>
+      <Grid container justify='center' direction='column' spacing={1} alignItems='center'>
+        <Grid item>
+          <TextField
+            required
+            id='email'
+            label='sähköposti'
+            variant='outlined'
+            size="small"
+          />
+        </Grid>
+        <Grid item>
+          <TextField
+            required
+            id='password'
+            label='salasana'
+            variant='outlined'
+            type='password'
+            size="small"
+          />
+        </Grid>
+        <Grid item>
+          <Button
+            type='submit'
+            variant='outlined'
+            size='small'
+            color='primary'
+          >
+            Kirjaudu sisään
+          </Button>
+        </Grid>
         {errormessage ? <Alert severity='error'>{errormessage}</Alert> : null}
       </Grid>
     </form>

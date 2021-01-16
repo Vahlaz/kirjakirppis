@@ -15,7 +15,7 @@ import books from '../assets/books.json'
 import { CREATE_LISTING } from './queries'
 
 const NewListingForm = ({ user }) => {
-  const [createListing] = useMutation(CREATE_LISTING)
+  const [createListing] = useMutation(CREATE_LISTING, {refetchQueries: ['allListings']})
   const [condition, setCondition] = useState('')
   const [book, setBook] = useState({})
   const [information, setInformation] = useState('')
@@ -50,7 +50,7 @@ const NewListingForm = ({ user }) => {
     <Container component={Paper}>
       <Typography variant='h6'>Luo uusi listaus</Typography>
       <form onSubmit={submit}>
-        <Grid container justify='center' direction='column' spacing={2}>
+        <Grid container justify='center' direction='column' spacing={1}>
           <Grid item>
             <Autocomplete
               onChange={(event, newValue) => {
@@ -61,7 +61,7 @@ const NewListingForm = ({ user }) => {
               margin='normal'
               id='kirja'
               renderInput={(params) => (
-                <TextField {...params} label='Valitse kirja' />
+                <TextField {...params} label='Valitse kirja'  variant="outlined"/>
               )}
             />
           </Grid>
@@ -75,6 +75,7 @@ const NewListingForm = ({ user }) => {
                 endAdornment: <InputAdornment position='end'>€</InputAdornment>,
               }}
               style={{ minWidth: 250 }}
+              variant='outlined'
             />
           </Grid>
           <Grid item>
@@ -85,6 +86,7 @@ const NewListingForm = ({ user }) => {
               value={condition}
               onChange={(event) => setCondition(event.target.value)}
               style={{ minWidth: 250 }}
+              variant='outlined'
             >
               <MenuItem value={1}>Käytettävä</MenuItem>
               <MenuItem value={2}>Hyvä</MenuItem>
@@ -100,6 +102,7 @@ const NewListingForm = ({ user }) => {
               onChange={(event) => setInformation(event.target.value)}
               style={{ minWidth: 250 }}
               helperText='Kerro lisää kirjan kunnosta tai noutotavasta'
+              variant='outlined'
             />
           </Grid>
           <Grid item>

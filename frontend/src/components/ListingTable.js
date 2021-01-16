@@ -5,31 +5,16 @@ import {
   AccordionDetails,
   Typography,
   Grid,
-  IconButton,
 } from '@material-ui/core'
 import books from '../assets/books.json'
-import { DeleteOutlined, ExpandMoreOutlined } from '@material-ui/icons'
+import { ExpandMoreOutlined } from '@material-ui/icons'
+import DeleteButton from './DeleteButton'
 
 const ListingText = ({ text }) => {
   return (
     <Grid item>
       <Typography variant='body1'>{text}</Typography>
     </Grid>
-  )
-}
-
-const DeleteButton = ({ user, listingId }) => {
-  if (!user) {
-    return <> </>
-  }
-  if (user.id !== listingId) {
-    return <> </>
-  }
-
-  return (
-    <IconButton onClick={() => console.log('bruh')}>
-      <DeleteOutlined />
-    </IconButton>
   )
 }
 
@@ -72,7 +57,11 @@ const ListingTable = ({ data, user }) => {
                 </Grid>
               </Grid>
               <Grid item xs={1}>
-                <DeleteButton user={user} listingId={listing.User.id} />
+                <DeleteButton
+                  user={user}
+                  listingUserId={listing.User.id}
+                  listingId={listing.id}
+                />
               </Grid>
             </Grid>
           </AccordionDetails>

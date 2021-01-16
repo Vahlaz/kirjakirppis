@@ -10,7 +10,7 @@ import NewListingForm from './NewListingsForm.js'
 const SchoolFrontPage = ({ setSchool }) => {
   const [token, setToken] = useState('')
   const [user, setUser] = useState()
-
+  
   const School = localStorage.getItem('KirjaKirppis-school')
   const result = useQuery(ALL_LISTINGS, {
     variables: { school: `${School}` },
@@ -40,24 +40,22 @@ const SchoolFrontPage = ({ setSchool }) => {
   const allListings = result.data.allListings
   return (
     <div>
-      <Grid container direction='row' justify='center' spacing={1}>
+      <Grid container direction='column' justify='center'>
         <Grid item>
-          <Grid container direction='column' justify='center'>
-            <Grid item>
-              <Typography variant='h4'>{School}</Typography>
-            </Grid>
-            <Grid item>
-              <Button
-                onClick={() => {
-                  window.localStorage.removeItem('KirjaKirppis-school')
-                  setSchool('')
-                }}
-              >
-                Vaihda koulua
-              </Button>
-            </Grid>
-          </Grid>
+          <Typography variant='h4'>{School}</Typography>
         </Grid>
+        <Grid item>
+          <Button
+            onClick={() => {
+              window.localStorage.removeItem('KirjaKirppis-school')
+              setSchool('')
+            }}
+          >
+            Vaihda koulua
+          </Button>
+        </Grid>
+      </Grid>
+      <Grid container direction='row' justify='center' spacing={1}>
         <Grid item xs={9}>
           <ListingTable data={allListings} user={user} />
         </Grid>
