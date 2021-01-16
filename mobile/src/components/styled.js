@@ -34,7 +34,8 @@ export const View = styled(DefaultView)`
   ["backgroundColor", `background-color: ${props.backgroundColor};`],
   ["marginy", `margin-top: ${props.marginy}px; margin-bottom: ${props.marginy}px;`],
   ["marginx", `margin-left: ${props.marginx}px; margin-right: ${props.marginx}px;`],
-  ["maxWidth", `max-width: ${props.maxWidth}px;`]
+  ["maxWidth", `max-width: ${props.maxWidth}px;`],
+  ["shrink", "flex-shrink: 1;"]
 ])
   }
 `

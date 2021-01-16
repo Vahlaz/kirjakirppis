@@ -15,10 +15,13 @@ const ListingItem = ({ item, theme }) => {
 
   const { userInfo } = useUserInfo()
 
+  const imageLink = books.find(book => book.title === item.Title)?.imageLink
+
+
   return <ThemeProvider theme={theme}>
     <List.Item
       theme={theme}
-      left={() => <Image style={{ width: 75, height: 100 }} source={{ uri: books.find(book => book.title === item.Title)?.imageLink }} />}
+      left={() => <Image style={{ width: 75, height: 100 }} source={{ uri: imageLink }} />}
       title={item.Title}
       description={`${item.User.name}\n${item.Price}€\n${parseCondition(item.Condition)}`}
       descriptionNumberOfLines={3}
@@ -27,22 +30,23 @@ const ListingItem = ({ item, theme }) => {
     <Portal>
       <Modal visible={visible} onDismiss={() => setVisible(false)} contentContainerStyle={{ padding: 20, marginHorizontal: 20, backgroundColor: theme.colors.background }}>
         <View row>
-          <Image style={{ width: 100, height: 150 }} source={{ uri: books.find(book => book.title === item.Title)?.imageLink }} />
-          <View marginx={10} justifyContent="space-evenly">
+          <Image style={{ width: 100, height: 150 }} source={{ uri: imageLink }} />
+          <View marginx={10} justifyContent="space-evenly" shrink>
             <Text numberOfLines={4} ellipsizeMode="tail">{item.Title}</Text>
             <Text>{item.Series}</Text>
             <Text>{item.Publisher}</Text>
             <Text>{item.Subject}</Text>
           </View>
         </View>
-        <Text>Myyjän puhelinnumero: <Text bold>{item.User.phonenumber}</Text></Text>
         {item.Information ? <>
           <Text></Text>
           <Text>{item.Information}</Text>
         </>
           : null
         }
-        {userInfo.id === item.User?.id && <Button theme={theme} mode="contained" onPress={() => deleteListing({ variables: { id: item.id } })}>Poista listaus</Button>}
+        <View marginy={10}>
+          {userInfo.id === item.User?.id && <Button theme={theme} mode="contained" onPress={() => deleteListing({ variables: { id: item.id } })}>Poista listaus</Button>}
+        </View>
       </Modal>
     </Portal>
   </ThemeProvider>
