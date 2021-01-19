@@ -69,8 +69,8 @@ const NavMenu = () => {
       })
       }
     >
-      <Tab.Screen name="Listings">{() => renderPage(<ListingsPage result={result} userInfo={userInfo}/>, "Listaukset")}</Tab.Screen>
-      <Tab.Screen name="MyListings">{() => renderPage(<MyListingsPage result={result} userInfo={userInfo}/>, "Omat listaukseni")}</Tab.Screen>
+      <Tab.Screen name="Listings">{() => renderPage(<ListingsPage result={result} userInfo={userInfo} />, "Listaukset")}</Tab.Screen>
+      <Tab.Screen name="MyListings">{() => renderPage(<MyListingsPage result={result} userInfo={userInfo} />, "Omat listaukseni")}</Tab.Screen>
       <Tab.Screen name="Profile">{() => renderPage(<ProfilePage />, "Profiili")}</Tab.Screen>
     </Tab.Navigator >
   )

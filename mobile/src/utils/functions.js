@@ -21,6 +21,8 @@ export const parseCondition = (conditionNumber) => {
   }
 }
 
+export const unique = (array) => array.filter((v, i, a) => a.indexOf(v) === i)
+
 export const getIcon = (props, library) => {
   const { colors } = useTheme()
 
