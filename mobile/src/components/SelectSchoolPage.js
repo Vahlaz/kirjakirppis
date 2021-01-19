@@ -8,7 +8,7 @@ import { Title } from "react-native-paper"
 const SelectSchoolPage = ({ setSelectedSchool }) => {
 
   return (
-    <View centerx flexGrow>
+    <View centerx flexGrow centery>
         <Title>Valitse koulu</Title>
         <SearchableDropDown items={schools} fieldToSearch="name" onSelected={(school) => setSelectedSchool(school)} placeholder={"Valitse koulu"} icon="school" iconFamily="ioni" />
     </View>

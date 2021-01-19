@@ -3,12 +3,15 @@ import { Button } from "react-native-paper"
 import LoginForm from "./LoginForm"
 import LogoutButton from "./LogoutButton"
 import useSchool from "../hooks/useSchool"
+import useUserInfo from "../hooks/useUserInfo"
 import NewUserForm from "./NewUserForm"
-import { Subheading, View, Text} from "./styled"
+import { Subheading, View, Text } from "./styled"
 
-const ProfilePage = ({ userInfo }) => {
+const ProfilePage = () => {
 
   const { school, removeSchool } = useSchool()
+
+  const { userInfo } = useUserInfo()
 
   const [isLoginPage, setIsLoginPage] = useState(true)
 

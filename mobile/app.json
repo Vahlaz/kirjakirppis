@@ -24,10 +24,12 @@
         "foregroundImage": "./src/assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "softwareKeyboardLayoutMode":"pan"
+      "softwareKeyboardLayoutMode": "pan"
     },
     "web": {
       "favicon": "./src/assets/favicon.png"
-    }
+    },
+    "description": "",
+    "githubUrl": "https://github.com/Vahlaz/kirjakirppis"
   }
 }

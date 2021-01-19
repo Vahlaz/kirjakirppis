@@ -1,45 +1,70 @@
-import React, { useState } from "react"
-import { BottomNavigation, withTheme } from "react-native-paper"
+import React from "react"
 import ListingsPage from "./ListingsPage"
 import MyListingsPage from "./MyListingsPage"
 import ProfilePage from "./ProfilePage"
-import { getIcon } from "../utils/functions"
-import useUserInfo from "../hooks/useUserInfo"
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs"
+import { MaterialCommunityIcons } from "@expo/vector-icons"
+import { View } from "./styled"
+import { Headline } from "react-native-paper"
+import { useTheme } from "@react-navigation/native"
+
+const NavHeader = ({ name, children }) => {
+  const { colors } = useTheme()
+  return <>
+    < View backgroundColor={colors.primary} >
+      <View centerx centery height={50} marginTop={30}>
+        <Headline>{name}</Headline>
+      </View >
+    </View>
+    <View flexGrow>
+      {children}
+    </View>
+  </>
+}
 
 
-const NavMenu = ({ theme }) => {
 
-  const [index, setIndex] = useState(1)
+const NavMenu = () => {
 
-  const { userInfo } = useUserInfo()
+  const Tab = createMaterialTopTabNavigator()
 
+  const renderPage = (page, name) => {
+    return <NavHeader name={name}>{page}</NavHeader>
+  }
 
-  const ListingsRoute = () => <ListingsPage />
-
-  const MyListingsRoute = () => <MyListingsPage />
-
-  const ProfileRoute = () => <ProfilePage userInfo={userInfo} />
-
-  const routes = [
-    { key: "listings", title: "Listaukset", color: theme.colors.primary, icon: () => getIcon({ name: "book" }) },
-    { key: "myListings", title: "Minun listaukseni", color: theme.colors.primary, icon: () => getIcon({ name: "book-account" }) },
-    { key: "profile", title: "Profiili", color: theme.colors.primary, icon: () => getIcon({ name: "account-circle" }) }
-  ]
-
-  const renderScene = BottomNavigation.SceneMap({
-    listings: ListingsRoute,
-    myListings: MyListingsRoute,
-    profile: ProfileRoute,
-  })
 
   return (
-    <BottomNavigation
-      navigationState={{ index, routes }}
-      onIndexChange={setIndex}
-      renderScene={renderScene}
-      shifting={true}
-    />
+    <Tab.Navigator
+      initialRouteName={"Listings"}
+      tabBarPosition="bottom"
+      tabBarOptions={{
+        showIcon: true,
+        showLabel: false,
+      }}
+      screenOptions={({ route }) => ({
+        tabBarIcon: function Icon({ color }) {
+          let name
+          switch (route.name) {
+            case "Listings":
+              name = "book"
+              break
+            case "MyListings":
+              name = "book-account"
+              break
+            default:
+              name = "account-circle"
+              break
+          }
+          return <MaterialCommunityIcons name={name} color={color} size={24}></MaterialCommunityIcons>
+        }
+      })
+      }
+    >
+      <Tab.Screen name="Listings">{() => renderPage(<ListingsPage />, "Listaukset")}</Tab.Screen>
+      <Tab.Screen name="MyListings">{() => renderPage(<MyListingsPage />, "Omat listaukseni")}</Tab.Screen>
+      <Tab.Screen name="Profile">{() => renderPage(<ProfilePage />, "Profiili")}</Tab.Screen>
+    </Tab.Navigator >
   )
 }
 
-export default withTheme(NavMenu)
+export default NavMenu

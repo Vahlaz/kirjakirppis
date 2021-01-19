@@ -8,6 +8,7 @@ import { parseCondition } from "../utils/functions"
 import useUserInfo from "../hooks/useUserInfo"
 import { View, Text } from "./styled"
 
+
 const ListingItem = ({ item, theme }) => {
   const [visible, setVisible] = useState(false)
 
@@ -16,7 +17,6 @@ const ListingItem = ({ item, theme }) => {
   const { userInfo } = useUserInfo()
 
   const imageLink = books.find(book => book.title === item.Title)?.imageLink
-
 
   return <ThemeProvider theme={theme}>
     <List.Item
@@ -33,7 +33,6 @@ const ListingItem = ({ item, theme }) => {
           <Image style={{ width: 100, height: 150 }} source={{ uri: imageLink }} />
           <View marginx={10} justifyContent="space-evenly" shrink>
             <Text numberOfLines={4} ellipsizeMode="tail">{item.Title}</Text>
-            <Text>{item.Series}</Text>
             <Text>{item.Publisher}</Text>
             <Text>{item.Subject}</Text>
           </View>

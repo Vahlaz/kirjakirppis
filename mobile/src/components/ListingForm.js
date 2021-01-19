@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { useForm } from "react-hook-form"
-import { Button, ActivityIndicator } from "react-native-paper"
+import { Button, ActivityIndicator, TextInput, useTheme } from "react-native-paper"
 import DropDown from "react-native-paper-dropdown"
 import SearchableDropdown from "./SearchableDropdown"
 import books from "../assets/books.json"
@@ -28,6 +28,8 @@ const ListingForm = ({ setShowForm }) => {
       errorParser(error, setError, ["information", "price"])
     }
   })
+
+  const theme = useTheme()
 
   const conditionList = [
     { label: "Erinomainen", value: 3 },
@@ -74,12 +76,11 @@ const ListingForm = ({ setShowForm }) => {
             showDropDown={() => setShowDropDown(true)}
             onDismiss={() => setShowDropDown(false)}
             inputProps={{
-              right: () => getIcon({ name: "menu-down" }),
+              right: <TextInput.Icon icon={() => getIcon({ name: "menu-down" })} />,
             }}
           />
         </View>
       </View>
-
       <TextField
         control={control}
         label="Lisätietoja"

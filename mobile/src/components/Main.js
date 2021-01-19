@@ -1,5 +1,6 @@
 import React, { useEffect } from "react"
 import SelectSchoolPage from "./SelectSchoolPage"
+import { StatusBar } from "expo-status-bar"
 import NavMenu from "./NavMenu"
 import useSchool from "../hooks/useSchool"
 import useUserInfo from "../hooks/useUserInfo"
@@ -17,18 +18,17 @@ const Main = () => {
     getUserInfo()
   }, [])
 
+
   const { colors } = useTheme()
 
-
+  // <Headline>{currentPage}</Headline>
   return (
     <View flexGrow backgroundColor={colors.background}>
-      <View centerx height={80} centery backgroundColor={colors.primary}>
-        <Headline>Kirjakirppis</Headline>
-      </View>
       {!school ?
         <SelectSchoolPage setSelectedSchool={setSchool} />
         : <NavMenu />
       }
+      <StatusBar style="light" ></StatusBar>
     </View>
   )
 }
