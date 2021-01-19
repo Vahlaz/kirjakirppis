@@ -10,7 +10,6 @@ const checkIfFieldsExist = (props, fieldArray = []) => {
   })
 }
 
-
 export const Subheading = styled(DefaultSubheading)`
   margin-top: ${props => props.marginTop || 0}px;
   padding: ${props => props.padding || 0}px;
@@ -18,7 +17,8 @@ export const Subheading = styled(DefaultSubheading)`
 
 export const Text = styled(DefaultText)`
 ${props => checkIfFieldsExist(props, [
-  ["bold", "font-weight: bold;"]
+  ["bold", "font-weight: bold;"],
+  ["color", `color: ${props.color}`]
 ])}`
 
 export const View = styled(DefaultView)`
@@ -35,6 +35,7 @@ export const View = styled(DefaultView)`
   ["marginy", `margin-top: ${props.marginy}px; margin-bottom: ${props.marginy}px;`],
   ["marginx", `margin-left: ${props.marginx}px; margin-right: ${props.marginx}px;`],
   ["marginTop", `margin-top: ${props.marginTop}px;`],
+  ["marginBottom", `margin-bottom: ${props.marginBottom}px;`],
   ["maxWidth", `max-width: ${props.maxWidth}px;`],
   ["shrink", "flex-shrink: 1;"]
 ])

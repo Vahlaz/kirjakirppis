@@ -2,9 +2,9 @@ import React, { useState } from "react"
 import { FlatList, Dimensions } from "react-native"
 import { List, Searchbar, Chip, Modal, Portal, ThemeProvider, useTheme } from "react-native-paper"
 import { getIcon } from "../utils/functions"
-import { View , Text} from "./styled"
+import { View, Text } from "./styled"
 
-const SearchableDropdown = ({ items, fieldToSearch, onSelected, placeholder, icon, iconFamily, additionalKeyField }) => {
+const SearchableDropdown = ({ items, fieldToSearch, onSelected, placeholder, icon, iconFamily, additionalKeyField, onClose }) => {
 
   const [search, setSearch] = useState("")
   const [visible, setVisible] = useState(false)
@@ -35,13 +35,13 @@ const SearchableDropdown = ({ items, fieldToSearch, onSelected, placeholder, ico
 
     return (
       <List.Item
-        title={<Text>{firstPart}<Text bold>{boldPart}</Text>{secondPart}</Text>}
+        title={<Text>{firstPart}<Text bold color={theme.colors.accent}>{boldPart}</Text>{secondPart}</Text>}
         onPress={() => handlePress()}>
       </List.Item>
     )
   }
 
-  let filteredItems = search ? items.filter(item => item[fieldToSearch].toLowerCase().includes(search.toLowerCase())) : []
+  let filteredItems = search ? items.filter(item => item[fieldToSearch].toLowerCase().includes(search.toLowerCase())) : items
 
   const CustomChip = ({ hasClose, onPress, text }) => (
     <View row centerx centery marginy={20}>
@@ -54,10 +54,16 @@ const SearchableDropdown = ({ items, fieldToSearch, onSelected, placeholder, ico
     </View>
   )
 
+  const handleClose = () => {
+    setSelectedItem(null)
+    if (onClose) {
+      onClose()
+    }
+  }
 
   return <ThemeProvider theme={theme}>
     {
-      selectedItem ? <CustomChip onPress={() => { setVisible(false); setSelectedItem(null) }} text={selectedItem} hasClose />
+      selectedItem ? <CustomChip onPress={handleClose} text={selectedItem} hasClose />
         :
         <View>
           <Portal>

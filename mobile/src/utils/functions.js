@@ -1,5 +1,5 @@
 import React from "react"
-import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons"
+import { Ionicons, MaterialCommunityIcons, FontAwesome5 } from "@expo/vector-icons"
 import { useTheme } from "react-native-paper"
 
 export const turnToNumber = (string) => {
@@ -35,6 +35,8 @@ export const getIcon = (props, library) => {
   props = { ...props, color, size: props.size || 24 }
   if (library === "ioni") {
     return <Ionicons {...props} />
+  } else if (library === "fontAwesome") {
+    return <FontAwesome5 {...props} />
   }
   return <MaterialCommunityIcons {...props} />
 }

@@ -7,8 +7,13 @@ import { MaterialCommunityIcons } from "@expo/vector-icons"
 import { View } from "./styled"
 import { Headline } from "react-native-paper"
 import { useTheme } from "@react-navigation/native"
+import { ALL_LISTINGS } from "../graphql/queries"
+import { useQuery } from "@apollo/client"
+import useSchool from "../hooks/useSchool"
+import useUserInfo from "../hooks/useUserInfo"
 
 const NavHeader = ({ name, children }) => {
+
   const { colors } = useTheme()
   return <>
     < View backgroundColor={colors.primary} >
@@ -23,7 +28,6 @@ const NavHeader = ({ name, children }) => {
 }
 
 
-
 const NavMenu = () => {
 
   const Tab = createMaterialTopTabNavigator()
@@ -32,6 +36,11 @@ const NavMenu = () => {
     return <NavHeader name={name}>{page}</NavHeader>
   }
 
+  const { school } = useSchool()
+
+  const { userInfo } = useUserInfo()
+
+  const result = useQuery(ALL_LISTINGS, { variables: { school } })
 
   return (
     <Tab.Navigator
@@ -60,8 +69,8 @@ const NavMenu = () => {
       })
       }
     >
-      <Tab.Screen name="Listings">{() => renderPage(<ListingsPage />, "Listaukset")}</Tab.Screen>
-      <Tab.Screen name="MyListings">{() => renderPage(<MyListingsPage />, "Omat listaukseni")}</Tab.Screen>
+      <Tab.Screen name="Listings">{() => renderPage(<ListingsPage result={result} userInfo={userInfo}/>, "Listaukset")}</Tab.Screen>
+      <Tab.Screen name="MyListings">{() => renderPage(<MyListingsPage result={result} userInfo={userInfo}/>, "Omat listaukseni")}</Tab.Screen>
       <Tab.Screen name="Profile">{() => renderPage(<ProfilePage />, "Profiili")}</Tab.Screen>
     </Tab.Navigator >
   )

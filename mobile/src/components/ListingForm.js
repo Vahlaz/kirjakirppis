@@ -78,6 +78,7 @@ const ListingForm = ({ setShowForm }) => {
             inputProps={{
               right: <TextInput.Icon icon={() => getIcon({ name: "menu-down" })} />,
             }}
+            activeColor={theme.colors.text}
           />
         </View>
       </View>

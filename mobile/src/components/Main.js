@@ -4,7 +4,7 @@ import { StatusBar } from "expo-status-bar"
 import NavMenu from "./NavMenu"
 import useSchool from "../hooks/useSchool"
 import useUserInfo from "../hooks/useUserInfo"
-import { useTheme, Headline } from "react-native-paper"
+import { useTheme } from "react-native-paper"
 import { View } from "./styled"
 
 const Main = () => {
@@ -18,10 +18,8 @@ const Main = () => {
     getUserInfo()
   }, [])
 
-
   const { colors } = useTheme()
 
-  // <Headline>{currentPage}</Headline>
   return (
     <View flexGrow backgroundColor={colors.background}>
       {!school ?
