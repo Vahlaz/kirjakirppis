@@ -1,23 +1,22 @@
-import {
-  Container,
-  Paper,
-  Grid,
-  Table,
-  TableBody,
-  TableRow,
-  TableCell,
-  TableContainer,
-  Button,
-} from '@material-ui/core'
 import React, { useState } from 'react'
 import LoginForm from './LoginForm.js'
 import FaceOutlinedIcon from '@material-ui/icons/FaceOutlined'
 import { useApolloClient } from '@apollo/client'
 import NewUser from './NewUser.js'
+import { Container, Paper, Grid, Button, Typography } from '@material-ui/core'
 
 const UserWindow = ({ setUser, user }) => {
   const [loginform, setLoginform] = useState(true)
   const client = useApolloClient()
+
+  const handleLogout = (event) => {
+    event.preventDefault()
+    localStorage.removeItem('KirjaKirppis-user-token')
+    client.clearStore()
+    setUser()
+    console.log(user)
+  }
+
   if (!user) {
     return (
       <Container component={Paper}>
@@ -34,11 +33,10 @@ const UserWindow = ({ setUser, user }) => {
               onClick={(event) => {
                 event.preventDefault()
                 setLoginform(!loginform)
-                console.log(loginform)
               }}
               variant='outlined'
               color='secondary'
-              size="small"
+              size='small'
             >
               {loginform ? 'luo uusi käyttäjä' : 'kirjaudu sisään'}
             </Button>
@@ -50,32 +48,21 @@ const UserWindow = ({ setUser, user }) => {
 
   return (
     <Container component={Paper} align='center'>
-      <Grid container justify='center'>
-        <FaceOutlinedIcon fontSize='large' />
-        <TableContainer>
-          <Table size='small'>
-            <TableBody>
-              <TableRow>
-                <TableCell align='center'> {user.name} </TableCell>
-                <TableCell align='center'> </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell align='center'>{user.phonenumber}</TableCell>
-                <TableCell align='center'>{user.email}</TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
-        </TableContainer>
+      <Grid container justify='center' alignitems='center' direction='column'>
+        <Grid item>
+          <FaceOutlinedIcon fontSize='large' />
+        </Grid>
+        <Grid item>
+          <Typography variant='body1'>{user.name}</Typography>
+        </Grid>
+        <Grid item>
+          <Typography variant='body1'>{user.phonenumber}</Typography>
+        </Grid>
+        <Grid item>
+          <Typography variant='body1'>{user.email}</Typography>
+        </Grid>
       </Grid>
-      <Button
-        onClick={() => {
-          localStorage.removeItem('KirjaKirppis-user-token')
-          setUser()
-          client.clearStore()
-        }}
-      >
-        kirjaudu ulos
-      </Button>
+      <Button onClick={handleLogout}>kirjaudu ulos</Button>
     </Container>
   )
 }

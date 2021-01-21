@@ -23,7 +23,6 @@ const LoginForm = ({ setUser }) => {
         const { token } = data.data.login
         localStorage.setItem('KirjaKirppis-user-token', token)
         setUser(data.data.login.user)
-        console.log(data.data.login)
       }
     } catch (error) {
       setErrormessage(error.message)
@@ -33,14 +32,21 @@ const LoginForm = ({ setUser }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Grid container justify='center' direction='column' spacing={1} alignItems='center'>
+      <Grid
+        container
+        justify='center'
+        direction='column'
+        spacing={1}
+        alignItems='center'
+      >
         <Grid item>
           <TextField
             required
             id='email'
             label='sähköposti'
             variant='outlined'
-            size="small"
+            size='small'
+            style={{ minWidth: 250 }}
           />
         </Grid>
         <Grid item>
@@ -50,16 +56,12 @@ const LoginForm = ({ setUser }) => {
             label='salasana'
             variant='outlined'
             type='password'
-            size="small"
+            size='small'
+            style={{ minWidth: 250 }}
           />
         </Grid>
         <Grid item>
-          <Button
-            type='submit'
-            variant='outlined'
-            size='small'
-            color='primary'
-          >
+          <Button type='submit' variant='outlined'  color='primary'>
             Kirjaudu sisään
           </Button>
         </Grid>

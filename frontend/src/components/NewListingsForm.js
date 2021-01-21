@@ -13,23 +13,31 @@ import Autocomplete from '@material-ui/lab/Autocomplete'
 import { useState } from 'react'
 import books from '../assets/books.json'
 import { CREATE_LISTING } from './queries'
+import schools from '../assets/schools.json'
 
 const NewListingForm = ({ user }) => {
-  const [createListing] = useMutation(CREATE_LISTING, {refetchQueries: ['allListings']})
+  const [createListing] = useMutation(CREATE_LISTING, {
+    refetchQueries: ['allListings'],
+  })
   const [condition, setCondition] = useState('')
   const [book, setBook] = useState({})
   const [information, setInformation] = useState('')
   const [price, setPrice] = useState('')
-  const school = window.localStorage.getItem('KirjaKirppis-school')
+  const [school, setSchool] = useState(
+    schools.find(
+      (a) => a.name === window.localStorage.getItem('KirjaKirppis-school')
+    )
+  )
   const submit = async (event) => {
     event.preventDefault()
+    console.log(price.replace(/,/,'.'))
     const newListing = {
       ...book,
-      price: parseInt(price),
+      price: parseFloat(price.replace(/,/,'.')),
       condition: condition,
       information: information,
       user: user.id,
-      school: school,
+      school: school.name,
     }
     console.log(newListing)
     const data = await createListing({ variables: { ...newListing } })
@@ -61,7 +69,30 @@ const NewListingForm = ({ user }) => {
               margin='normal'
               id='kirja'
               renderInput={(params) => (
-                <TextField {...params} label='Valitse kirja'  variant="outlined"/>
+                <TextField
+                  {...params}
+                  label='Valitse kirja'
+                  variant='outlined'
+                />
+              )}
+            />
+          </Grid>
+          <Grid item>
+            <Autocomplete
+              onChange={(event, newValue) => {
+                setSchool(newValue)
+              }}
+              options={schools}
+              getOptionLabel={(option) => option.name}
+              margin='normal'
+              id='school'
+              defaultValue={school}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  label='Valitse koulu'
+                  variant='outlined'
+                />
               )}
             />
           </Grid>
@@ -105,8 +136,9 @@ const NewListingForm = ({ user }) => {
               variant='outlined'
             />
           </Grid>
+
           <Grid item>
-            <Button type='submit'> uusi listaus</Button>
+            <Button type='submit' variant="outlined"> luo listaus</Button>
           </Grid>
         </Grid>
       </form>
