@@ -9,12 +9,11 @@ const UserWindow = ({ setUser, user }) => {
   const [loginform, setLoginform] = useState(true)
   const client = useApolloClient()
 
-  const handleLogout = (event) => {
+  const handleLogout = async (event) => {
     event.preventDefault()
-    localStorage.removeItem('KirjaKirppis-user-token')
-    client.clearStore()
-    setUser()
-    console.log(user)
+    await localStorage.removeItem('KirjaKirppis-user-token')
+    await client.resetStore()
+    setUser('')
   }
 
   if (!user) {
@@ -62,7 +61,9 @@ const UserWindow = ({ setUser, user }) => {
           <Typography variant='body1'>{user.email}</Typography>
         </Grid>
       </Grid>
-      <Button onClick={handleLogout} variant="outlined" color="secondary">kirjaudu ulos</Button>
+      <Button onClick={handleLogout} variant='outlined' color='secondary'>
+        kirjaudu ulos
+      </Button>
     </Container>
   )
 }

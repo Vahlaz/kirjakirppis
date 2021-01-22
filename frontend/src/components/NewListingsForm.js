@@ -32,7 +32,7 @@ const NewListingForm = ({ user }) => {
     event.preventDefault()
     const newListing = {
       ...book,
-      price: parseFloat(price.replace(/,/,'.')),
+      price: parseFloat(price.replace(/,/, '.')),
       condition: condition,
       information: information,
       user: user.id,
@@ -72,6 +72,7 @@ const NewListingForm = ({ user }) => {
                   {...params}
                   label='Valitse kirja'
                   variant='outlined'
+                  size='small'
                 />
               )}
             />
@@ -91,6 +92,7 @@ const NewListingForm = ({ user }) => {
                   {...params}
                   label='Valitse koulu'
                   variant='outlined'
+                  size='small'
                 />
               )}
             />
@@ -104,8 +106,9 @@ const NewListingForm = ({ user }) => {
               InputProps={{
                 endAdornment: <InputAdornment position='end'>€</InputAdornment>,
               }}
-              style={{ minWidth: 250 }}
+              style={{ minWidth: 260 }}
               variant='outlined'
+              size='small'
             />
           </Grid>
           <Grid item>
@@ -115,8 +118,9 @@ const NewListingForm = ({ user }) => {
               label='kunto'
               value={condition}
               onChange={(event) => setCondition(event.target.value)}
-              style={{ minWidth: 250 }}
+              style={{ minWidth: 260 }}
               variant='outlined'
+              size='small'
             >
               <MenuItem value={1}>Käytettävä</MenuItem>
               <MenuItem value={2}>Hyvä</MenuItem>
@@ -133,11 +137,15 @@ const NewListingForm = ({ user }) => {
               style={{ minWidth: 250 }}
               helperText='Kerro lisää kirjan kunnosta tai noutotavasta'
               variant='outlined'
+              size='small'
             />
           </Grid>
 
           <Grid item>
-            <Button type='submit' variant="outlined"> luo listaus</Button>
+            <Button type='submit' variant='outlined'>
+              {' '}
+              luo listaus
+            </Button>
           </Grid>
         </Grid>
       </form>

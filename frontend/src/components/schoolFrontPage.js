@@ -33,7 +33,6 @@ const SchoolFrontPage = ({ setSchool }) => {
     )
   }
   if (!user && token && userResult.data.me) {
-    console.log(userResult.data.me)
     setUser(userResult.data.me)
   }
   if (result.loading) {
