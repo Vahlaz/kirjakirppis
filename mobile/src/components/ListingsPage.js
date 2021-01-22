@@ -4,7 +4,6 @@ import { Subheading, View } from "./styled"
 import SearchableDropdown from "./SearchableDropdown"
 import books from "../assets/books.json"
 import SearchBar from "./SearchBar"
-import {unique} from "../utils/functions"
 
 const ListingsPage = ({ result, userInfo }) => {
 
@@ -12,11 +11,17 @@ const ListingsPage = ({ result, userInfo }) => {
     return null
   }
 
-  let subjects = books.map(book => [...book.subjects])
+  let subjects = []
+
+  books.forEach(book => {
+    book.subjects.forEach(subject => {
+      if (!subjects.includes(subject)) {
+        subjects.push(subject)
+      }
+    })
+  })
 
   const [searchTitle, setSearchTitle] = useState()
-
-  subjects = unique(subjects)
 
   const [searchSubject, setSearchSubject] = useState(null)
 
