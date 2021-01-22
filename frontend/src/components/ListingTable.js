@@ -10,10 +10,24 @@ import books from '../assets/books.json'
 import { ExpandMoreOutlined } from '@material-ui/icons'
 import DeleteButton from './DeleteButton'
 
+const parseCondition = (condition) => {
+  if (condition === 3) {
+    return 'Käytettävä'
+  }
+  if (condition === 2) {
+    return 'Hyvä'
+  }
+  if (condition === 1) {
+    return 'Erinomainen'
+  } else {
+    return 'Väärin merkitty kuntoluokka'
+  }
+}
+
 const ListingText = ({ text }) => {
   return (
     <Grid item>
-      <Typography variant='body1'>{text}</Typography>
+      <Typography variant='subtitle2'>{text}</Typography>
     </Grid>
   )
 }
@@ -48,13 +62,22 @@ const ListingTable = ({ data, user }) => {
             </Grid>
           </AccordionSummary>
           <AccordionDetails>
-            <Grid container direction='row'>
-              <Grid item xs={11}>
+            <Grid container direction='row' spacing={1}>
+              <Grid item xs={4}>
                 <Grid container spacing={1} direction='column'>
                   <ListingText text={`Myyjä: ${listing.User.name}`} />
                   <ListingText text={`puh: ${listing.User.phonenumber}`} />
                   <ListingText text={`sähköposti: ${listing.User.email}`} />
+                  <Grid item>
+                    <Typography variant='subtitle2'>
+                      Kunto: {parseCondition(listing.Condition)}
+                    </Typography>
+                  </Grid>
                 </Grid>
+              </Grid>
+              <Grid item xs={7}>
+                <Typography variant='subtitle2'>Lisätietoa: </Typography>
+                <Typography variant='body1'>{listing.Information}</Typography>
               </Grid>
               <Grid item xs={1}>
                 <DeleteButton

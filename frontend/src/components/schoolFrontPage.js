@@ -1,16 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import { useQuery } from '@apollo/client'
 import { ALL_LISTINGS } from './queries.js'
-import { Button, CircularProgress, Grid, Typography } from '@material-ui/core'
+import {
+  Button,
+  CircularProgress,
+  Grid,
+  Typography,
+} from '@material-ui/core'
 import ListingTable from './ListingTable'
 import UserWindow from './UserWindow.js'
 import { ME } from './queries.js'
 import NewListingForm from './NewListingsForm.js'
+import UserListings from './UserListings'
 
 const SchoolFrontPage = ({ setSchool }) => {
   const [token, setToken] = useState('')
-  const [user, setUser] = useState()
-  
+  const [user, setUser] = useState('')
+
   const School = localStorage.getItem('KirjaKirppis-school')
   const result = useQuery(ALL_LISTINGS, {
     variables: { school: `${School}` },
@@ -26,7 +32,7 @@ const SchoolFrontPage = ({ setSchool }) => {
       </>
     )
   }
-  if (!user && userResult.data.me) {
+  if (!user && token && userResult.data.me) {
     setUser(userResult.data.me)
   }
   if (result.loading) {
@@ -65,13 +71,10 @@ const SchoolFrontPage = ({ setSchool }) => {
               <UserWindow token={token} setUser={setUser} user={user} />
             </Grid>
             <Grid item>
-              {user?.school === School ? (
-                <NewListingForm user={user} />
-              ) : (
-                <Typography variant='subtitle1'>
-                  Voit luoda listauksia vain omaan kouluusi
-                </Typography>
-              )}
+              <NewListingForm user={user} />
+            </Grid>
+            <Grid item>
+              <UserListings listings={allListings} user={user} />
             </Grid>
           </Grid>
         </Grid>

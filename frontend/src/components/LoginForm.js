@@ -7,6 +7,8 @@ import { Alert } from '@material-ui/lab'
 const LoginForm = ({ setUser }) => {
   const [login] = useMutation(LOGIN)
   const [errormessage, setErrormessage] = useState('')
+  const [emailInvalid, setEmailInvalid] = useState(false)
+  const [passwordInvalid, setPasswordInvalid] = useState(false)
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -23,7 +25,6 @@ const LoginForm = ({ setUser }) => {
         const { token } = data.data.login
         localStorage.setItem('KirjaKirppis-user-token', token)
         setUser(data.data.login.user)
-        console.log(data.data.login)
       }
     } catch (error) {
       setErrormessage(error.message)
@@ -33,37 +34,60 @@ const LoginForm = ({ setUser }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Grid container justify='center' direction='column' spacing={1} alignItems='center'>
+      <Grid
+        container
+        justify='center'
+        direction='column'
+        spacing={1}
+        alignItems='center'
+      >
         <Grid item>
           <TextField
+            error={emailInvalid}
             required
             id='email'
             label='sähköposti'
             variant='outlined'
-            size="small"
+            size='small'
+            style={{ minWidth: 250 }}
+            onInvalid={(event) => {
+              setEmailInvalid(true)
+              event.target.setCustomValidity(' ')
+            }}
+            onInput={(event) => {
+              setEmailInvalid(false)
+              event.target.setCustomValidity('')
+            }}
           />
         </Grid>
         <Grid item>
           <TextField
+            error={passwordInvalid}
             required
             id='password'
             label='salasana'
             variant='outlined'
             type='password'
-            size="small"
+            size='small'
+            style={{ minWidth: 250 }}
+            onInvalid={(event) => {
+              setPasswordInvalid(true)
+              event.target.setCustomValidity(' ')
+            }}
+            onInput={(event) => {
+              setPasswordInvalid(false)
+              event.target.setCustomValidity('')
+            }}
           />
         </Grid>
         <Grid item>
-          <Button
-            type='submit'
-            variant='outlined'
-            size='small'
-            color='primary'
-          >
+          {errormessage ? <Alert severity='error'>{errormessage}</Alert> : null}
+        </Grid>
+        <Grid item>
+          <Button type='submit' variant='outlined' color='primary'>
             Kirjaudu sisään
           </Button>
         </Grid>
-        {errormessage ? <Alert severity='error'>{errormessage}</Alert> : null}
       </Grid>
     </form>
   )

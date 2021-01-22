@@ -1,4 +1,4 @@
-import { Button, Container, Grid, TextField } from '@material-ui/core'
+import { Button, Grid, TextField } from '@material-ui/core'
 import schools from '../assets/schools.json'
 import React, { useState } from 'react'
 import { Alert, Autocomplete } from '@material-ui/lab'
@@ -39,55 +39,116 @@ const NewUser = ({ setLoginform }) => {
   }
 
   return (
-    <Container>
-      <form onSubmit={handleSubmit}>
-        <Grid container justify='center' direction='column'>
-          <Grid item>
-            <TextField id='createName' label='Nimi'></TextField>
-          </Grid>
-          <Grid item>
-            <TextField id='createEmail' label='Sähköposti'></TextField>
-          </Grid>
-          <Grid item>
-            <TextField
-              id='createPhoneNumber'
-              label='Puhelin numero'
-            ></TextField>
-          </Grid>
-          <Grid item>
-            <TextField
-              multiline
-              id='createInformation'
-              label='Tietoa sinusta'
-            ></TextField>
-          </Grid>
-          <Grid item>
-            <Autocomplete
-              onChange={(event, newValue) => {
-                setSchool(newValue)
-              }}
-              options={schools}
-              getOptionLabel={(option) => option.name}
-              margin='normal'
-              id='school'
-              defaultValue={school}
-              renderInput={(params) => (
-                <TextField {...params} label='Valitse koulu' />
-              )}
-            />
-          </Grid>
-          <Grid item>
-            <TextField id='createPassword' label='salasana'></TextField>
-          </Grid>
-          <Grid item>
-            <Button type='submit'>luo käyttäjä</Button>
-          </Grid>
-
-          {errorMessage ? <Alert severity='error'>{errorMessage}</Alert> : null}
-          {message ? <Alert severity='success'>{message}</Alert> : null}
+    <form onSubmit={handleSubmit}>
+      <Grid
+        container
+        justify='center'
+        direction='column'
+        spacing={1}
+        alignItems='center'
+      >
+        <Grid item>
+          <TextField
+            required
+            id='createName'
+            label='Nimi'
+            style={{ minWidth: 250 }}
+            variant='outlined'
+            size='small'
+            onInvalid={(event) => {
+              event.target.setCustomValidity(' ')
+            }}
+            onInput={(event) => {
+              event.target.setCustomValidity('')
+            }}
+          ></TextField>
         </Grid>
-      </form>
-    </Container>
+        <Grid item>
+          <TextField
+            id='createEmail'
+            label='Sähköposti'
+            style={{ minWidth: 250 }}
+            variant='outlined'
+            size='small'
+            required
+            onInvalid={(event) => {
+              event.target.setCustomValidity(' ')
+            }}
+            onInput={(event) => {
+              event.target.setCustomValidity('')
+            }}
+          ></TextField>
+        </Grid>
+        <Grid item>
+          <TextField
+            id='createPhoneNumber'
+            label='Puhelinnumero'
+            style={{ minWidth: 250 }}
+            variant='outlined'
+            size='small'
+            required
+            onInvalid={(event) => {
+              event.target.setCustomValidity(' ')
+            }}
+            onInput={(event) => {
+              event.target.setCustomValidity('')
+            }}
+          ></TextField>
+        </Grid>
+        <Grid item>
+          <Autocomplete
+            onChange={(event, newValue) => {
+              setSchool(newValue)
+            }}
+            options={schools}
+            getOptionLabel={(option) => option.name}
+            margin='normal'
+            id='school'
+            defaultValue={school}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label='Valitse koulu'
+                style={{ minWidth: 250 }}
+                variant='outlined'
+                size='small'
+                required
+                onInvalid={(event) => {
+                  event.target.setCustomValidity(' ')
+                }}
+                onInput={(event) => {
+                  event.target.setCustomValidity('')
+                }}
+              />
+            )}
+          />
+        </Grid>
+        <Grid item>
+          <TextField
+            id='createPassword'
+            label='salasana'
+            style={{ minWidth: 250 }}
+            variant='outlined'
+            size='small'
+            required
+            onInvalid={(event) => {
+              event.target.setCustomValidity(' ')
+            }}
+            onInput={(event) => {
+              event.target.setCustomValidity('')
+            }}
+          ></TextField>
+        </Grid>
+        <Grid item>
+          <Button type='submit' variant='outlined' color='primary'>
+            luo käyttäjä
+          </Button>
+        </Grid>
+
+        {errorMessage ? <Alert severity='error'>{errorMessage}</Alert> : null}
+        {message ? <Alert severity='success'>{message}</Alert> : null}
+      </Grid>
+    </form>
   )
 }
 
