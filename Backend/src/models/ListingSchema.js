@@ -22,10 +22,10 @@ const schema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  Subject: {
+  Subjects: [{
     type: String,
     required: true,
-  },
+  }],
   Condition: {
     type: Number,
     required: true,
