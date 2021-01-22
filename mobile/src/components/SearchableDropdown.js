@@ -5,7 +5,7 @@ import SearchChip from "./SearchChip"
 import { useTheme } from "react-native-paper"
 
 
-const SearchableDropdown = ({ items, fieldToSearch, onSelected, placeholder, icon, iconFamily, additionalKeyField, onClose }) => {
+const SearchableDropdown = ({ items, fieldToSearch, onSelected, placeholder, icon, iconFamily, onClose }) => {
 
   const [search, setSearch] = useState("")
   const [visible, setVisible] = useState(false)
@@ -36,7 +36,7 @@ const SearchableDropdown = ({ items, fieldToSearch, onSelected, placeholder, ico
   return <SearchChip
     {...{ handleClose, modalStyle, visible, setVisible, selectedItem, setSelectedItem, placeholder, icon, iconFamily, search, setSearch }}
   >
-    <SeachList {...{ fieldToSearch, additionalKeyField, search, handlePress }} items={filteredItems} />
+    <SeachList {...{ fieldToSearch, search, handlePress }} items={filteredItems} />
   </SearchChip>
 }
 

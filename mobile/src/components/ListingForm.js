@@ -51,7 +51,6 @@ const ListingForm = ({ setShowForm }) => {
         onSelected={(bookTitle) => setBook(books.find(book => book.title === bookTitle))}
         placeholder="Valitse myytävä kirja"
         icon="book"
-        additionalKeyField="subject"
       />
       <View row justifyContent="space-between" width={320}>
         <TextField

@@ -12,7 +12,7 @@ const ListingsPage = ({ result, userInfo }) => {
     return null
   }
 
-  let subjects = books.map(book => book.subject)
+  let subjects = books.map(book => [...book.subjects])
 
   const [searchTitle, setSearchTitle] = useState()
 
@@ -27,7 +27,7 @@ const ListingsPage = ({ result, userInfo }) => {
     const notMyListings = allListings.filter(listing => listing.User.id !== userInfo.id)
     const listingsToShow = notMyListings.filter(listing => {
       console.log()
-      if (searchSubject && listing.Subject !== searchSubject) {
+      if (searchSubject && !listing.Subjects.includes(searchSubject)) {
         return false
       }
       if (searchTitle && !listing.Title.includes(searchTitle)) {

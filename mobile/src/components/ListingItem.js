@@ -38,7 +38,7 @@ const ListingItem = ({ item, theme }) => {
           <Divider />
           <Text>{item.Publisher}</Text>
           <Divider />
-          <Text>{item.Subject}</Text>
+          <Text>{item.Subjects}</Text>
           <Divider />
         </View>
         </View>

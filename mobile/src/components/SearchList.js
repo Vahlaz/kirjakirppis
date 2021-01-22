@@ -3,7 +3,7 @@ import { FlatList } from "react-native"
 import { List, useTheme } from "react-native-paper"
 import { View, Text } from "./styled"
 
-const SeachList = ({ fieldToSearch, additionalKeyField, items, search, handlePress }) => {
+const SeachList = ({ fieldToSearch, items, search, handlePress }) => {
 
   const theme = useTheme()
 
@@ -34,7 +34,7 @@ const SeachList = ({ fieldToSearch, additionalKeyField, items, search, handlePre
       <FlatList
         data={items}
         renderItem={renderItem}
-        keyExtractor={item => item[fieldToSearch] + item[additionalKeyField]}
+        keyExtractor={item => item[fieldToSearch]}
         keyboardShouldPersistTaps="handled"
       />
     </View>
