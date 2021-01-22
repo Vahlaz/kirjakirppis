@@ -6,7 +6,7 @@ type Listing {
     Series: String!
     Title: String!
     Publisher: String!
-    Subjects: [String]!
+    Subjects: [String!]!
     Condition: Int!
     School: String!
     id: ID!
