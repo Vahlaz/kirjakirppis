@@ -7,7 +7,6 @@ import {
   Paper,
   AccordionDetails,
 } from '@material-ui/core'
-import books from '../assets/books.json'
 import React from 'react'
 import { ExpandMoreOutlined } from '@material-ui/icons'
 import DeleteButton from './DeleteButton'

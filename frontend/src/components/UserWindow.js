@@ -62,7 +62,7 @@ const UserWindow = ({ setUser, user }) => {
           <Typography variant='body1'>{user.email}</Typography>
         </Grid>
       </Grid>
-      <Button onClick={handleLogout}>kirjaudu ulos</Button>
+      <Button onClick={handleLogout} variant="outlined" color="secondary">kirjaudu ulos</Button>
     </Container>
   )
 }

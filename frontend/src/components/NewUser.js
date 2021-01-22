@@ -1,4 +1,4 @@
-import { Button, Container, Grid, TextField } from '@material-ui/core'
+import { Button, Grid, TextField } from '@material-ui/core'
 import schools from '../assets/schools.json'
 import React, { useState } from 'react'
 import { Alert, Autocomplete } from '@material-ui/lab'
@@ -49,11 +49,18 @@ const NewUser = ({ setLoginform }) => {
       >
         <Grid item>
           <TextField
+            required
             id='createName'
             label='Nimi'
             style={{ minWidth: 250 }}
             variant='outlined'
             size='small'
+            onInvalid={(event) => {
+              event.target.setCustomValidity(' ')
+            }}
+            onInput={(event) => {
+              event.target.setCustomValidity('')
+            }}
           ></TextField>
         </Grid>
         <Grid item>
@@ -63,6 +70,13 @@ const NewUser = ({ setLoginform }) => {
             style={{ minWidth: 250 }}
             variant='outlined'
             size='small'
+            required
+            onInvalid={(event) => {
+              event.target.setCustomValidity(' ')
+            }}
+            onInput={(event) => {
+              event.target.setCustomValidity('')
+            }}
           ></TextField>
         </Grid>
         <Grid item>
@@ -72,6 +86,13 @@ const NewUser = ({ setLoginform }) => {
             style={{ minWidth: 250 }}
             variant='outlined'
             size='small'
+            required
+            onInvalid={(event) => {
+              event.target.setCustomValidity(' ')
+            }}
+            onInput={(event) => {
+              event.target.setCustomValidity('')
+            }}
           ></TextField>
         </Grid>
         <Grid item>
@@ -91,6 +112,13 @@ const NewUser = ({ setLoginform }) => {
                 style={{ minWidth: 250 }}
                 variant='outlined'
                 size='small'
+                required
+                onInvalid={(event) => {
+                  event.target.setCustomValidity(' ')
+                }}
+                onInput={(event) => {
+                  event.target.setCustomValidity('')
+                }}
               />
             )}
           />
@@ -102,6 +130,13 @@ const NewUser = ({ setLoginform }) => {
             style={{ minWidth: 250 }}
             variant='outlined'
             size='small'
+            required
+            onInvalid={(event) => {
+              event.target.setCustomValidity(' ')
+            }}
+            onInput={(event) => {
+              event.target.setCustomValidity('')
+            }}
           ></TextField>
         </Grid>
         <Grid item>

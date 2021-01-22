@@ -30,7 +30,6 @@ const NewListingForm = ({ user }) => {
   )
   const submit = async (event) => {
     event.preventDefault()
-    console.log(price.replace(/,/,'.'))
     const newListing = {
       ...book,
       price: parseFloat(price.replace(/,/,'.')),
