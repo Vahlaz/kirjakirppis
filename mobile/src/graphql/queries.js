@@ -8,7 +8,7 @@ export const ALL_LISTINGS = gql`
     $publisher: String
     $subjects: [String!]!
     $condition: Int
-    $school: String
+    $school: String 
   ) {
     allListings(
       User: $user
