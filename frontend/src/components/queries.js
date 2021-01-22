@@ -83,7 +83,7 @@ export const CREATE_LISTING = gql`
     $series: String!
     $title: String!
     $publisher: String!
-    $subject: String!
+    $subjects: [String!]!
     $condition: Int!
     $school: String!
   ) {
@@ -94,7 +94,7 @@ export const CREATE_LISTING = gql`
       Series: $series
       Title: $title
       Publisher: $publisher
-      Subject: $subject
+      Subjects: $subjects
       Condition: $condition
       School: $school
     ) {
