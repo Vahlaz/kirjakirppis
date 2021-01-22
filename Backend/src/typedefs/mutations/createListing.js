@@ -6,7 +6,7 @@ const createListing = `
     Series: String!
     Title: String!
     Publisher: String!
-    Subject: String!
+    Subjects: [String]!
     Condition: Int!
     School: String!
   ): Listing
