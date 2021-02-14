@@ -93,7 +93,7 @@ const SchoolFrontPage = ({ setSchool }) => {
               <NewListingForm user={user} />
             </Grid>
             <Grid item>
-              <UserListings listings={allListings} user={user} />
+              <UserListings listings={result.data.allListings} user={user} />
             </Grid>
           </Grid>
         </Grid>
