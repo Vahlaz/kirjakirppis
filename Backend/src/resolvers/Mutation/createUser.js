@@ -7,6 +7,9 @@ const createUser = async (root, args) => {
   const user = new User({ ...args, passwordhash: passwordhash })
   console.log(args)
   console.log(user)
+  if (args.name.length() > 40) {
+    throw new UserInputError('Nimi on liian pitkä (max. 40 merkkiä)')
+  }
 
   if (!args.email || (await User.findOne({ email: args.email }))) {
     throw new UserInputError('Sähköposti varattu')

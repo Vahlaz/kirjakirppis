@@ -79,7 +79,7 @@ export const CREATE_LISTING = gql`
   mutation createListing(
     $user: ID!
     $price: Float!
-    $information: String
+    $information: String!
     $series: String!
     $title: String!
     $publisher: String!

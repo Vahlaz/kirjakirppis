@@ -20,9 +20,9 @@ const authLink = setContext((_, { headers }) => {
     },
   }
 })
-
+//https://nhc02zvzbj.execute-api.eu-central-1.amazonaws.com/dev/graphql
 const httplink = new HttpLink({
-  uri: 'https://nhc02zvzbj.execute-api.eu-central-1.amazonaws.com/dev/graphql',
+  uri: 'http://localhost:4000',
 })
 
 const client = new ApolloClient({

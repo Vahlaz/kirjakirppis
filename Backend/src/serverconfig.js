@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 const jwt = require('jsonwebtoken')
 const typeDefs = require('./typedefs/typeDefs')
 const JWT_SECRET = process.env.JWT_SECRET
-
+const formatError = require('./formatError')
 mongoose
   .connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
@@ -36,6 +36,7 @@ const serverConfig = {
       return { currentUser }
     }
   },
+  formatError
 }
 
 module.exports = serverConfig

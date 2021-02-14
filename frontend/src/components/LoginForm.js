@@ -7,13 +7,12 @@ import { Alert } from '@material-ui/lab'
 const LoginForm = ({ setUser }) => {
   const [login] = useMutation(LOGIN)
   const [errormessage, setErrormessage] = useState('')
-  const [emailInvalid, setEmailInvalid] = useState(false)
-  const [passwordInvalid, setPasswordInvalid] = useState(false)
+  const [errors, setErrors] = useState([])
+  const [email, setEmail] = useState()
+  const [password, setPassword] = useState()
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    const email = event.target.email.value
-    const password = event.target.password.value
     try {
       const data = await login({
         variables: {
@@ -27,7 +26,13 @@ const LoginForm = ({ setUser }) => {
         setUser(data.data.login.user)
       }
     } catch (error) {
-      setErrormessage(error.message)
+      if (error.networkError) {
+        setErrors(error.networkError.result.errors.map(e => e.message))
+        setErrormessage(error.networkError.result.errors.map(e => e.message ))
+      }
+      if(!error.networkError){
+        setErrormessage(error.message)
+      }
       setTimeout(() => setErrormessage(''), 3000)
     }
   }
@@ -43,40 +48,30 @@ const LoginForm = ({ setUser }) => {
       >
         <Grid item>
           <TextField
-            error={emailInvalid}
-            required
+            error={errors.includes('Sähköposti on pakollinen. ')}
             id='email'
             label='sähköposti'
             variant='outlined'
             size='small'
             style={{ minWidth: 250 }}
-            onInvalid={(event) => {
-              setEmailInvalid(true)
-              event.target.setCustomValidity(' ')
-            }}
-            onInput={(event) => {
-              setEmailInvalid(false)
-              event.target.setCustomValidity('')
+            onChange={(event) => {
+              setErrors([])
+              setEmail(event.target.value)
             }}
           />
         </Grid>
         <Grid item>
           <TextField
-            error={passwordInvalid}
-            required
+            error={errors.includes('Salasana on pakollinen. ')}
             id='password'
             label='salasana'
             variant='outlined'
             type='password'
             size='small'
             style={{ minWidth: 250 }}
-            onInvalid={(event) => {
-              setPasswordInvalid(true)
-              event.target.setCustomValidity(' ')
-            }}
-            onInput={(event) => {
-              setPasswordInvalid(false)
-              event.target.setCustomValidity('')
+            onChange={(event) => {
+              setErrors([])
+              setPassword(event.target.value)
             }}
           />
         </Grid>

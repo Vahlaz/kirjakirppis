@@ -18,7 +18,9 @@ import schools from '../assets/schools.json'
 const NewListingForm = ({ user }) => {
   const [createListing] = useMutation(CREATE_LISTING, {
     refetchQueries: ['allListings'],
+    errorPolicy: 'all',
   })
+  const [errors, setErrors] = useState([])
   const [condition, setCondition] = useState('')
   const [book, setBook] = useState({})
   const [information, setInformation] = useState('')
@@ -39,11 +41,14 @@ const NewListingForm = ({ user }) => {
       school: school.name,
     }
     console.log(newListing)
-    const data = await createListing({ variables: { ...newListing } })
-    if (data.data.createListing) {
-      console.log(data.data)
+    try {
+      const data = await createListing({ variables: { ...newListing } })
+      console.log(data)
+    } catch (error) {
+      setErrors(error.networkError.result.errors.map(e => e.message))
     }
   }
+
 
   if (!user)
     return (
@@ -73,6 +78,9 @@ const NewListingForm = ({ user }) => {
                   label='Valitse kirja'
                   variant='outlined'
                   size='small'
+                  error={errors.includes('Kirjaa ei ole määritelty')}
+                  onInput={() => setErrors([])}
+
                 />
               )}
             />
@@ -93,6 +101,8 @@ const NewListingForm = ({ user }) => {
                   label='Valitse koulu'
                   variant='outlined'
                   size='small'
+                  error={errors.includes('Koulua ei ole valittu')}
+                  onInput={() => setErrors([])}
                 />
               )}
             />
@@ -109,6 +119,8 @@ const NewListingForm = ({ user }) => {
               style={{ minWidth: 260 }}
               variant='outlined'
               size='small'
+              error={errors.includes('Hintaa ei ole määritelty')}
+              onInput={() => setErrors([])}
             />
           </Grid>
           <Grid item>
@@ -117,10 +129,14 @@ const NewListingForm = ({ user }) => {
               id='kunto'
               label='kunto'
               value={condition}
-              onChange={(event) => setCondition(event.target.value)}
+              onChange={(event) => {
+                setCondition(event.target.value)
+                setErrors([])
+              }}
               style={{ minWidth: 260 }}
               variant='outlined'
               size='small'
+              error={errors.includes('Kuntoa ei ole valittu')}
             >
               <MenuItem value={1}>Käytettävä</MenuItem>
               <MenuItem value={2}>Hyvä</MenuItem>
@@ -143,7 +159,6 @@ const NewListingForm = ({ user }) => {
 
           <Grid item>
             <Button type='submit' variant='outlined'>
-              {' '}
               luo listaus
             </Button>
           </Grid>
