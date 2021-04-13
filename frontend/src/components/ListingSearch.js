@@ -4,7 +4,6 @@ const ListingSearch = (listings, search) => {
         if (searchedListings) return searchedListings
         else return []
     }
-    console.log('here2')
     return listings
 }
 

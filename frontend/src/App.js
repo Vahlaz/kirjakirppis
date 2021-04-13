@@ -2,6 +2,7 @@ import { Box, Container, Paper } from '@material-ui/core'
 import React, { useState } from 'react'
 import FrontPage from './components/frontpage'
 import SchoolFrontPage from './components/schoolFrontPage'
+import MobileSchoolFrontPage from './components/MobileSchoolFrontPage'
 import './App.css'
 
 const App = () => {
@@ -13,6 +14,21 @@ const App = () => {
     setSchool(value.name)
   }
 
+  if (window.innerWidth <= 770) {
+    return (
+      <div>
+        <Box component={Paper}>
+          <Container>
+            {school ? (
+              <MobileSchoolFrontPage setSchool={setSchool} />
+            ) : (
+              <FrontPage changeSchool={changeSchool} />
+            )}
+          </Container>
+        </Box>
+      </div>
+    )
+  }
 
   return (
     <div>

@@ -7,7 +7,7 @@ const createUser = async (root, args) => {
   const user = new User({ ...args, passwordhash: passwordhash })
   console.log(args)
   console.log(user)
-  if (args.name.length() > 40) {
+  if (args.name.length > 40) {
     throw new UserInputError('Nimi on liian pitkä (max. 40 merkkiä)')
   }
 
