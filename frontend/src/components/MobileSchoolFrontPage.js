@@ -5,7 +5,10 @@ import { ALL_LISTINGS } from './queries.js'
 import {
     BottomNavigation,
     BottomNavigationAction,
+    Button,
     CircularProgress,
+    Typography,
+
 } from '@material-ui/core'
 import UserWindow from './UserWindow.js'
 import { ME } from './queries.js'
@@ -19,7 +22,7 @@ const ChoosePage = ({ page, data, user, setUser, token }) => {
     return (<>404</>)
 }
 
-const MobileSchoolFrongPage = () => {
+const MobileSchoolFrongPage = ({setSchool}) => {
     const [page, setPage] = useState(0)
     const School = localStorage.getItem('KirjaKirppis-school')
     const [token, setToken] = useState('')
@@ -53,12 +56,22 @@ const MobileSchoolFrongPage = () => {
 
     const allListings = result.data.allListings
     return (
-        <div style={{ position: 'relative' }}>
+        <div style={{ paddingBottom: 50 }}>
+            <Typography variant='h6'>{School}</Typography>
+            <Button
+                onClick={() => {
+                    window.localStorage.removeItem('KirjaKirppis-school')
+                    setSchool('')
+                }}
+            >
+                Vaihda koulua
+          </Button>
             <ChoosePage page={page} data={allListings} user={user} setUser={setUser} token={token} />
+
             <BottomNavigation
                 value={page}
                 onChange={(event, newValue) => setPage(newValue)}
-                style={{ position: 'fixed', bottom: 0, width: '100%' }}
+                style={{ position: 'fixed', bottom: 0, top: "auto", width: '100%' }}
 
             >
                 <BottomNavigationAction showLabel label='Ilmoitukset' icon={<FaceOutlined />} />

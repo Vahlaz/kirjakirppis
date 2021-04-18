@@ -1,4 +1,4 @@
-import { Box, Container, Paper } from '@material-ui/core'
+import { Box, Container, Paper} from '@material-ui/core'
 import React, { useState } from 'react'
 import FrontPage from './components/frontpage'
 import SchoolFrontPage from './components/schoolFrontPage'
@@ -17,7 +17,7 @@ const App = () => {
   if (window.innerWidth <= 770) {
     return (
       <div>
-        <Box component={Paper}>
+        <Box >
           <Container>
             {school ? (
               <MobileSchoolFrontPage setSchool={setSchool} />
