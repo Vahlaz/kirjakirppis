@@ -2,11 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useQuery } from '@apollo/client'
 import { ALL_LISTINGS } from './queries.js'
 import {
-  Button,
   CircularProgress,
   Grid,
-  TextField,
-  Typography,
 } from '@material-ui/core'
 import ListingTable from './ListingTable'
 import UserWindow from './UserWindow.js'
@@ -16,6 +13,8 @@ import UserListings from './UserListings'
 import ListingSearch from './ListingSearch'
 import { Autocomplete } from '@material-ui/lab'
 import books from '../assets/books.json'
+import {CssTextField, CssButton} from './StyledComponents'
+
 
 const SchoolFrontPage = ({ setSchool }) => {
   const [token, setToken] = useState('')
@@ -29,6 +28,11 @@ const SchoolFrontPage = ({ setSchool }) => {
 
   const userResult = useQuery(ME)
 
+  const setBackground = () => {
+    document.body.style.background = "#E5E5E5 #url('../assets/background.png') norepeat center"
+  }
+
+
   if (userResult.loading) {
     return (
       <>
@@ -41,33 +45,39 @@ const SchoolFrontPage = ({ setSchool }) => {
   }
   if (result.loading) {
     return (
-      <>
+      <div className="frontpageBox item">
         <CircularProgress />
-      </>
+      </div>
     )
   }
 
   const allListings = ListingSearch(result.data.allListings, search)
+  setBackground()
+
   return (
-    <div>
+    <div class="relative">
       <Grid container direction='column' justify='center'>
         <Grid item>
-          <Typography variant='h4'>{School}</Typography>
+          <h1 class="header1">  {School} </h1>
         </Grid>
         <Grid item>
-          <Button
+          <CssButton
+            className="searchBox"
             onClick={() => {
               window.localStorage.removeItem('KirjaKirppis-school')
               setSchool('')
             }}
+            variant="outlined"
+            color="primary"
           >
             Vaihda koulua
-          </Button>
+          </CssButton>
         </Grid>
       </Grid>
       <Grid container direction='row' justify='center' spacing={1}>
-        <Grid item xs={9}>
+        <Grid item xs={9} >
           <Autocomplete
+            className="listingBox"
             onChange={(event, newValue) => {
               setSearch((newValue))
             }}
@@ -75,7 +85,7 @@ const SchoolFrontPage = ({ setSchool }) => {
             getOptionLabel={(option) => option.title}
             margin='normal'
             renderInput={(params) => (
-              <TextField
+              <CssTextField
                 {...params}
                 label='Etsi kirja'
                 variant='outlined'
@@ -98,7 +108,7 @@ const SchoolFrontPage = ({ setSchool }) => {
           </Grid>
         </Grid>
       </Grid>
-    </div>
+    </div >
   )
 }
 

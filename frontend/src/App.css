@@ -1,8 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zen+Antique+Soft&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@500&family=Zen+Antique+Soft&display=swap');
+
+body{
+  background-color: #C62368;
+}
+
 .App {
   text-align: center;
+
+}
+
+.relative{
+  position: relative;
 }
 
 .dark{
-  color:  darkgray;
-  background-color: darkgray;
+  background-color: #3b3b3b;
+}
+
+.searchBox{
+  background-color: hsl(223, 23%, 94%);
+}
+
+.frontpageBox {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.schoolViewBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.item {
+  width: clamp(400px, 50%, 1200px);
+}
+
+.item2{
+  width: clamp(1225px, 75%, 1300px);
+  height: 100vh;
+}
+
+.listingBox {
+  width: clamp(540px, 100%, 900px );
+  background-color: #232a32;
+  color: white;
+  ;
+
+}
+
+.header1{
+  font-family: 'Rubik', sans-serif;
+  color: white;
+  font-size: 4em;
+
+}
+
+.header2 {
+  font-family: 'Zen Antique Soft', serif;
+  font-size:3em;
+}
+
+.subtitle1{
+  font-family: 'Rubik', sans-serif;
+  color: lightgray;
+  font-size: 1.5em;
+}
+
+.bottomText{
+  font-family: 'Rubik', sans-serif;
+  color: lightgray;
+  font-size:0.75em;
+  position: absolute;
+  bottom: -75px;
+  left:50vw;
+}
+
+.custom-shape-divider-top-1635929871 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape-divider-top-1635929871 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 260px;
+}
+
+.custom-shape-divider-top-1635929871 .shape-fill {
+  fill: #FFFFFF;
+}
+
+.spacer {
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.layer1 {
+  background-image: url("./assets/frontpageWaves.svg");
+}
+
+.layer2{
+  background-color: #1c2228;
+  mix-blend-mode: overlay;
+}
+
+.layer3{
+  background-color: #232a32;
+}
+
+.autocomplete{
+  border-color: white;
 }

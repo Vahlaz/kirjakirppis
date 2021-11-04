@@ -46,7 +46,7 @@ const UserWindow = ({ setUser, user }) => {
   }
 
   return (
-    <Container component={Paper} align='center'>
+    <Container align='center' className="layer3 subtitle1">
       <Grid container justify='center' alignitems='center' direction='column'>
         <Grid item>
           <FaceOutlinedIcon fontSize='large' />

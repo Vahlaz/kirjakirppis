@@ -5,10 +5,14 @@ import {
   AccordionDetails,
   Typography,
   Grid,
+  styled
 } from '@material-ui/core'
 import books from '../assets/books.json'
 import { ExpandMoreOutlined } from '@material-ui/icons'
 import DeleteButton from './DeleteButton'
+import { CssAccordion } from './StyledComponents'
+
+
 
 const parseCondition = (condition) => {
   if (condition === 3) {
@@ -34,10 +38,10 @@ const ListingText = ({ text }) => {
 
 const ListingTable = ({ data, user }) => {
   return (
-    <>
+    <div >
       {data.map((listing) => (
-        <Accordion key={listing.id}>
-          <AccordionSummary expandIcon={<ExpandMoreOutlined />}>
+        <CssAccordion key={listing.id} className="listingBox">
+          <AccordionSummary expandIcon={<ExpandMoreOutlined />} >
             <Grid
               container
               direction='row'
@@ -88,9 +92,9 @@ const ListingTable = ({ data, user }) => {
               </Grid>
             </Grid>
           </AccordionDetails>
-        </Accordion>
+        </CssAccordion>
       ))}
-    </>
+    </div>
   )
 }
 export default ListingTable

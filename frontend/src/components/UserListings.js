@@ -10,6 +10,8 @@ import {
 import React from 'react'
 import { ExpandMoreOutlined } from '@material-ui/icons'
 import DeleteButton from './DeleteButton'
+import { CssAccordion } from './StyledComponents'
+
 const UserListings = ({ listings, user }) => {
   const yourListings = listings.filter((a) => a.User.id === user.id)
   if (!user) {
@@ -17,10 +19,10 @@ const UserListings = ({ listings, user }) => {
   }
 
   return (
-    <Container component={Paper}>
-      <Typography variant='h6'>Omat listaukset:</Typography>
+    <Container className="layer3 subtitle1">
+      Omat listaukset:
       {yourListings.map((listing) => (
-        <Accordion square key={listing.id} >
+        <CssAccordion square key={listing.id} >
           <AccordionSummary expandIcon={<ExpandMoreOutlined />}>
             <Grid
               container
@@ -51,7 +53,7 @@ const UserListings = ({ listings, user }) => {
               </Grid>
             </Grid>
           </AccordionDetails>
-        </Accordion>
+        </CssAccordion>
       ))}
     </Container>
   )
