@@ -13,7 +13,7 @@ import UserListings from './UserListings'
 import ListingSearch from './ListingSearch'
 import { Autocomplete } from '@material-ui/lab'
 import books from '../assets/books.json'
-import {CssTextField, CssButton} from './StyledComponents'
+import { CssTextField, CssButton } from './StyledComponents'
 
 
 const SchoolFrontPage = ({ setSchool }) => {
@@ -55,10 +55,10 @@ const SchoolFrontPage = ({ setSchool }) => {
   setBackground()
 
   return (
-    <div class="relative">
+    <div className="relative">
       <Grid container direction='column' justify='center'>
         <Grid item>
-          <h1 class="header1">  {School} </h1>
+          <h1 className="header1">  {School} </h1>
         </Grid>
         <Grid item>
           <CssButton

@@ -1,11 +1,9 @@
 import React from 'react'
 import {
-  Accordion,
   AccordionSummary,
   AccordionDetails,
   Typography,
   Grid,
-  styled
 } from '@material-ui/core'
 import books from '../assets/books.json'
 import { ExpandMoreOutlined } from '@material-ui/icons'

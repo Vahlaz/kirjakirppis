@@ -1,10 +1,8 @@
 import {
-  Accordion,
   AccordionSummary,
   Container,
   Grid,
   Typography,
-  Paper,
   AccordionDetails,
 } from '@material-ui/core'
 import React from 'react'
