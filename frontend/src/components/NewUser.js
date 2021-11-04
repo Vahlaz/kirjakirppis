@@ -1,9 +1,10 @@
-import { Button, Grid, TextField } from '@material-ui/core'
+import { Grid } from '@material-ui/core'
 import schools from '../assets/schools.json'
 import React, { useState } from 'react'
 import { Alert, Autocomplete } from '@material-ui/lab'
 import { useMutation } from '@apollo/client'
 import { CREATE_USER } from './queries'
+import { CssTextField, CssButton } from './StyledComponents'
 
 const NewUser = ({ setLoginform }) => {
   const [createUser] = useMutation(CREATE_USER)
@@ -48,7 +49,7 @@ const NewUser = ({ setLoginform }) => {
         alignItems='center'
       >
         <Grid item>
-          <TextField
+          <CssTextField
             required
             id='createName'
             label='Nimi'
@@ -61,10 +62,10 @@ const NewUser = ({ setLoginform }) => {
             onInput={(event) => {
               event.target.setCustomValidity('')
             }}
-          ></TextField>
+          ></CssTextField>
         </Grid>
         <Grid item>
-          <TextField
+          <CssTextField
             id='createEmail'
             label='Sähköposti'
             style={{ minWidth: 250 }}
@@ -77,10 +78,10 @@ const NewUser = ({ setLoginform }) => {
             onInput={(event) => {
               event.target.setCustomValidity('')
             }}
-          ></TextField>
+          ></CssTextField>
         </Grid>
         <Grid item>
-          <TextField
+          <CssTextField
             id='createPhoneNumber'
             label='Puhelinnumero'
             style={{ minWidth: 250 }}
@@ -93,7 +94,7 @@ const NewUser = ({ setLoginform }) => {
             onInput={(event) => {
               event.target.setCustomValidity('')
             }}
-          ></TextField>
+          ></CssTextField>
         </Grid>
         <Grid item>
           <Autocomplete
@@ -106,7 +107,7 @@ const NewUser = ({ setLoginform }) => {
             id='school'
             defaultValue={school}
             renderInput={(params) => (
-              <TextField
+              <CssTextField
                 {...params}
                 label='Valitse koulu'
                 style={{ minWidth: 250 }}
@@ -124,7 +125,7 @@ const NewUser = ({ setLoginform }) => {
           />
         </Grid>
         <Grid item>
-          <TextField
+          <CssTextField
             id='createPassword'
             label='salasana'
             style={{ minWidth: 250 }}
@@ -137,12 +138,12 @@ const NewUser = ({ setLoginform }) => {
             onInput={(event) => {
               event.target.setCustomValidity('')
             }}
-          ></TextField>
+          ></CssTextField>
         </Grid>
         <Grid item>
-          <Button type='submit' variant='outlined' color='primary'>
+          <CssButton type='submit' variant='outlined' color='primary'>
             luo käyttäjä
-          </Button>
+          </CssButton>
         </Grid>
 
         {errorMessage ? <Alert severity='error'>{errorMessage}</Alert> : null}

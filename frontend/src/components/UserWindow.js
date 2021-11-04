@@ -3,7 +3,7 @@ import LoginForm from './LoginForm.js'
 import FaceOutlinedIcon from '@material-ui/icons/FaceOutlined'
 import { useApolloClient } from '@apollo/client'
 import NewUser from './NewUser.js'
-import { Container, Paper, Grid, Button, Typography } from '@material-ui/core'
+import { Container, Grid, Button, Typography } from '@material-ui/core'
 
 const UserWindow = ({ setUser, user }) => {
   const [loginform, setLoginform] = useState(true)
@@ -18,7 +18,7 @@ const UserWindow = ({ setUser, user }) => {
 
   if (!user) {
     return (
-      <Container component={Paper}>
+      <Container className="layer3">
         <Grid container justify='center' spacing={1}>
           <Grid item>
             {loginform ? (

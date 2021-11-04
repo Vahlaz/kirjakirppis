@@ -3,8 +3,6 @@ import {
   Container,
   Grid,
   InputAdornment,
-  Paper,
-  Typography,
   MenuItem,
   Box,
 
@@ -53,10 +51,8 @@ const NewListingForm = ({ user }) => {
 
   if (!user)
     return (
-      <Container component={Paper}>
-        <Typography variant='subtitle1'>
+      <Container className="layer3 subtitle2">
           Kirjaudu sisään luodaksesi ilmoituksia
-        </Typography>
       </Container>
     )
   return (
