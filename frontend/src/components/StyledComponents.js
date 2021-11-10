@@ -29,7 +29,7 @@ const CssTextField = styled(TextField)({
             borderColor: 'white',
         },
         '&:hover fieldset': {
-            borderColor: 'white',
+            borderColor: '#b5b5b5',
         },
         '&.Mui-focused fieldset': {
             borderColor: 'white',
@@ -38,6 +38,7 @@ const CssTextField = styled(TextField)({
     '& .MuiFormHelperText-root	': {
         color: 'white',
     },
+
 })
 
 const CssButton = styled(Button)({
@@ -53,6 +54,9 @@ const CssButton = styled(Button)({
 
 const CssAccordion = styled(Accordion)({
     backgroundColor: '#232a32',
+    '&:hover': {
+        backgroundColor: '#282f38',
+    },
     color: "white",
     '& .MuiSvgIcon-root': {
         color: 'white'

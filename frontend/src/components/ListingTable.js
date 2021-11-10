@@ -51,7 +51,7 @@ const ListingTable = ({ data, user }) => {
                   src={
                     books.find((book) => book.title === listing.Title).imageLink
                   }
-                  width='80'
+                  width='100'
                   alt={listing.Title}
                 />
               </Grid>

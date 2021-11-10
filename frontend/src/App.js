@@ -70,7 +70,7 @@ const App = () => {
 
                 </Box>
               </div >
-              <div className="bottomText">KirjaKirppis | Created by Atte Räty</div>
+              <div className="bottomText">KirjaKirppis | Made by Atte Räty</div>
             </div>
           </>
 
